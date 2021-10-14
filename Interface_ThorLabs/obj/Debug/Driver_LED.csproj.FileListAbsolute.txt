@@ -1,0 +1,15 @@
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Driver_LED.csproj.AssemblyReference.cache
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Interop.BASICFORMATTEDIOLib.dll
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Driver_LED.csproj.ResolveComReference.cache
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Driver_LED.Form1.resources
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Driver_LED.csproj.GenerateResource.cache
+D:\Proyecto_CHIRP_LED\Driver_LED\bin\Debug\Driver_LED.exe.config
+D:\Proyecto_CHIRP_LED\Driver_LED\bin\Debug\Driver_LED.exe
+D:\Proyecto_CHIRP_LED\Driver_LED\bin\Debug\Driver_LED.pdb
+D:\Proyecto_CHIRP_LED\Driver_LED\bin\Debug\Thorlabs.DC4100.Interop.dll
+D:\Proyecto_CHIRP_LED\Driver_LED\bin\Debug\Thorlabs.DC4100.Interop.xml
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Driver_LED.Properties.Resources.resources
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Driver_LED.csproj.CoreCompileInputs.cache
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Driver_LED.csproj.CopyComplete
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Driver_LED.exe
+D:\Proyecto_CHIRP_LED\Driver_LED\obj\Debug\Driver_LED.pdb

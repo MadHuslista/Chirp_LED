@@ -1,0 +1,75 @@
+
+- Setup Shell
+	- Primero instalé el Windows Terminal desde la MicrosoftStore (Este es el programa que permite visualizar las consolas) https://www.youtube.com/watch?v=pa4KmDpaX6E
+	- Luego, instalé PowerShell 7 (un equivalente a Bash y a ZSH)
+	- Luego pensé en instalar ZSH, pero para ello necesitaba instalar Ubunto como la weá de Windows subsystem for Linux, y en verdad eso adhiere una capa súper innecesaria propensa a presentar posteriores errores de compatibilidad cuando empiece a trabajar con la máq' virtual.  https://platzi.com/blog/como-instalar-zsh-en-windows/
+
+- Entender como desarrollar app Win con C# (Microsoft Visual Studio 2019, versión Community sólo con opción desarrollo escritorio .NET
+	- Comprensión de .NET 
+				
+		Diferencias entre targets .NET  https://auth0.com/blog/navigating-dotnet-maze/
+		Origen de .NET 			https://www.altexsoft.com/blog/engineering/the-good-and-the-bad-of-net-framework-programming/
+		common APIs across .NET impl	https://dotnet.microsoft.com/platform/dotnet-standard#versions
+		.NET 101			https://channel9.msdn.com/Series/NET-Core-101/?WT.mc_id=Educationaldotnet-c9-scottha
+
+- Comprensión del Entorno de un proyecto C#: 
+
+	- Tutoriales de C# (No winForm)		https://csharp.net-tutorials.com/es/106/para-empezar/hello-world/
+
+	- General Variable Structure: 		<visibilidad> <tipo de dato> <nombre> = <valor>;
+
+	- Structure of a C# Project. 
+		- Solution > Project. One Solution could include multiples projects. 
+		- The same namespace could be splited across multiple files (the same with classes https://stackoverflow.com/questions/3093752/c-can-you-split-a-namespace-across-multiple-files)
+		- All the .cs files of the same folder will be catch by the compiler
+		- Una clase también puede ser definida/declarada a través de múltiples archivos. Para ello, la <visibilidad> es 'partial'
+
+	- Respecto a la Estructura del Driver_LED Project
+
+		- Orden lógico para pestañas de archivo: 
+			- DC4100_ResourceManager.cs > Program.cs > Form1.cs > Form1.Designer.cs
+
+		- Existen dos namespaces en uso: ThorLabs y Driver_LED
+			- ThorLabs 
+				- es creado por la compañía -en el ejemplo-
+				- es la encargada de interactuar con el DLL VISA para buscar y encontrar el dispositivo. 
+				- reside únicamente en el archivo DC4100_ResourceManager.cs (Lo que calza dado el nombre del archivo)
+
+			- Driver_LED
+				- Contiene dos clases: Program y Form1
+					- Program 
+						- static type
+						- Ubicado únicamente en Program.cs
+						- Sólo llama a las librerías que necesita. 
+						- Lo esencial es que aquí crea el runtime de la aplicación y luego corre la clase que contiene el formulario instanciándolo como 'new Form1' (El objeto Application, contenido en el namespace "System.Windows.Forms" es el encargado de esto. 
+
+					- Form1
+						[De lo contenido en Form1.cs]
+						- Aquí va la lógica de control del formulario
+						- Aquí va el constructor del formulario. 
+							- Por tanto también la lógica de conexión al dispotivo 
+							- Y por tanto es en este archivo donde se llamó (previamente al inicio del archivo y fuera del namespace Driver_Led) al namespace Thorlabs. 
+							- Con este namespace disponible (o importado, según la equivalencia con Python, ahora están disponibles las clases necesarias para efectuar la conexión efectiva con el dispositivo. 
+							- Y no sólo eso. Sino que también TODAS LAS FUNCIONES CONTENIDAS EN EL .DLL!! 
+							- ES ESTE NAMESPACE EL QUE ME DA ACCESO A ESAS FUNCIONES. 
+								- ESTO ES EFECTIVAMENTE ASÍ? AÚN NO LO SÉ.
+						
+						[De lo contenido en Form1.Designer.cs]
+						- Aquí va la construcción en sí misma del formulario. Se genera automáticamente gracias al Designer del Visual Studio. Similar al QDesigner. 
+
+- Lista la comprensión. Siguiente objetivo -> Como crear una señal en tiempo real dentro del C#. 
+	- Plan B: https://forum.allaboutcircuits.com/threads/sinewave-with-c.21526/
+	- Para ello -> Instalación de Measurement Studio from National Instruments. 
+		- Descarga desde: https://www.ni.com/es-cl/support/downloads/software-products/download.measurement-studio.html#348779
+			- Windows - 2019 - Sí incluye sw controlador 
+		- Creación de Cuenta (alumnos.uv, pass "") 
+		- Descarga e instalación del Paquete
+
+	- Para el uso de la librería  @alumnos.uv.cl
+		- https://zone.ni.com/reference/en-XX/help/372636F-01/mstudiowebhelp/html/keyninetanalysis/
+	- Para la generación de las señales: 
+		- https://zone.ni.com/reference/en-XX/help/372636F-01/mstudiowebhelp/html/signalgenerationninetanalysis/
+
+	- Getting Started: 
+		- https://www.ni.com/pdf/manuals/373225e.pdf
+			

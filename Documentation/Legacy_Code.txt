@@ -1,0 +1,58 @@
+
+        private void signal_reader_a(object sender, EventArgs e)
+        {
+            try
+            {
+                // Open the text file using a stream reader.
+                using (var sr = new StreamReader(PATH))
+                {
+                    // Read the stream as a string, and write the string to the console.
+                    //Console.WriteLine(sr.ReadToEnd());
+                    string data = sr.ReadToEnd();
+                    string[] data_array = data.Split('\n');
+
+                    List<float> conv_vals = new List<float>();
+                    foreach (var point in data_array)
+                    {
+                        Console.WriteLine($"Substring: {point}");
+
+                        //conv_vals.Add(float.Parse(point));
+
+                        //float[] signal = conv_vals.ToArray();
+                        //Console.WriteLine(signal.Count());
+
+                    }
+
+                }
+            }
+            catch (IOException err)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(err.Message);
+            }
+        }
+
+        private void signal_reader_b(object sender, EventArgs e)
+        {
+            List<float> column0 = new List<float>();
+            //using (Stream stream = File.Open(PATH, FileMode.Open))
+
+            using (var sr = new StreamReader(PATH, Encoding.UTF8))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] arr = line.Trim().Split(',');
+                    foreach (var item in arr)
+                    {
+                        column0.Add(float.Parse(item));
+                    }
+                }
+                float[] fltArray = column0.ToArray();
+                foreach (var point in fltArray)
+                {
+                    Console.WriteLine($"Float: {point}");
+                }
+
+            }
+        }

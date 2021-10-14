@@ -1,0 +1,623 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Thorlabs.DC4100.Interop</name>
+    </assembly>
+    <members>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.#ctor(System.IntPtr)">
+            <summary>
+            This function creates an IVI instrument driver session, typically using the C session instrument handle.
+            </summary>
+            <param name="Instrument_Handle">
+            The instrument handle that is used to create an IVI instrument driver session.
+            </param>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            This function initializes the instrument driver session and performs the following initialization actions:
+            
+            (1) Opens a session to the Default Resource Manager resource and a session to the selected device using the Resource Name.
+            (2) Performs an identification query on the Instrument.
+            (3) Resets the instrument to a known state.
+            (4) Sends initialization commands to the instrument.
+            (5) Returns an instrument handle which is used to differentiate between different sessions of this instrument driver.
+            
+            Notes:
+            (1) Each time this function is invoked an unique session is opened.  
+            </summary>
+            <param name="Resource_Name">
+            This parameter specifies the interface of the device that is to be initialized. The exact syntax to be used for this parameter is shown in the note below. The ASRL keyword is used for serial communication.
+            
+            Default Value:  "ASRL1::INSTR"
+            
+            Note: Based on the resource name this operation establishes a communication session with a device. Optional parameters are shown in square brackets ([]).
+            
+            Interface       Syntax
+            ----------------------------------------------------------------
+            Serial          ASRL&lt;port&gt;[::INSTR]
+            Remote Access   visa://hostname[:visaport]/ASRL&lt;port&gt;[::INSTR]
+            
+            
+            Example Resource Names:
+            ----------------------------------------------------------------
+            ASRL0::INSTR          A serial device connected to interface
+                                  ASRL1 (COM0).  
+            
+            visa://1.2.3.4/ASRL0::INSTR      
+                                  Remote access to the serial device
+                                  connected to interface ASRL1 (COM0) at the
+                                  specified IP address.
+            
+            </param>
+            <param name="ID_Query">
+            This parameter specifies whether an identification query is performed during initialize.
+            
+            VI_OFF (0): Skip query.
+            VI_ON  (1): Do query (default).
+            
+            </param>
+            <param name="Reset_Device">
+            This parameter specifies whether the instrument is reset during initialise.
+            
+            VI_OFF (0) - no reset
+            VI_ON  (1) - instrument is reset (default)
+            
+            </param>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.reset">
+            <summary>
+            Places the instrument in a default state.
+            </summary>
+            <returns>
+            Operational return status. Contains either a completion code or an error code. Instrument driver specific codes that may be returned in addition to the VISA error codes defined in VPP-4.3 and vendor specific codes, are as follows.
+            
+            Completition Codes
+            ----------------------------------------------------------------
+            VI_SUCCESS              Reset ooperation successful
+            VI_WARN_NSUP_RESET      Reset not supported
+            
+            
+            Vendor Specific Codes
+            ----------------------------------------------------------------
+            For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.self_test(System.Int16@,System.Text.StringBuilder)">
+            <summary>
+            This function causes the instrument to perform a self-test and returns the result of that self-test.
+            </summary>
+            <param name="Self_Test_Result">
+            Numeric result from self-test operation 
+            0 = no error (test passed)
+            </param>
+            <param name="Self_Test_Message">
+            Self-test status message.
+            </param>
+            <returns>
+            Operational return status. Contains either a completion code or an error code. Instrument driver specific codes that may be returned in addition to the VISA error codes defined in VPP-4.3 and vendor specific codes, are as follows.
+            
+            Completition Codes
+            ----------------------------------------------------------------
+            VI_SUCCESS              Self-test operation successful
+            VI_WARN_NSUP_SELF_TEST  Self-test not supported
+            
+            
+            Vendor Specific Codes
+            ----------------------------------------------------------------
+            For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.revision_query(System.Text.StringBuilder,System.Text.StringBuilder)">
+            <summary>
+            This function returns the instrument driver revision and the device firmware revision.
+            </summary>
+            <param name="Instrument_Driver_Revision">
+            This parameter returns the implementation version of the instrument driver.
+            
+            The version value has a hexadecimal format 0xXXXYYYZZ, where XXX is the major version, YYY is the minor version, and ZZ is the subminor version.
+            
+            Note: You may pass VI_NULL.
+            
+            </param>
+            <param name="Firmware_Revision">
+            This parameter returns the device firmware revision. 
+            
+            Notes:
+            (1) The array must contain at least 256 elements ViChar[256].
+            (2) You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <returns>
+            Operational return status. Contains either a completion code or an error code. Instrument driver specific codes that may be returned in addition to the VISA error codes defined in VPP-4.3 and vendor specific codes, are as follows.
+            
+            Completition Codes
+            ----------------------------------------------------------------
+            VI_SUCCESS               Revision query successful
+            VI_WARN_NSUP_REV_QUERY   Instrument revision query not supported
+            
+            
+            Vendor Specific Codes
+            ----------------------------------------------------------------
+            For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.error_query(System.Int32@,System.Text.StringBuilder)">
+            <summary>
+            This function queries the instrument and returns instrument-specific error information.
+            </summary>
+            <param name="Error_Code">
+            Instrument error code.
+            </param>
+            <param name="Error_Message">
+            Error message.
+            </param>
+            <returns>
+            Operational return status. Contains either a completion code or an error code. Instrument driver specific codes that may be returned in addition to the VISA error codes defined in VPP-4.3 and vendor specific codes, are as follows.
+            
+            Completition Codes
+            ----------------------------------------------------------------
+            VI_SUCCESS                Error query operation successful
+            VI_WARN_NSUP_ERROR_QUERY  Error query not supported
+            
+            
+            Vendor Specific Codes
+            ----------------------------------------------------------------
+            For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.identificationQuery(System.Text.StringBuilder,System.Text.StringBuilder,System.Text.StringBuilder,System.Text.StringBuilder)">
+            <summary>
+            This function returns the device identification information.
+            </summary>
+            <param name="Manufacturer_Name">
+            This parameter returns the manufacturer name.
+            
+            Notes:
+            (1) The array must contain at least 256 elements ViChar[256].
+            (2) You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Device_Name">
+            This parameter returns the name of the device.
+            
+            Notes:
+            (1) The array must contain at least 256 elements ViChar[256].
+            (2) You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Serial_Number">
+            This parameter returns the serial number of the device.
+            
+            Notes:
+            (1) The array must contain at least 256 elements ViChar[256].
+            (2) You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Firmware_Revision">
+            This parameter returns the firmware revision of the device.
+            
+            Notes:
+            (1) The array must contain at least 256 elements ViChar[256].
+            (2) You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getHeadInfo(System.Int32,System.Text.StringBuilder,System.Text.StringBuilder,System.Int32@)">
+            <summary>
+            This function returns the LED head identification information for specified channel.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Serial_Number">
+            This parameter returns the serial number of the connected LED head.
+            
+            Notes:
+            (1) The array must contain at least 256 elements ViChar[256].
+            (2) You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Name">
+            This parameter returns the name of the connected LED head.
+            
+            Notes:
+            (1) The array must contain at least 256 elements ViChar[256].
+            (2) You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <param name="Type">
+            This parameter returns the LED head type.
+            
+            Valid return values are:
+            
+            NO_HEAD                     (0)   - no LED head found
+            FOUR_CHANNEL_HEAD           (1)   - four channel LED head
+            ONE_CHANNEL_HEAD            (2)   - single channel LED head
+            NOT_SUPPORTED_HEAD          (253) - not supported head
+            UNKNOWN_HEAD                (254) - unknown head
+            ONE_CHANNEL_HEAD_OLD        (255) - old standard LED head
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.setLimitCurrent(System.Int32,System.Single)">
+            <summary>
+            Sets the current limit for specified channel. This limit may not exceed the LEDs limit specified in the LED head. It also defines the maximum brightness current used in the percental brightness mode.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Current_Limit">
+            This parameter specifies the current limit in ampere.
+            
+            Range:   0.0 .. 1.0 (A) (limited by maximum limit)
+            Default: 0.0 (A)
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getLimitCurrent(System.Int32,System.Single@)">
+            <summary>
+            Reads the current limit for specified LED channel.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Current_Limit">
+            This parameter returns the user defined current limit in ampere.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.setMaxLimit(System.Int32,System.Single)">
+            <summary>
+            Sets the LEDs maximum current limit in ampere. This limit takes only affect until the next restart of the system.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Maximum_Current_Limit">
+            This parameter specifies the maximum current limit of the LED in ampere.
+            
+            Range:   0.0 .. 1.0 (A)
+            Default: 0.001 (A)
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getMaxLimit(System.Int32,System.Single@)">
+            <summary>
+            Gets the LEDs maximum current limit in ampere. This value is specific for each LED channel.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. 
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Maximum_Current_Limit">
+            This parameter returns the maximum current limit in ampere. The value is specific for each connected LED.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.setOperationMode(System.Int32)">
+            <summary>
+            Sets the operation mode.
+            </summary>
+            <param name="Operation_Mode">
+            This parameter specifies the operation mode.
+            
+            Valid values are:
+            
+            MODUS_CONST_CURRENT     (0)
+            MODUS_PERCENT_CURRENT   (1)
+            MODUS_EXTERNAL_CONTROL  (2)
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getOperationMode(System.Int32@)">
+            <summary>
+            Gets the actual operation mode.
+            </summary>
+            <param name="Operation_Mode">
+            This parameter returns the actual operation mode.
+            
+            MODUS_CONST_CURRENT     (0)
+            MODUS_PERCENT_CURRENT   (1)
+            MODUS_EXTERNAL_CONTROL  (2)
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.setSelectionMode(System.Int32)">
+            <summary>
+            Sets the selection mode.
+            </summary>
+            <param name="Selection_Mode">
+            This parameter specifies the selection mode. 
+            
+            MULTI_SELECT  (0) - one or more channels can be active
+            SINGLE_SELECT (1) - only one channel can be active
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getSelectionMode(System.Int32@)">
+            <summary>
+            Gets the selection mode.
+            </summary>
+            <param name="Selection_Mode">
+            This parameter returns the selection mode.
+            
+            MULTI_SELECT  (0) - one or more channels can be active
+            SINGLE_SELECT (1) - only one channel can be active
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getWavelength(System.Int32,System.Single@)">
+            <summary>
+            This function returns the wavelength information for specified channel.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Wavelength">
+            This parameter returns the wavelength in [nm] of the specfied channel. In case there is no information available this value will be set to zero.
+            
+            Notes:
+            You may pass VI_NULL if you do not need this value.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getForwardBias(System.Int32,System.Single@)">
+            <summary>
+            This function returns the forward bias in [V] for specified channel.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Forward_Bias">
+            This parameter returns the forward bias in [V] of the specfied channel. In case there is no information available this value will be set to zero.
+            
+            
+            Notes:
+            (1) You may pass VI_NULL if you do not need this value.
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.setLedOnOff(System.Int32,System.Boolean)">
+            <summary>
+            Sets one or all LED(s) on or off.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero). You may pass ALL_CHANNELS (-1) to specify all channels at once.
+            
+            Range:   -1 ... 3
+            Default: 0
+            </param>
+            <param name="LED_On_Off">
+            This parameter specifies the LED output. On switches the LED on, off switches the LED off.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getLedOnOff(System.Int32,System.Boolean@)">
+            <summary>
+            Gets the LED output state.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="LED_Output_State">
+            This parameter returns the LED output state. True relates to LED is on, false otherwise.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.setConstCurrent(System.Int32,System.Single)">
+            <summary>
+            Sets the current for one channels used in the constant current mode.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Constant_Current">
+            This parameter specifies the constant current in ampere.
+            
+            Range:   0.0...1.0 (A)
+            Default: 0.0 (A)
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getConstCurrent(System.Int32,System.Single@)">
+            <summary>
+            Gets the current of a specfied channel used for the constant current mode.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Constant_Current">
+            This parameter returns the actual constant current of specified channel in ampere.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.setPercentalBrightness(System.Int32,System.Single)">
+            <summary>
+            Sets the percental brightness for one or all LED channel(s). The maximum brightness current is defined due the user limit current.
+            
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero). You may pass ALL_CHANNELS (-1) to set the percental brightness for all channels with one command.
+            
+            Range:   -1 ... 3
+            Default: 0
+            </param>
+            <param name="Brightness">
+            This parameter specifies the percental brightness.
+            
+            Range:   0.0..100.0   (%)
+            Default: 0.0 (%)
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getPercentalBrightness(System.Int32,System.Single@)">
+            <summary>
+            Gets the percental brightness of one LED channel in percent. The maximum brightness current is defined due the user limit current.
+            </summary>
+            <param name="Channel">
+            This parameter specifies the LED channel. The channel index is zero-based (first channel has index zero).
+            
+            Range:   0 ... 3
+            Default: 0
+            </param>
+            <param name="Brightness">
+            This parameter returns the brightness in percent.
+            
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.setDispBright(System.Int32)">
+            <summary>
+            Sets the display brightness.
+            </summary>
+            <param name="Display_Brightness">
+            This parameter specifies the display brightness in percent.
+            
+            Range   : 0..100
+            Default : 100
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getDispBright(System.Int32@)">
+            <summary>
+            Gets the display brightness.
+            </summary>
+            <param name="Display_Brightness">
+            This parameter returns the display brightness in percent.
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="M:Thorlabs.DC4100.Interop.TLDC4100.getStatusRegister(System.Int32@)">
+            <summary>
+            Reads the content of the instruments status register. Refer to the instrument user's manual for more details on registers.
+            </summary>
+            <param name="Status_Register">
+            This parameter returns the status register value. 
+            
+            #define STAT_VCC_FAIL_CHANGED               0x00000001
+            #define STAT_VCC_FAIL                       0x00000002
+            #define STAT_OTP_CHANGED                    0x00000004
+            #define STAT_OTP                            0x00000008
+            #define STAT_NO_LED1_CHANGED                0x00000010
+            #define STAT_NO_LED1                        0x00000020
+            #define STAT_NO_LED2_CHANGED                0x00000040
+            #define STAT_NO_LED2                        0x00000080
+            #define STAT_NO_LED3_CHANGED                0x00000100
+            #define STAT_NO_LED3                        0x00000200
+            #define STAT_NO_LED4_CHANGED                0x00000400
+            #define STAT_NO_LED4                        0x00000800
+            #define STAT_LED_OPEN1_CHANGED              0x00001000
+            #define STAT_LED_OPEN1                      0x00002000
+            #define STAT_LED_OPEN2_CHANGED              0x00004000
+            #define STAT_LED_OPEN2                      0x00008000
+            #define STAT_LED_OPEN3_CHANGED              0x00010000
+            #define STAT_LED_OPEN3                      0x00020000
+            #define STAT_LED_OPEN4_CHANGED              0x00040000
+            #define STAT_LED_OPEN4                      0x00080000
+            #define STAT_LED_LIMIT1_CHANGED             0x00100000
+            #define STAT_LED_LIMIT1                     0x00200000
+            #define STAT_LED_LIMIT2_CHANGED             0x00400000
+            #define STAT_LED_LIMIT2                     0x00800000
+            #define STAT_LED_LIMIT3_CHANGED             0x01000000
+            #define STAT_LED_LIMIT3                     0x02000000
+            #define STAT_LED_LIMIT4_CHANGED             0x04000000
+            #define STAT_LED_LIMIT4                     0x08000000
+            #define STAT_IFC_REFRESH_CHANGED            0x10000000
+            
+            </param>
+            <returns>
+            This is the error code returned by the function call. For error codes and descriptions see &lt;Error Message&gt;.
+            </returns>
+        </member>
+        <member name="P:Thorlabs.DC4100.Interop.TLDC4100.Handle">
+            <summary>
+            Gets the instrument handle.
+            </summary>
+            <value>
+            The value is the IntPtr that represents the handle to the instrument.
+            </value>
+        </member>
+    </members>
+</doc>

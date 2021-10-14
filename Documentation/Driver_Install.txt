@@ -1,0 +1,29 @@
+- Descarga de Driver: https://www.thorlabs.com/software_pages/viewsoftwarepage.cfm?code=DC4100
+- Warning: Fast Startup may cause problems -> Deactivate. 
+- Instalación Exitosa -> Se logra abrir el GUI del Driver 
+-- 
+Intentando correr los ejemplos: 
+- DotNetSample.cs
+	- 1.- Falla el build. 
+	Falla la referencia a "Thorlabs.DC4100.Interop.dll" <- OJO, los .dll son directamente archivos Assembly!
+	Para repararla:
+		- Solution Explorer > DotNetSample > References. 
+		- Remover referencia a "Thorlabs.DC4100.Interop.dll"
+		- Click derecho a 'References' > 'Add Reference' 
+		- Reference Manager > Browse > "C:\Program Files (x86)\Microsoft.NET\Primary Interop Assemblies"
+		- Seleccionar "Thorlabs.DC4100.Interop.dll" > Add > Ok
+		- Start > Done.
+		(Ref:  https://stackoverflow.com/questions/14261412/could-not-resolve-this-reference-could-not-locate-the-assembly)
+		(Path: C:\Program Files (x86)\Microsoft.NET\Primary Interop Assemblies\Thorlabs.DC4100.Interop.dll)
+
+	- 2.- Falla System.Runtime.InteropServices.COMException: 'HRESULT = 8002000b' -> Error: "0x8002000b" -> "DISP_E_BADINDEX"
+	Al parecer es el sistema buscando el dispositivo sin encontrarlo. 
+	COMException Class:
+		"The exception that is thrown when an unrecognized HRESULT is returned from a COM method call."
+		https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.comexception?view=net-5.0	
+
+	Common HRESULT Values: 
+		- https://docs.microsoft.com/en-us/windows/win32/seccrypto/common-hresult-values
+
+	En particular el error tira precisamente a la interfaz COM I/O de VISA. 
+	
