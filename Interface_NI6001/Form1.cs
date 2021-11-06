@@ -21,9 +21,12 @@ namespace Interface_Net4._5
         private string PRETIME_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\pretime_registro.txt";
         private string VALS_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\vals_registro.txt";
 
-        private float[] Signal_Array;
+        private double[] Signal_Array;
         
         private Stopwatch sig_clock = new Stopwatch();
+
+        private bool taskRunning = false; // Seguimiento del Task 
+        Task DAC_Task = null;
 
         public Form1()
         {
@@ -41,17 +44,17 @@ namespace Interface_Net4._5
         {
             try
             {
-                List<float> Signal_data = new List<float>();
+                List<double> Signal_data = new List<double>();
                 foreach (string point in File.ReadLines(PATH, Encoding.UTF8))
                 {
                     //Console.WriteLine($"Str: {point}");
-                    Signal_data.Add(float.Parse(point, CultureInfo.InvariantCulture));
+                    Signal_data.Add(double.Parse(point, CultureInfo.InvariantCulture));
                 }
                 Signal_Array = Signal_data.ToArray();
                 Console.WriteLine("Señal Correctamente Cargada - Array len:{0}", Signal_Array.Count());
                 button2.Enabled = true;
 
-                //foreach (var point in Signal_Array) { Console.WriteLine($"Val: {point}");}
+                foreach (var point in Signal_Array) { Console.WriteLine($"Val: {point}");}
                 
             }
             catch (IOException err)
@@ -63,104 +66,77 @@ namespace Interface_Net4._5
 
         private void send_signal(object sender, EventArgs e)
         {
-            
 
-            //Cálculo del Intervalo 
-            long Freq = Decimal.ToInt64(numericUpDown1.Value);
-            long Interval = Stopwatch.Frequency / Freq;
+            button2.Enabled = false;
+            taskRunning = true;
 
-            //Cálculo de la cantidad de Iteraciones. 
-            double duration = Decimal.ToDouble(numericUpDown2.Value);
-            long iteraciones = Convert.ToInt64((duration * Freq));
-            //long iteraciones = Signal_Array.Count();
-            long i = 0;
-
-
-            //Preparación Registro Tiempo
-            var times = new double[iteraciones];
-            var pretimes = new double[iteraciones];
-            var values = new float[iteraciones]; //Iteraciones debería ser de = largo que la señal. 
-
-            //Creación del Task y objetos necesarios para la comunicación con el DAC
-
+            //Obtención de Frecuencia de Muestreo y otros datos
             var channel = comboBox1.Text;
             double minval = Convert.ToDouble(textBox1.Text);
             double maxval = Convert.ToDouble(textBox2.Text);
+            double sample_rate = Decimal.ToDouble(numericUpDown1.Value);
 
-            Task DAC_Task = new Task(); // Crea la 'Tarea' (un entorno de trabajo) (paso 1) 
-            DAC_Task.AOChannels.CreateVoltageChannel(channel, "aoChannel", minval, maxval, AOVoltageUnits.Volts); // Crea y Configura el canal (paso 1) 
+            // Creación del Task y objetos necesarios para la comunicación con el DAC
 
-            AnalogSingleChannelWriter writer = new AnalogSingleChannelWriter(DAC_Task.Stream); // Crea el Writer (paso 2) 
-            
-            /*
-            AnalogSingleChannelWriter writessr = new AnalogSingleChannelWriter(DAC_Task.Stream); // Crea el Writer (paso 2) 
-
-            var test = new double[Signal_Array.Count()];
-            var d = 0;
-            foreach (var t in test) { test[d] = Convert.ToDouble(Signal_Array[d]); d++; }
-            writessr.WriteMultiSample(true, test);
-            */
-
-            //Preparación Timers
-            long time_point = Interval;
-            sig_clock.Restart();
-            
-
-            //Envío efectivo de la señal.
-            while (true)
+            try
             {
-                if (sig_clock.ElapsedTicks >= time_point)
+                DAC_Task = new Task(); // Crea la 'Tarea' (un entorno de trabajo) (paso 1) 
+                DAC_Task.AOChannels.CreateVoltageChannel(channel, "aoChannel", minval, maxval, AOVoltageUnits.Volts); // Crea y Configura el canal (paso 1) 
+
+                //Verificación de Rigor
+                DAC_Task.Control(TaskAction.Verify);
+
+                //Configuración del Timing del Task 
+                DAC_Task.Timing.ConfigureSampleClock(
+                    "",                                 //Para configurar que la fuente sea interna, se usa ""
+                    sample_rate,
+                    SampleClockActiveEdge.Rising,
+                    SampleQuantityMode.FiniteSamples,
+                    Signal_Array.Length);
+
+                //Escritura de la Data
+                AnalogSingleChannelWriter writer = new AnalogSingleChannelWriter(DAC_Task.Stream); // Crea el Writer (paso 2) 
+
+                //Config del evento que avisa que ya se escribió todo. 
+                DAC_Task.Done += new TaskDoneEventHandler(DAC_Task_Done);
+
+                //Envío efectivo de la Data
+                writer.WriteMultiSample(false, Signal_Array);
+                DAC_Task.Start();
+            }
+
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+
+                if (DAC_Task != null)
                 {
-                    //values[i] = Signal_Array[i];
-                    pretimes[i] = sig_clock.Elapsed.TotalMilliseconds;
-                    writer.WriteSingleSample(true, Signal_Array[i]);
-                    times[i] = sig_clock.Elapsed.TotalMilliseconds;
-                    time_point += Interval;
-                    i++;
+                    DAC_Task.Dispose();
                 }
-
-                if (i >= iteraciones)
-                {
-                    sig_clock.Stop();
-                    break;
-                }
+                taskRunning = false;
+                button2.Enabled = true;
             }
+        }
 
-            DAC_Task.Dispose();
+        private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = taskRunning;
+        }
 
-            //Registro PreTiempo: 
-            var pretime_sb = new StringBuilder();
-            foreach (var pretime in pretimes)
+        private void DAC_Task_Done(object sender, TaskDoneEventArgs e)
+        {
+            if (e.Error != null)
             {
-                //Console.WriteLine(value);
-                pretime_sb.AppendLine(pretime.ToString());
+                MessageBox.Show(e.Error.Message);
             }
-            File.WriteAllText(PRETIME_REGISTER, pretime_sb.ToString());
 
-            //Registro Tiempo: 
-            var time_sb = new StringBuilder();
-            foreach (var time in times)
+            if (DAC_Task != null)
             {
-                //Console.WriteLine(value);
-                time_sb.AppendLine(time.ToString());
+                DAC_Task.Dispose();
             }
-            File.WriteAllText(TIME_REGISTER, time_sb.ToString());
 
-            /*
-            //Registro Señal: 
-            var vals_sb = new StringBuilder();
-            foreach (var value in values)
-            {
-                //Console.WriteLine(value);
-                vals_sb.AppendLine(value.ToString());
-            }
-            File.WriteAllText(VALS_REGISTER, vals_sb.ToString());
-            */
-
-            Console.WriteLine("i count: {0} | len array:{1}", i, Signal_Array.Count());
-            Console.WriteLine("Elapsed Time is {0}[s]| {1}[ms] | {2}[ticks] | {3}[tick_freq]", sig_clock.Elapsed, sig_clock.ElapsedMilliseconds, sig_clock.ElapsedTicks, Stopwatch.Frequency);
-            double err = 1000 - (Freq * Interval);
-            Console.WriteLine("Interval {0}[ms] | interv_err: {1} [ms]", Interval, err);
+            taskRunning = false;
+            button2.Enabled = true;
         }
 
         private void stop_signal(object sender, EventArgs e)
