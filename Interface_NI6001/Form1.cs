@@ -17,6 +17,7 @@ namespace Interface_Net4._5
     public partial class Form1 : Form
     {
         private string PATH = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\signal.txt";
+        //private string PATH = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\probe_signal.txt";
         private string TIME_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\time_registro.txt";
         private string PRETIME_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\pretime_registro.txt";
         private string VALS_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\vals_registro.txt";
@@ -54,7 +55,7 @@ namespace Interface_Net4._5
                 Console.WriteLine("Señal Correctamente Cargada - Array len:{0}", Signal_Array.Count());
                 button2.Enabled = true;
 
-                foreach (var point in Signal_Array) { Console.WriteLine($"Val: {point}");}
+                //foreach (var point in Signal_Array) { Console.WriteLine($"Val: {point}");}
                 
             }
             catch (IOException err)
