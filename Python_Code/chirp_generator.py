@@ -10,29 +10,30 @@ import matplotlib.pyplot as plt
 
 args = {
         #General
-        "base_amp":0.5,                     # Línea Base
+        "base_amp":4.5,                     # Línea Base
         "t_adap":2,                         # Adaptación entre cada mod
         
         #Square Mod
-        "amp_on":1,                         # Amp Fase On
+        "amp_on":9,                         # Amp Fase On
         "t_on":3,                           # Tiempo en On
         "t_off":3,                          # Tiempo en Off
         
         #Freq Mod Sinus
         "freq_mod_final_freq":15,           # Freq Final
         "freq_mod_time":15,                 # Tiempo de Mod
-        "freq_mod_amp":0.5,                 # Amplitud Media de la Señal de Frecuencia
+        "freq_mod_amp":4.5,                 # Amplitud Media de la Señal de Frecuencia
         "freq_mod_init_phase":2*np.pi,      # Fase de Inicio
         
         #Amp Mod Sinus
         "amp_mod_time":1,                   # Duración del Seno
         "amp_mod_freq":8,                   # Frecuencia base del Seno
-        "amp_mod_max":0.5                   # Amplitud Media final. 
+        "amp_mod_max":4.5                   # Amplitud Media final. 
         }
 
-sample_rate = 120      #Hz
+sample_rate = 5000      #Hz
 
-save_path = r"D:\Proyecto_CHIRP_LED\Interface_NIDAQ\logs\signal.txt"
+#save_path = r"D:\Proyecto_CHIRP_LED\Interface_NIDAQ\logs\signal.txt"
+save_path = r"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\signal.txt"
 
 
 def chirp_generator(sample_rate, args, splitted=False):
@@ -86,7 +87,7 @@ def chirp_generator(sample_rate, args, splitted=False):
 
 t = chirp_generator(1/sample_rate, args, splitted=True)
 
-plt.plot(t['full_time'],t['full_signal'])
+#plt.plot(t['full_time'],t['full_signal'])
 
 np.savetxt(save_path, t['full_signal'], fmt='%.6f')
 
