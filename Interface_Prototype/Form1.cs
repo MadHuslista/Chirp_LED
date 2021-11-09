@@ -16,15 +16,13 @@ namespace Interface_Net4._5
 {
     public partial class Form1 : Form
     {
-        private string PATH = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\signal.txt";
-        //private string PATH = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\probe_signal.txt";
-        private string TIME_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\time_registro.txt";
-        private string PRETIME_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\pretime_registro.txt";
-        private string VALS_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\vals_registro.txt";
+        private string PATH = @"D:\Proyecto_CHIRP_LED\Interface_Prototype\logs\signal.txt";
+        //private string PATH = @"D:\Proyecto_CHIRP_LED\Interface_Prototype\logs\probe_signal.txt";
+        private string TIME_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_Prototype\logs\time_registro.txt";
+        private string PRETIME_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_Prototype\logs\pretime_registro.txt";
+        private string VALS_REGISTER = @"D:\Proyecto_CHIRP_LED\Interface_Prototype\logs\vals_registro.txt";
 
         private double[] Signal_Array;
-        
-        private Stopwatch sig_clock = new Stopwatch();
 
         private bool taskRunning = false; // Seguimiento del Task 
         Task DAC_Task = null;
@@ -38,11 +36,11 @@ namespace Interface_Net4._5
             if (comboBox1.Items.Count > 0) { comboBox1.SelectedIndex = 0; }
 
             //Iniciar el reloj aquí, ahorra el tiempo de iniciación del mismo. Luego basta con reiniciarlo (lo que demora menos). 
-            sig_clock.Start();
         }
 
         private void read_signal(object sender, EventArgs e)
         {
+            button2.Enabled = false;
             try
             {
                 List<double> Signal_data = new List<double>();
@@ -53,10 +51,14 @@ namespace Interface_Net4._5
                 }
                 Signal_Array = Signal_data.ToArray();
                 Console.WriteLine("Señal Correctamente Cargada - Array len:{0}", Signal_Array.Count());
-                button2.Enabled = true;
+
+                if(DAC_Task == null) { button2.Enabled = true; }
+                else if (DAC_Task.IsDone) { button2.Enabled = true; }
+
+
 
                 //foreach (var point in Signal_Array) { Console.WriteLine($"Val: {point}");}
-                
+
             }
             catch (IOException err)
             {
@@ -112,7 +114,7 @@ namespace Interface_Net4._5
 
                 if (DAC_Task != null)
                 {
-                    DAC_Task.Dispose();
+                    DAC_Task.Stop();
                 }
                 taskRunning = false;
                 button2.Enabled = true;
@@ -142,7 +144,13 @@ namespace Interface_Net4._5
 
         private void stop_signal(object sender, EventArgs e)
         {
-
+            if (DAC_Task != null)
+            {
+                DAC_Task.Dispose();
+                DAC_Task = null;
+            }
+            taskRunning = false;
+            button2.Enabled = true;
         }
 
 

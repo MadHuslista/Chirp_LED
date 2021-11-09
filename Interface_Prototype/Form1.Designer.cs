@@ -58,7 +58,7 @@ namespace Interface_Net4._5
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 0;
             this.numericUpDown1.Value = new decimal(new int[] {
-            120,
+            5000,
             0,
             0,
             0});

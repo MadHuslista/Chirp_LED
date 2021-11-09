@@ -33,7 +33,7 @@ args = {
 sample_rate = 5000      #Hz
 
 #save_path = r"D:\Proyecto_CHIRP_LED\Interface_NIDAQ\logs\signal.txt"
-save_path = r"D:\Proyecto_CHIRP_LED\Interface_NI6001\logs\signal.txt"
+save_path = r"D:\Proyecto_CHIRP_LED\Interface_Prototype\logs\signal.txt"
 
 
 def chirp_generator(sample_rate, args, splitted=False):
