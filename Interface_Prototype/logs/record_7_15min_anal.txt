@@ -1,8 +1,0 @@
-Mean:0.0002000010666725926[s]
-Std: 4.6188026668224117e-07[s]
-
-Mesured Sampled Rate: 4999.973333327408[Hz]
-
-Elem sobre 1std: 24 de 4499975 - 0.001%
-Elem sobre 2std: 24 de 4499975 - 0.001%
-Elem sobre 3std: 24 de 4499975 - 0.001%

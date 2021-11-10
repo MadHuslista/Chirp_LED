@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Interface_Net4.5")]
+[assembly: AssemblyTitle("Interface_Prototype")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Interface_Net4.5")]
+[assembly: AssemblyProduct("Interface_Prototype")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1a28629e-5f9f-4add-9b86-dd757139b0fb")]
+[assembly: Guid("1945a73c-43a4-4daf-b708-878e9c3bdbef")]
 
 // Version information for an assembly consists of the following four values:
 //

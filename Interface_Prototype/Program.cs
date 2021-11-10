@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Interface_Net4._5
+namespace Interface_Prototype
 {
     static class Program
     {

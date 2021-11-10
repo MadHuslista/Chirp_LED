@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace Interface_Net4._5.Properties
+namespace Interface_Prototype.Properties
 {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
