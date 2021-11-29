@@ -7,3 +7,11 @@ D:\Proyecto_CHIRP_LED\Calibration_Test\obj\Debug\Calibration_Test.csproj.Generat
 D:\Proyecto_CHIRP_LED\Calibration_Test\obj\Debug\Calibration_Test.csproj.CoreCompileInputs.cache
 D:\Proyecto_CHIRP_LED\Calibration_Test\obj\Debug\Calibration_Test.exe
 D:\Proyecto_CHIRP_LED\Calibration_Test\obj\Debug\Calibration_Test.pdb
+D:\Proyecto_CHIRP_LED\Calibration_Test\bin\Debug\NationalInstruments.Common.dll
+D:\Proyecto_CHIRP_LED\Calibration_Test\bin\Debug\NationalInstruments.DAQmx.dll
+D:\Proyecto_CHIRP_LED\Calibration_Test\bin\Debug\NationalInstruments.Common.xml
+D:\Proyecto_CHIRP_LED\Calibration_Test\bin\Debug\NationalInstruments.DAQmx.xml
+D:\Proyecto_CHIRP_LED\Calibration_Test\obj\Debug\Calibration_Test.Form1.resources
+D:\Proyecto_CHIRP_LED\Calibration_Test\obj\Debug\Calibration_Test.csproj.CopyComplete
+D:\Proyecto_CHIRP_LED\Calibration_Test\bin\Debug\MathNet.Numerics.dll
+D:\Proyecto_CHIRP_LED\Calibration_Test\bin\Debug\MathNet.Numerics.xml
