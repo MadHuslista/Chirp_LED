@@ -10,25 +10,35 @@ using System.Windows.Forms;
 using NationalInstruments.DAQmx;
 using NationalInstruments;
 using MathNet.Numerics;
+using System.Globalization;
+
 
 namespace Calibration_Test
 {
     public partial class Form1 : Form
     {
 
-        private string CLB_PATH = @"D:\Proyecto_CHIRP_LED\Calibration_Test\logs";
+        private string CLB_PATH = @"D:\Proyecto_CHIRP_LED\Calibration_Test\logs\calib_arr.txt";
+        //private string SIG_PATH = @"D:\Proyecto_CHIRP_LED\Calibration_Test\logs\signal.txt";
+        //private string CLB_PATH1 = @"D:\Proyecto_CHIRP_LED\Calibration_Test\logs\calib_arrr.txt";
+        private string SIG_PATH = @"D:\Proyecto_CHIRP_LED\Calibration_Test\logs\probe_signal.txt";
 
         private List<List<double>> Calibration_Data = new List<List<double>>();
         private double [][] Calibration_Array = new double [2][] ;
         private Task inputTask;
         private Task outputTask;
+        private Task DAC_Task;
+        private bool taskRunning = false;
+
         AnalogSingleChannelWriter writer;
         AnalogSingleChannelReader reader;
         private AsyncCallback inputCallback;
 
         private System.Collections.IEnumerator Ref_Enum;
-        private int samples_per_step; 
-        
+        private int samples_per_step;
+
+        private double[] Signal_Array;
+
 
         public Form1()
         {
@@ -47,92 +57,122 @@ namespace Calibration_Test
 
         }
 
+       
+        private void StopTask()
+        {
+            inputTask.Stop();
+            outputTask.Stop();
+            inputTask.Dispose();
+            outputTask.Dispose();
+        }
+
         private void calibration_button_Click(object sender, EventArgs e)
         {
-            double start_val = 0; //0V
+            double start_val = -1; //0V
             double stop_val = 10; // 10V
-            double step = 0.01; //1mV
+            double step = 0.0005; //1mV
 
             double sample_rate = 20000;
-            samples_per_step = 50; // 100;
+            samples_per_step = 20; // 100;
 
             double [] Ref_Array = Generate.LinearRange(start_val, step, stop_val);
             Ref_Enum = Ref_Array.GetEnumerator();
 
-            //Creación de los Task
-            inputTask = new Task();
-            outputTask = new Task();
+            try
+            {
+                //Creación de los Task
+                inputTask = new Task();
+                outputTask = new Task();
 
-            //Config de los canales 
-            inputTask.AIChannels.CreateVoltageChannel(
-                inputChannelComboBox.Text,
-                "",
-                AITerminalConfiguration.Rse,
-                Convert.ToDouble(inputMinValNumeric.Value),
-                Convert.ToDouble(inputMaxValNumeric.Value),
-                AIVoltageUnits.Volts
-                );
+                //Config de los canales 
+                inputTask.AIChannels.CreateVoltageChannel(
+                    inputChannelComboBox.Text,
+                    "",
+                    AITerminalConfiguration.Rse,
+                    Convert.ToDouble(inputMinValNumeric.Value),
+                    Convert.ToDouble(inputMaxValNumeric.Value),
+                    AIVoltageUnits.Volts
+                    );
 
-            inputTask.Timing.ConfigureSampleClock(
-                "",
-                sample_rate,
-                SampleClockActiveEdge.Rising,
-                SampleQuantityMode.ContinuousSamples,
-                samples_per_step
-                );
+                inputTask.Timing.ConfigureSampleClock(
+                    "",
+                    sample_rate,
+                    SampleClockActiveEdge.Rising,
+                    SampleQuantityMode.ContinuousSamples
+                    //samples_per_step
+                    );
 
-            outputTask.AOChannels.CreateVoltageChannel(
-                outputChannelComboBox.Text,
-                "",
-                Convert.ToDouble(outputMinValNumeric.Value),
-                Convert.ToDouble(outputMaxValNumeric.Value),
-                AOVoltageUnits.Volts
-                );
+                outputTask.AOChannels.CreateVoltageChannel(
+                    outputChannelComboBox.Text,
+                    "",
+                    Convert.ToDouble(outputMinValNumeric.Value),
+                    Convert.ToDouble(outputMaxValNumeric.Value),
+                    AOVoltageUnits.Volts
+                    );
 
-            inputTask.Control(TaskAction.Verify);
-            outputTask.Control(TaskAction.Verify);
+                inputTask.Control(TaskAction.Verify);
+                outputTask.Control(TaskAction.Verify);
 
-            writer = new AnalogSingleChannelWriter(outputTask.Stream);
-            reader = new AnalogSingleChannelReader(inputTask.Stream);
+                writer = new AnalogSingleChannelWriter(outputTask.Stream);
+                reader = new AnalogSingleChannelReader(inputTask.Stream);
 
-            Ref_Enum.MoveNext();
-            writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current));
+                Ref_Enum.MoveNext();
+                writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current));
 
 
-            inputCallback = new AsyncCallback(InputRead);
-            reader.SynchronizeCallbacks = true;
-            reader.BeginReadMultiSample(samples_per_step, inputCallback, inputTask);
-            calibration_button.Enabled = false;
+                inputCallback = new AsyncCallback(InputRead);
+                reader.SynchronizeCallbacks = true;
+                reader.BeginReadMultiSample(samples_per_step, inputCallback, inputTask);
+                calibration_button.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                StopTask();
+                MessageBox.Show(ex.Message);
+            }
+
 
         }
 
         private void InputRead(IAsyncResult ar)
         {
-            double[] data = reader.EndReadMultiSample(ar);
-
-            double data_mean = data.Sum() / data.Length;
-
-            Calibration_Data[0].Add(data_mean);
-            Calibration_Data[1].Add(Convert.ToDouble(Ref_Enum.Current));
-            
-            
-            if (Ref_Enum.MoveNext())
+            try
             {
-                writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current));
-                reader.BeginReadMultiSample(samples_per_step, inputCallback, inputTask);
-            }
-            else
-            {
-                calibration_button.Enabled = true;
-                Console.WriteLine("Done");
-                Calibration_Array[0] = Calibration_Data[0].ToArray();
-                Calibration_Array[1] = Calibration_Data[1].ToArray();
-                save_calib();
-            }
 
+
+                double[] data = reader.EndReadMultiSample(ar);
+
+                double data_mean = data.Sum() / data.Length;
+
+                Calibration_Data[0].Add(Convert.ToDouble(Ref_Enum.Current));
+                Calibration_Data[1].Add(data_mean);
+
+
+                if (Ref_Enum.MoveNext())
+                {
+                    writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current));
+                    reader.BeginReadMultiSample(samples_per_step, inputCallback, inputTask);
+                }
+                else
+                {
+                    calibration_button.Enabled = true;
+                    Console.WriteLine("Done");
+                    Calibration_Array[0] = Calibration_Data[0].ToArray();
+                    Calibration_Array[1] = Calibration_Data[1].ToArray();
+
+                    Array.Sort(Calibration_Array[1], Calibration_Array[0]);
+                    save_calib(CLB_PATH);
+                    StopTask();
+                }
+            }
+            catch (Exception ex)
+            {
+                StopTask();
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void save_calib()
+        private void save_calib(String PATH)
         {
             var calib_sb = new StringBuilder(); 
             
@@ -142,7 +182,133 @@ namespace Calibration_Test
                 calib_sb.Append(",");
                 calib_sb.AppendLine(Calibration_Array[1][i].ToString());
             }
-            File.WriteAllText(CLB_PATH, calib_sb.ToString());
+            File.WriteAllText(PATH, calib_sb.ToString());
+        }
+
+
+        private double transform_func(double data)
+        {
+            //double data = Convert.ToDouble(numericUpDown1.Value);
+            int Indx = Array.BinarySearch(Calibration_Array[1], data);
+            if (Indx > 0)
+            {
+                double ret_val = Calibration_Array[0][Indx];
+                //Console.WriteLine("{0},{1}",data, ret_val);
+                return ret_val;
+
+            }
+            else
+            {
+                int I = ~Indx;
+                
+                if ((Calibration_Array[1][I] - data) < (data - Calibration_Array[1][I-1]))
+                {
+                    double ret_val = Calibration_Array[0][I];
+                    //Console.WriteLine("{0},{1}", data, ret_val);
+                    return ret_val;
+                }
+                else
+                {
+                    double ret_val = Calibration_Array[0][I-1];
+                    //Console.WriteLine("{0},{1}", data, ret_val);
+                    return ret_val;
+                }
+                
+            }           
+            
+        }
+
+        private void read_signal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<double> Signal_data = new List<double>();
+                foreach (string point in File.ReadLines(SIG_PATH, Encoding.UTF8))
+                {
+                    //Console.WriteLine($"Str: {point}");
+                    double temp = double.Parse(point, CultureInfo.InvariantCulture);
+                    double calib_temp = transform_func(temp);
+                    Signal_data.Add(calib_temp);
+                }
+                Signal_Array = Signal_data.ToArray();
+                Console.WriteLine("Señal Correctamente Cargada - Array len:{0}", Signal_Array.Count());
+                send_signal.Enabled = true;
+
+                foreach (var point in Signal_Array) { Console.WriteLine($"Val: {point}");}
+
+            }
+            catch (IOException err)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(err.Message);
+            }
+
+        }
+
+        private void send_signal_Click(object sender, EventArgs e)
+        {
+            send_signal.Enabled = false;
+            taskRunning = true;
+
+            try
+            {
+                DAC_Task = new Task();
+                DAC_Task.AOChannels.CreateVoltageChannel(
+                    outputChannelComboBox.Text,
+                    "",
+                    Convert.ToDouble(outputMinValNumeric.Value),
+                    Convert.ToDouble(outputMaxValNumeric.Value),
+                    AOVoltageUnits.Volts
+                    );
+                DAC_Task.Timing.ConfigureSampleClock(
+                    "",
+                    Convert.ToDouble(numericUpDown1.Value),
+                    SampleClockActiveEdge.Rising,
+                    SampleQuantityMode.FiniteSamples,
+                    Signal_Array.Length
+                    );
+
+                AnalogSingleChannelWriter writer = new AnalogSingleChannelWriter(DAC_Task.Stream);
+
+                DAC_Task.Done += new TaskDoneEventHandler(DAC_Task_Done);
+
+                writer.WriteMultiSample(false, Signal_Array);
+                DAC_Task.Start();
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+
+                if (DAC_Task != null)
+                {
+                    DAC_Task.Dispose();
+                }
+
+                taskRunning = false;
+                send_signal.Enabled = true;
+            }
+        }
+
+        private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = taskRunning;
+        }
+
+        private void DAC_Task_Done(object sender, TaskDoneEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show(e.Error.Message);
+            }
+
+            if (DAC_Task != null)
+            {
+                DAC_Task.Dispose();
+            }
+
+            taskRunning = false;
+            send_signal.Enabled = true;
         }
     }
 }

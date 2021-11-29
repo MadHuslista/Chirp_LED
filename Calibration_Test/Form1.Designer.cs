@@ -44,12 +44,17 @@ namespace Calibration_Test
             this.outputMaxValNumeric = new System.Windows.Forms.NumericUpDown();
             this.outputChanLabel = new System.Windows.Forms.Label();
             this.calibration_button = new System.Windows.Forms.Button();
+            this.send_signal = new System.Windows.Forms.Button();
+            this.read_signal = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.inputChanGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputMinValNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputMaxValNumeric)).BeginInit();
             this.outputChanGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.outputMinValNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputMaxValNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // inputChanGroupBox
@@ -226,11 +231,62 @@ namespace Calibration_Test
             this.calibration_button.UseVisualStyleBackColor = true;
             this.calibration_button.Click += new System.EventHandler(this.calibration_button_Click);
             // 
+            // send_signal
+            // 
+            this.send_signal.Enabled = false;
+            this.send_signal.Location = new System.Drawing.Point(417, 108);
+            this.send_signal.Name = "send_signal";
+            this.send_signal.Size = new System.Drawing.Size(103, 30);
+            this.send_signal.TabIndex = 9;
+            this.send_signal.Text = "Enviar Señal";
+            this.send_signal.UseVisualStyleBackColor = true;
+            this.send_signal.Click += new System.EventHandler(this.send_signal_Click);
+            // 
+            // read_signal
+            // 
+            this.read_signal.Location = new System.Drawing.Point(417, 72);
+            this.read_signal.Name = "read_signal";
+            this.read_signal.Size = new System.Drawing.Size(103, 30);
+            this.read_signal.TabIndex = 8;
+            this.read_signal.Text = "Cargar \'signal.txt\'";
+            this.read_signal.UseVisualStyleBackColor = true;
+            this.read_signal.Click += new System.EventHandler(this.read_signal_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(414, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Frecuencia de Muestreo [Hz]";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(417, 43);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            5000000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 6;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 339);
+            this.ClientSize = new System.Drawing.Size(589, 339);
+            this.Controls.Add(this.send_signal);
+            this.Controls.Add(this.read_signal);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.calibration_button);
             this.Controls.Add(this.inputChanGroupBox);
             this.Controls.Add(this.outputChanGroupBox);
@@ -242,7 +298,9 @@ namespace Calibration_Test
             this.outputChanGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.outputMinValNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputMaxValNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -263,6 +321,10 @@ namespace Calibration_Test
         private System.Windows.Forms.NumericUpDown outputMaxValNumeric;
         private System.Windows.Forms.Label outputChanLabel;
         private System.Windows.Forms.Button calibration_button;
+        private System.Windows.Forms.Button send_signal;
+        private System.Windows.Forms.Button read_signal;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 
