@@ -65,6 +65,7 @@ namespace Interface_Net4._5
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.Enabled = false;
             this.numericUpDown2.Location = new System.Drawing.Point(286, 124);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             1000000000,
