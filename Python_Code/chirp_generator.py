@@ -92,6 +92,6 @@ t = chirp_generator(1/sample_rate, args, splitted=True)
 
 plt.plot(t['full_time'],t['full_signal'])
 
-np.savetxt(save_path, t['full_signal'], fmt='%.6f')
+#np.savetxt(save_path, t['full_signal'], fmt='%.6f')
 
 print(len( t['full_signal']))

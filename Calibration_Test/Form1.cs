@@ -70,7 +70,7 @@ namespace Calibration_Test
         {
             double start_val = -1; //0V
             double stop_val = 10; // 10V
-            double step = 0.0005; //1mV
+            double step = 0.001; //1mV
 
             double sample_rate = 20000;
             samples_per_step = 20; // 100;
