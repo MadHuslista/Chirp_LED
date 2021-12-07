@@ -1119,7 +1119,7 @@ namespace Interface_Prototype
             // 
             this.radioButton4.AutoSize = true;
             this.radioButton4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton4.Location = new System.Drawing.Point(350, 133);
+            this.radioButton4.Location = new System.Drawing.Point(353, 133);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(93, 20);
             this.radioButton4.TabIndex = 51;
@@ -1130,7 +1130,7 @@ namespace Interface_Prototype
             // 
             this.radioButton3.AutoSize = true;
             this.radioButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton3.Location = new System.Drawing.Point(350, 3);
+            this.radioButton3.Location = new System.Drawing.Point(353, 3);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(93, 20);
             this.radioButton3.TabIndex = 50;
@@ -1144,9 +1144,9 @@ namespace Interface_Prototype
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(3, 58);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(119, 13);
+            this.label17.Size = new System.Drawing.Size(122, 13);
             this.label17.TabIndex = 2;
-            this.label17.Text = "General:";
+            this.label17.Text = "General";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label18
@@ -1156,7 +1156,7 @@ namespace Interface_Prototype
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(3, 6);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(119, 13);
+            this.label18.Size = new System.Drawing.Size(122, 13);
             this.label18.TabIndex = 4;
             this.label18.Text = "Max Posible Value  (V):";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1166,7 +1166,7 @@ namespace Interface_Prototype
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(128, 6);
+            this.label19.Location = new System.Drawing.Point(131, 6);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(83, 13);
             this.label19.TabIndex = 5;
@@ -1179,17 +1179,17 @@ namespace Interface_Prototype
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(3, 84);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(119, 13);
+            this.label20.Size = new System.Drawing.Size(122, 13);
             this.label20.TabIndex = 6;
-            this.label20.Text = "Base Line Amplitude (V)";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label20.Text = "Base Line Amplitude (V):";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label26
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(217, 6);
+            this.label26.Location = new System.Drawing.Point(220, 6);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(127, 13);
             this.label26.TabIndex = 29;
@@ -1201,7 +1201,7 @@ namespace Interface_Prototype
             this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(217, 136);
+            this.label31.Location = new System.Drawing.Point(220, 136);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(127, 13);
             this.label31.TabIndex = 35;
@@ -1212,29 +1212,29 @@ namespace Interface_Prototype
             // 
             this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(217, 188);
+            this.label32.Location = new System.Drawing.Point(220, 188);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(127, 13);
             this.label32.TabIndex = 36;
-            this.label32.Text = "Base Frequency (Hz)";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label32.Text = "Base Frequency (Hz):";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label33
             // 
             this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(217, 216);
+            this.label33.Location = new System.Drawing.Point(220, 216);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(127, 13);
             this.label33.TabIndex = 37;
-            this.label33.Text = "Final Max Amplitude (V)";
-            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label33.Text = "Final Max Amplitude (V):";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numericUpDown20
             // 
             this.numericUpDown20.DecimalPlaces = 2;
             this.numericUpDown20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown20.Location = new System.Drawing.Point(350, 29);
+            this.numericUpDown20.Location = new System.Drawing.Point(353, 29);
             this.numericUpDown20.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1258,7 +1258,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown19.DecimalPlaces = 2;
             this.numericUpDown19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown19.Location = new System.Drawing.Point(350, 55);
+            this.numericUpDown19.Location = new System.Drawing.Point(353, 55);
             this.numericUpDown19.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1282,7 +1282,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown22.DecimalPlaces = 2;
             this.numericUpDown22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown22.Location = new System.Drawing.Point(350, 159);
+            this.numericUpDown22.Location = new System.Drawing.Point(353, 159);
             this.numericUpDown22.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1306,7 +1306,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown24.DecimalPlaces = 2;
             this.numericUpDown24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown24.Location = new System.Drawing.Point(350, 185);
+            this.numericUpDown24.Location = new System.Drawing.Point(353, 185);
             this.numericUpDown24.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1330,7 +1330,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown21.DecimalPlaces = 2;
             this.numericUpDown21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown21.Location = new System.Drawing.Point(350, 211);
+            this.numericUpDown21.Location = new System.Drawing.Point(353, 211);
             this.numericUpDown21.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1354,62 +1354,62 @@ namespace Interface_Prototype
             // 
             this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(217, 162);
+            this.label34.Location = new System.Drawing.Point(220, 162);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(127, 13);
             this.label34.TabIndex = 48;
-            this.label34.Text = "Segment Duration (s)";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label34.Text = "Segment Duration (s):";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label29
             // 
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(217, 32);
+            this.label29.Location = new System.Drawing.Point(220, 32);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(127, 13);
             this.label29.TabIndex = 33;
-            this.label29.Text = "Segment Duration (s)";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label29.Text = "Segment Duration (s):";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label28
             // 
             this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(217, 58);
+            this.label28.Location = new System.Drawing.Point(220, 58);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(127, 13);
             this.label28.TabIndex = 32;
-            this.label28.Text = "Base Amplitude (V)";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label28.Text = "Base Amplitude (V):";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label27
             // 
             this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(217, 84);
+            this.label27.Location = new System.Drawing.Point(220, 84);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(127, 13);
             this.label27.TabIndex = 31;
-            this.label27.Text = "Start Phase (×π [rad])";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label27.Text = "Start Phase ( × π [rad]):";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label30
             // 
             this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(217, 110);
+            this.label30.Location = new System.Drawing.Point(220, 110);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(127, 13);
             this.label30.TabIndex = 34;
-            this.label30.Text = "Final Frequency (Hz)";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label30.Text = "Final Frequency (Hz):";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numericUpDown18
             // 
             this.numericUpDown18.DecimalPlaces = 2;
             this.numericUpDown18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown18.Location = new System.Drawing.Point(350, 107);
+            this.numericUpDown18.Location = new System.Drawing.Point(353, 107);
             this.numericUpDown18.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1433,7 +1433,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown23.DecimalPlaces = 4;
             this.numericUpDown23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown23.Location = new System.Drawing.Point(350, 81);
+            this.numericUpDown23.Location = new System.Drawing.Point(353, 81);
             this.numericUpDown23.Maximum = new decimal(new int[] {
             2,
             0,
@@ -1457,7 +1457,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown17.DecimalPlaces = 2;
-            this.numericUpDown17.Location = new System.Drawing.Point(128, 212);
+            this.numericUpDown17.Location = new System.Drawing.Point(131, 212);
             this.numericUpDown17.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1481,7 +1481,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown16.DecimalPlaces = 2;
-            this.numericUpDown16.Location = new System.Drawing.Point(128, 185);
+            this.numericUpDown16.Location = new System.Drawing.Point(131, 185);
             this.numericUpDown16.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1505,7 +1505,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown15.DecimalPlaces = 2;
-            this.numericUpDown15.Location = new System.Drawing.Point(128, 159);
+            this.numericUpDown15.Location = new System.Drawing.Point(131, 159);
             this.numericUpDown15.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1529,7 +1529,7 @@ namespace Interface_Prototype
             // 
             this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(128, 134);
+            this.radioButton2.Location = new System.Drawing.Point(131, 134);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(83, 17);
             this.radioButton2.TabIndex = 49;
@@ -1540,7 +1540,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown14.DecimalPlaces = 2;
-            this.numericUpDown14.Location = new System.Drawing.Point(128, 107);
+            this.numericUpDown14.Location = new System.Drawing.Point(131, 107);
             this.numericUpDown14.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1564,7 +1564,7 @@ namespace Interface_Prototype
             // 
             this.numericUpDown13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown13.DecimalPlaces = 2;
-            this.numericUpDown13.Location = new System.Drawing.Point(128, 81);
+            this.numericUpDown13.Location = new System.Drawing.Point(131, 81);
             this.numericUpDown13.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1589,7 +1589,7 @@ namespace Interface_Prototype
             this.radioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(128, 56);
+            this.radioButton1.Location = new System.Drawing.Point(131, 56);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(83, 17);
             this.radioButton1.TabIndex = 3;
@@ -1603,10 +1603,10 @@ namespace Interface_Prototype
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(3, 216);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(119, 13);
+            this.label25.Size = new System.Drawing.Size(122, 13);
             this.label25.TabIndex = 28;
-            this.label25.Text = "Off State Duration (s)";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label25.Text = "Off State Duration (s):";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label24
             // 
@@ -1614,10 +1614,10 @@ namespace Interface_Prototype
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(3, 188);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(119, 13);
+            this.label24.Size = new System.Drawing.Size(122, 13);
             this.label24.TabIndex = 27;
-            this.label24.Text = "On State Duration (s)";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label24.Text = "On State Duration (s):";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label23
             // 
@@ -1625,10 +1625,10 @@ namespace Interface_Prototype
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(3, 162);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(119, 13);
+            this.label23.Size = new System.Drawing.Size(122, 13);
             this.label23.TabIndex = 23;
-            this.label23.Text = "On Amplitude (V)";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label23.Text = "On Amplitude (V):";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label22
             // 
@@ -1637,9 +1637,9 @@ namespace Interface_Prototype
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(3, 136);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(119, 13);
+            this.label22.Size = new System.Drawing.Size(122, 13);
             this.label22.TabIndex = 21;
-            this.label22.Text = "On-Off:";
+            this.label22.Text = "On-Off";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label21
@@ -1648,10 +1648,10 @@ namespace Interface_Prototype
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(3, 110);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(119, 13);
+            this.label21.Size = new System.Drawing.Size(122, 13);
             this.label21.TabIndex = 19;
-            this.label21.Text = "Adaptation Time (s)";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label21.Text = "Adaptation Time (s):";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupBox3
             // 
@@ -1807,7 +1807,7 @@ namespace Interface_Prototype
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(3, 32);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(119, 13);
+            this.label35.Size = new System.Drawing.Size(122, 13);
             this.label35.TabIndex = 52;
             this.label35.Text = "Loaded Signal File:";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1816,7 +1816,7 @@ namespace Interface_Prototype
             // 
             this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(128, 32);
+            this.label36.Location = new System.Drawing.Point(131, 32);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(83, 13);
             this.label36.TabIndex = 53;
