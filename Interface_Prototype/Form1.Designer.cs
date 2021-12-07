@@ -1117,22 +1117,22 @@ namespace Interface_Prototype
             // 
             // radioButton4
             // 
+            this.radioButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton4.Location = new System.Drawing.Point(353, 133);
+            this.radioButton4.Location = new System.Drawing.Point(353, 134);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(93, 20);
+            this.radioButton4.Size = new System.Drawing.Size(93, 17);
             this.radioButton4.TabIndex = 51;
             this.radioButton4.Text = "Current";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton3
             // 
+            this.radioButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radioButton3.Location = new System.Drawing.Point(353, 3);
+            this.radioButton3.Location = new System.Drawing.Point(353, 4);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(93, 20);
+            this.radioButton3.Size = new System.Drawing.Size(93, 17);
             this.radioButton3.TabIndex = 50;
             this.radioButton3.Text = "Current";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -1232,8 +1232,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown20
             // 
+            this.numericUpDown20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown20.DecimalPlaces = 2;
-            this.numericUpDown20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown20.Location = new System.Drawing.Point(353, 29);
             this.numericUpDown20.Maximum = new decimal(new int[] {
             10,
@@ -1256,8 +1256,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown19
             // 
+            this.numericUpDown19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown19.DecimalPlaces = 2;
-            this.numericUpDown19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown19.Location = new System.Drawing.Point(353, 55);
             this.numericUpDown19.Maximum = new decimal(new int[] {
             10,
@@ -1280,8 +1280,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown22
             // 
+            this.numericUpDown22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown22.DecimalPlaces = 2;
-            this.numericUpDown22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown22.Location = new System.Drawing.Point(353, 159);
             this.numericUpDown22.Maximum = new decimal(new int[] {
             10,
@@ -1304,8 +1304,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown24
             // 
+            this.numericUpDown24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown24.DecimalPlaces = 2;
-            this.numericUpDown24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown24.Location = new System.Drawing.Point(353, 185);
             this.numericUpDown24.Maximum = new decimal(new int[] {
             10,
@@ -1328,9 +1328,9 @@ namespace Interface_Prototype
             // 
             // numericUpDown21
             // 
+            this.numericUpDown21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown21.DecimalPlaces = 2;
-            this.numericUpDown21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown21.Location = new System.Drawing.Point(353, 211);
+            this.numericUpDown21.Location = new System.Drawing.Point(353, 212);
             this.numericUpDown21.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1407,8 +1407,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown18
             // 
+            this.numericUpDown18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown18.DecimalPlaces = 2;
-            this.numericUpDown18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown18.Location = new System.Drawing.Point(353, 107);
             this.numericUpDown18.Maximum = new decimal(new int[] {
             10,
@@ -1431,8 +1431,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown23
             // 
+            this.numericUpDown23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown23.DecimalPlaces = 4;
-            this.numericUpDown23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown23.Location = new System.Drawing.Point(353, 81);
             this.numericUpDown23.Maximum = new decimal(new int[] {
             2,
