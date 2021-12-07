@@ -29,16 +29,16 @@ namespace Interface_Prototype
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(100D, 100D);
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(100D, 100D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(100D, 100D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 1D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(100D, 100D);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,7 +46,6 @@ namespace Interface_Prototype
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
@@ -56,7 +55,6 @@ namespace Interface_Prototype
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
@@ -183,6 +181,8 @@ namespace Interface_Prototype
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -320,12 +320,12 @@ namespace Interface_Prototype
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
             this.tableLayoutPanel7.Controls.Add(this.label11, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.label12, 0, 2);
-            this.tableLayoutPanel7.Controls.Add(this.label13, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.label14, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.comboBox4, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.numericUpDown7, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.numericUpDown8, 1, 2);
             this.tableLayoutPanel7.Controls.Add(this.numericUpDown9, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.label13, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -346,7 +346,7 @@ namespace Interface_Prototype
             this.label11.Size = new System.Drawing.Size(126, 13);
             this.label11.TabIndex = 17;
             this.label11.Text = "Sampling Rate (kHz):";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label12
             // 
@@ -357,17 +357,7 @@ namespace Interface_Prototype
             this.label12.Size = new System.Drawing.Size(126, 13);
             this.label12.TabIndex = 3;
             this.label12.Text = "Max. Value (V):";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.Location = new System.Drawing.Point(3, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(126, 26);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Physical Channel:";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label14
             // 
@@ -379,11 +369,11 @@ namespace Interface_Prototype
             this.label14.Size = new System.Drawing.Size(126, 13);
             this.label14.TabIndex = 2;
             this.label14.Text = "Min. Value (V):";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBox4
             // 
-            this.comboBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(135, 3);
             this.comboBox4.Name = "comboBox4";
@@ -392,8 +382,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown7
             // 
+            this.numericUpDown7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown7.DecimalPlaces = 2;
-            this.numericUpDown7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown7.Location = new System.Drawing.Point(135, 29);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             10,
@@ -416,8 +406,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown8
             // 
+            this.numericUpDown8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown8.DecimalPlaces = 2;
-            this.numericUpDown8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown8.Location = new System.Drawing.Point(135, 55);
             this.numericUpDown8.Maximum = new decimal(new int[] {
             10,
@@ -440,8 +430,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown9
             // 
+            this.numericUpDown9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown9.DecimalPlaces = 4;
-            this.numericUpDown9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown9.Location = new System.Drawing.Point(135, 81);
             this.numericUpDown9.Maximum = new decimal(new int[] {
             20,
@@ -475,12 +465,12 @@ namespace Interface_Prototype
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
             this.tableLayoutPanel6.Controls.Add(this.label7, 0, 3);
             this.tableLayoutPanel6.Controls.Add(this.label8, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.label10, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.comboBox3, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.numericUpDown5, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.numericUpDown6, 1, 2);
             this.tableLayoutPanel6.Controls.Add(this.numericUpDown12, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -489,6 +479,7 @@ namespace Interface_Prototype
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(214, 105);
             this.tableLayoutPanel6.TabIndex = 3;
             // 
@@ -501,7 +492,7 @@ namespace Interface_Prototype
             this.label7.Size = new System.Drawing.Size(126, 13);
             this.label7.TabIndex = 17;
             this.label7.Text = "Sampling Rate (kHz):";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
@@ -512,17 +503,7 @@ namespace Interface_Prototype
             this.label8.Size = new System.Drawing.Size(126, 13);
             this.label8.TabIndex = 3;
             this.label8.Text = "Max. Value (V):";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.Location = new System.Drawing.Point(3, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(126, 26);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Physical Channel:";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
             // 
@@ -534,11 +515,11 @@ namespace Interface_Prototype
             this.label10.Size = new System.Drawing.Size(126, 13);
             this.label10.TabIndex = 2;
             this.label10.Text = "Min. Value (V):";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBox3
             // 
-            this.comboBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(135, 3);
             this.comboBox3.Name = "comboBox3";
@@ -547,8 +528,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown5
             // 
+            this.numericUpDown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown5.DecimalPlaces = 2;
-            this.numericUpDown5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown5.Location = new System.Drawing.Point(135, 29);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             10,
@@ -571,8 +552,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown6
             // 
+            this.numericUpDown6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown6.DecimalPlaces = 2;
-            this.numericUpDown6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown6.Location = new System.Drawing.Point(135, 55);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             10,
@@ -595,8 +576,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown12
             // 
+            this.numericUpDown12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown12.DecimalPlaces = 4;
-            this.numericUpDown12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown12.Location = new System.Drawing.Point(135, 81);
             this.numericUpDown12.Maximum = new decimal(new int[] {
             20,
@@ -656,7 +637,7 @@ namespace Interface_Prototype
             this.label5.Size = new System.Drawing.Size(126, 13);
             this.label5.TabIndex = 17;
             this.label5.Text = "Update Rate (kS/s):";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
@@ -667,19 +648,18 @@ namespace Interface_Prototype
             this.label6.Size = new System.Drawing.Size(126, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "Max. Value (V):";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label15
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label15.Location = new System.Drawing.Point(3, 6);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(126, 13);
             this.label15.TabIndex = 1;
             this.label15.Text = "Physical Channel:";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label16
             // 
@@ -691,11 +671,11 @@ namespace Interface_Prototype
             this.label16.Size = new System.Drawing.Size(126, 13);
             this.label16.TabIndex = 2;
             this.label16.Text = "Min. Value (V):";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBox2
             // 
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(135, 3);
             this.comboBox2.Name = "comboBox2";
@@ -704,8 +684,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown4
             // 
+            this.numericUpDown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown4.Location = new System.Drawing.Point(135, 29);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             10,
@@ -728,8 +708,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown10
             // 
+            this.numericUpDown10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown10.DecimalPlaces = 2;
-            this.numericUpDown10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown10.Location = new System.Drawing.Point(135, 55);
             this.numericUpDown10.Maximum = new decimal(new int[] {
             10,
@@ -752,8 +732,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown11
             // 
+            this.numericUpDown11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown11.DecimalPlaces = 4;
-            this.numericUpDown11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown11.Location = new System.Drawing.Point(135, 81);
             this.numericUpDown11.Maximum = new decimal(new int[] {
             5,
@@ -873,7 +853,7 @@ namespace Interface_Prototype
             this.label1.Size = new System.Drawing.Size(126, 13);
             this.label1.TabIndex = 17;
             this.label1.Text = "Update Rate (kS/s):";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -884,7 +864,7 @@ namespace Interface_Prototype
             this.label2.Size = new System.Drawing.Size(126, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Max. Value (V):";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
@@ -896,7 +876,7 @@ namespace Interface_Prototype
             this.label3.Size = new System.Drawing.Size(126, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "Physical Channel:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
@@ -908,11 +888,11 @@ namespace Interface_Prototype
             this.label4.Size = new System.Drawing.Size(126, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Min. Value (V):";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBox1
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(135, 3);
             this.comboBox1.Name = "comboBox1";
@@ -921,8 +901,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown1.Location = new System.Drawing.Point(135, 29);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
@@ -945,8 +925,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown2.Location = new System.Drawing.Point(135, 55);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             10,
@@ -969,8 +949,8 @@ namespace Interface_Prototype
             // 
             // numericUpDown3
             // 
+            this.numericUpDown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown3.DecimalPlaces = 4;
-            this.numericUpDown3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown3.Location = new System.Drawing.Point(135, 81);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             5,
@@ -2414,25 +2394,25 @@ namespace Interface_Prototype
             // 
             // chart2
             // 
-            chartArea3.AxisX.IsMarginVisible = false;
-            chartArea3.AxisX.Title = "Time (s)";
-            chartArea3.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea3.AxisX2.IsLogarithmic = true;
-            chartArea3.AxisY.Title = "Voltage (V)";
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
+            chartArea1.AxisX.IsMarginVisible = false;
+            chartArea1.AxisX.Title = "Time (s)";
+            chartArea1.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea1.AxisX2.IsLogarithmic = true;
+            chartArea1.AxisY.Title = "Voltage (V)";
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
             this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart2.Location = new System.Drawing.Point(3, 16);
             this.chart2.Name = "chart2";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.IsVisibleInLegend = false;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            series3.Points.Add(dataPoint7);
-            series3.Points.Add(dataPoint8);
-            series3.Points.Add(dataPoint9);
-            this.chart2.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            series1.Points.Add(dataPoint3);
+            this.chart2.Series.Add(series1);
             this.chart2.Size = new System.Drawing.Size(612, 264);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
@@ -2450,25 +2430,25 @@ namespace Interface_Prototype
             // 
             // chart1
             // 
-            chartArea4.AxisX.IsMarginVisible = false;
-            chartArea4.AxisX.Title = "Time (s)";
-            chartArea4.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea4.AxisX2.IsLogarithmic = true;
-            chartArea4.AxisY.Title = "Voltage (V)";
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
+            chartArea2.AxisX.IsMarginVisible = false;
+            chartArea2.AxisX.Title = "Time (s)";
+            chartArea2.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisX2.IsLogarithmic = true;
+            chartArea2.AxisY.Title = "Voltage (V)";
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chart1.Location = new System.Drawing.Point(3, 16);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.IsVisibleInLegend = false;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.Points.Add(dataPoint10);
-            series4.Points.Add(dataPoint11);
-            series4.Points.Add(dataPoint12);
-            this.chart1.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.Points.Add(dataPoint4);
+            series2.Points.Add(dataPoint5);
+            series2.Points.Add(dataPoint6);
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(612, 264);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -2519,6 +2499,28 @@ namespace Interface_Prototype
             this.button5.TabIndex = 1;
             this.button5.Text = "Write Channel 2";
             this.button5.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 6);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(126, 13);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Physical Channel:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 6);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(126, 13);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Physical Channel:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Form1
             // 
@@ -2649,7 +2651,6 @@ namespace Interface_Prototype
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
@@ -2667,7 +2668,6 @@ namespace Interface_Prototype
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.NumericUpDown numericUpDown7;
@@ -2750,6 +2750,8 @@ namespace Interface_Prototype
         private System.Windows.Forms.NumericUpDown numericUpDown36;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label9;
     }
 }
 
