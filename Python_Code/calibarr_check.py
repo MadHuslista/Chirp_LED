@@ -21,6 +21,13 @@ y = data[:,1]
 #plt.plot(x,x, c= 'r')
 #plt.plot(x,x/2, c= 'r')
 #plt.plot(x,y, c= 'r')
-plt.scatter(x,y,s = 1, c= 'b')
+#plt.yscale('symlog')
+#plt.xscale('symlog')
 
+
+plt.grid(True, which='both')
+plt.minorticks_on()
+plt.scatter(x,y,s = 1, c= 'b')
+#plt.yscale('log')
+#plt.xscale('log')
 #plt.scatter(data_v[:,0],data_v[:,1],s=1, c = 'g')

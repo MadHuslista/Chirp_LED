@@ -21,7 +21,7 @@ args = {
         #Freq Mod Sinus
         "freq_mod_final_freq":15,           # Freq Final
         "freq_mod_time":15,                 # Tiempo de Mod
-        "freq_mod_amp":1.25,                 # Amplitud Media de la Señal de Frecuencia
+        "freq_mod_amp":2,                   # Amplitud Media de la Señal de Frecuencia
         "freq_mod_init_phase":2*np.pi,      # Fase de Inicio
         
         #Amp Mod Sinus
@@ -91,7 +91,8 @@ def chirp_generator(sample_rate, args, splitted=False):
 t = chirp_generator(1/sample_rate, args, splitted=True)
 
 plt.plot(t['full_time'],t['full_signal'])
-
+plt.grid(True, which='both')
+plt.minorticks_on()
 #np.savetxt(save_path, t['full_signal'], fmt='%.6f')
 
 print(len( t['full_signal']))
