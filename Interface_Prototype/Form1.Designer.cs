@@ -47,7 +47,7 @@ namespace Interface_Prototype
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.InCh2_comboBox = new System.Windows.Forms.ComboBox();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
@@ -57,7 +57,7 @@ namespace Interface_Prototype
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.InCh1_comboBox = new System.Windows.Forms.ComboBox();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
@@ -68,7 +68,7 @@ namespace Interface_Prototype
             this.label6 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.OutCh2_comboBox = new System.Windows.Forms.ComboBox();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
@@ -83,7 +83,7 @@ namespace Interface_Prototype
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.OutCh1_comboBox = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
@@ -325,7 +325,7 @@ namespace Interface_Prototype
             this.tableLayoutPanel7.Controls.Add(this.label11, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.label12, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.label14, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.comboBox4, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.InCh2_comboBox, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.numericUpDown7, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.numericUpDown8, 1, 2);
             this.tableLayoutPanel7.Controls.Add(this.numericUpDown9, 1, 3);
@@ -375,14 +375,14 @@ namespace Interface_Prototype
             this.label14.Text = "Min. Value (V):";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox4
+            // InCh2_comboBox
             // 
-            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(135, 3);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(76, 21);
-            this.comboBox4.TabIndex = 14;
+            this.InCh2_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InCh2_comboBox.FormattingEnabled = true;
+            this.InCh2_comboBox.Location = new System.Drawing.Point(135, 3);
+            this.InCh2_comboBox.Name = "InCh2_comboBox";
+            this.InCh2_comboBox.Size = new System.Drawing.Size(76, 21);
+            this.InCh2_comboBox.TabIndex = 14;
             // 
             // numericUpDown7
             // 
@@ -481,7 +481,7 @@ namespace Interface_Prototype
             this.tableLayoutPanel6.Controls.Add(this.label7, 0, 3);
             this.tableLayoutPanel6.Controls.Add(this.label8, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.label10, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.comboBox3, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.InCh1_comboBox, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.numericUpDown5, 1, 1);
             this.tableLayoutPanel6.Controls.Add(this.numericUpDown6, 1, 2);
             this.tableLayoutPanel6.Controls.Add(this.numericUpDown12, 1, 3);
@@ -532,14 +532,14 @@ namespace Interface_Prototype
             this.label10.Text = "Min. Value (V):";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox3
+            // InCh1_comboBox
             // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(135, 3);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(76, 21);
-            this.comboBox3.TabIndex = 14;
+            this.InCh1_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InCh1_comboBox.FormattingEnabled = true;
+            this.InCh1_comboBox.Location = new System.Drawing.Point(135, 3);
+            this.InCh1_comboBox.Name = "InCh1_comboBox";
+            this.InCh1_comboBox.Size = new System.Drawing.Size(76, 21);
+            this.InCh1_comboBox.TabIndex = 14;
             // 
             // numericUpDown5
             // 
@@ -639,7 +639,7 @@ namespace Interface_Prototype
             this.tableLayoutPanel5.Controls.Add(this.label6, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.label15, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.label16, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.comboBox2, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.OutCh2_comboBox, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.numericUpDown4, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.numericUpDown10, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.numericUpDown11, 1, 3);
@@ -699,14 +699,14 @@ namespace Interface_Prototype
             this.label16.Text = "Min. Value (V):";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox2
+            // OutCh2_comboBox
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(135, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(76, 21);
-            this.comboBox2.TabIndex = 14;
+            this.OutCh2_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh2_comboBox.FormattingEnabled = true;
+            this.OutCh2_comboBox.Location = new System.Drawing.Point(135, 3);
+            this.OutCh2_comboBox.Name = "OutCh2_comboBox";
+            this.OutCh2_comboBox.Size = new System.Drawing.Size(76, 21);
+            this.OutCh2_comboBox.TabIndex = 14;
             // 
             // numericUpDown4
             // 
@@ -855,7 +855,7 @@ namespace Interface_Prototype
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.OutCh1_comboBox, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.numericUpDown1, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.numericUpDown2, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.numericUpDown3, 1, 3);
@@ -916,14 +916,14 @@ namespace Interface_Prototype
             this.label4.Text = "Min. Value (V):";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox1
+            // OutCh1_comboBox
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(135, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(76, 21);
-            this.comboBox1.TabIndex = 14;
+            this.OutCh1_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh1_comboBox.FormattingEnabled = true;
+            this.OutCh1_comboBox.Location = new System.Drawing.Point(135, 3);
+            this.OutCh1_comboBox.Name = "OutCh1_comboBox";
+            this.OutCh1_comboBox.Size = new System.Drawing.Size(76, 21);
+            this.OutCh1_comboBox.TabIndex = 14;
             // 
             // numericUpDown1
             // 
@@ -2683,7 +2683,7 @@ namespace Interface_Prototype
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox OutCh1_comboBox;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
@@ -2708,7 +2708,7 @@ namespace Interface_Prototype
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox InCh1_comboBox;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.NumericUpDown numericUpDown6;
         private System.Windows.Forms.NumericUpDown numericUpDown12;
@@ -2717,7 +2717,7 @@ namespace Interface_Prototype
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox OutCh2_comboBox;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.NumericUpDown numericUpDown10;
         private System.Windows.Forms.NumericUpDown numericUpDown11;
@@ -2725,7 +2725,7 @@ namespace Interface_Prototype
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox InCh2_comboBox;
         private System.Windows.Forms.NumericUpDown numericUpDown7;
         private System.Windows.Forms.NumericUpDown numericUpDown8;
         private System.Windows.Forms.NumericUpDown numericUpDown9;
