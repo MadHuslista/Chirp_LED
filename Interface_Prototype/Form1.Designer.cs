@@ -75,8 +75,8 @@ namespace Interface_Prototype
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.CalibLoaded_label = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.NewCalib_button = new System.Windows.Forms.Button();
+            this.LoadCalib_button = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -791,8 +791,8 @@ namespace Interface_Prototype
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.CalibLoaded_label, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button2, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.NewCalib_button, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.LoadCalib_button, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -815,25 +815,26 @@ namespace Interface_Prototype
             this.CalibLoaded_label.Text = "Missing Calibration";
             this.CalibLoaded_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // NewCalib_button
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(208, 24);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Create new Calibration Profile";
-            this.button1.UseVisualStyleBackColor = true;
+            this.NewCalib_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NewCalib_button.Location = new System.Drawing.Point(3, 3);
+            this.NewCalib_button.Name = "NewCalib_button";
+            this.NewCalib_button.Size = new System.Drawing.Size(208, 24);
+            this.NewCalib_button.TabIndex = 0;
+            this.NewCalib_button.Text = "Create new Calibration Profile";
+            this.NewCalib_button.UseVisualStyleBackColor = true;
+            this.NewCalib_button.Click += new System.EventHandler(this.NewCalib_button_Click);
             // 
-            // button2
+            // LoadCalib_button
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(3, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(208, 24);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Load Calibration Profile File";
-            this.button2.UseVisualStyleBackColor = true;
+            this.LoadCalib_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LoadCalib_button.Location = new System.Drawing.Point(3, 33);
+            this.LoadCalib_button.Name = "LoadCalib_button";
+            this.LoadCalib_button.Size = new System.Drawing.Size(208, 24);
+            this.LoadCalib_button.TabIndex = 1;
+            this.LoadCalib_button.Text = "Load Calibration Profile File";
+            this.LoadCalib_button.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -2675,8 +2676,8 @@ namespace Interface_Prototype
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label CalibLoaded_label;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button NewCalib_button;
+        private System.Windows.Forms.Button LoadCalib_button;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label1;

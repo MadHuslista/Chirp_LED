@@ -29,5 +29,11 @@ namespace Interface_Prototype
             if (InCh1_comboBox.Items.Count > 0) { InCh1_comboBox.SelectedIndex = 0; }
             if (InCh2_comboBox.Items.Count > 0) { InCh2_comboBox.SelectedIndex = 1; }
         }
+
+        private void NewCalib_button_Click(object sender, EventArgs e)
+        {
+            Form_Calib Calib_Form = new Form_Calib();
+            Calib_Form.Show(); 
+        }
     }
 }
