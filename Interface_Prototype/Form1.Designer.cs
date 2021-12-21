@@ -48,9 +48,9 @@ namespace Interface_Prototype
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.InCh2_comboBox = new System.Windows.Forms.ComboBox();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.InCh2Min_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.InCh2Max_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.InCh2Hz_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -58,9 +58,9 @@ namespace Interface_Prototype
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.InCh1_comboBox = new System.Windows.Forms.ComboBox();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
+            this.InCh1Min_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.InCh1Max_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.InCh1Hz_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -69,9 +69,9 @@ namespace Interface_Prototype
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.OutCh2_comboBox = new System.Windows.Forms.ComboBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
+            this.OutCh2Min_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OutCh2Max_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OutCh2Hz_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.CalibLoaded_label = new System.Windows.Forms.Label();
@@ -84,9 +84,9 @@ namespace Interface_Prototype
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.OutCh1_comboBox = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.OutCh1Min_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OutCh1Max_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OutCh1Hz_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -192,26 +192,26 @@ namespace Interface_Prototype
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh2Min_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh2Max_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh2Hz_numericUpDown)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh1Min_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh1Max_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh1Hz_numericUpDown)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh2Min_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh2Max_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh2Hz_numericUpDown)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh1Min_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh1Max_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh1Hz_numericUpDown)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -326,9 +326,9 @@ namespace Interface_Prototype
             this.tableLayoutPanel7.Controls.Add(this.label12, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.label14, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.InCh2_comboBox, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.numericUpDown7, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.numericUpDown8, 1, 2);
-            this.tableLayoutPanel7.Controls.Add(this.numericUpDown9, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.InCh2Min_numericUpDown, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.InCh2Max_numericUpDown, 1, 2);
+            this.tableLayoutPanel7.Controls.Add(this.InCh2Hz_numericUpDown, 1, 3);
             this.tableLayoutPanel7.Controls.Add(this.label13, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 16);
@@ -384,69 +384,69 @@ namespace Interface_Prototype
             this.InCh2_comboBox.Size = new System.Drawing.Size(76, 21);
             this.InCh2_comboBox.TabIndex = 14;
             // 
-            // numericUpDown7
+            // InCh2Min_numericUpDown
             // 
-            this.numericUpDown7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown7.DecimalPlaces = 2;
-            this.numericUpDown7.Location = new System.Drawing.Point(135, 29);
-            this.numericUpDown7.Maximum = new decimal(new int[] {
+            this.InCh2Min_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InCh2Min_numericUpDown.DecimalPlaces = 2;
+            this.InCh2Min_numericUpDown.Location = new System.Drawing.Point(135, 29);
+            this.InCh2Min_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown7.Minimum = new decimal(new int[] {
+            this.InCh2Min_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown7.TabIndex = 15;
-            this.numericUpDown7.Value = new decimal(new int[] {
+            this.InCh2Min_numericUpDown.Name = "InCh2Min_numericUpDown";
+            this.InCh2Min_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.InCh2Min_numericUpDown.TabIndex = 15;
+            this.InCh2Min_numericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
             // 
-            // numericUpDown8
+            // InCh2Max_numericUpDown
             // 
-            this.numericUpDown8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown8.DecimalPlaces = 2;
-            this.numericUpDown8.Location = new System.Drawing.Point(135, 55);
-            this.numericUpDown8.Maximum = new decimal(new int[] {
+            this.InCh2Max_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InCh2Max_numericUpDown.DecimalPlaces = 2;
+            this.InCh2Max_numericUpDown.Location = new System.Drawing.Point(135, 55);
+            this.InCh2Max_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown8.Minimum = new decimal(new int[] {
+            this.InCh2Max_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown8.TabIndex = 16;
-            this.numericUpDown8.Value = new decimal(new int[] {
+            this.InCh2Max_numericUpDown.Name = "InCh2Max_numericUpDown";
+            this.InCh2Max_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.InCh2Max_numericUpDown.TabIndex = 16;
+            this.InCh2Max_numericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // numericUpDown9
+            // InCh2Hz_numericUpDown
             // 
-            this.numericUpDown9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown9.DecimalPlaces = 4;
-            this.numericUpDown9.Location = new System.Drawing.Point(135, 81);
-            this.numericUpDown9.Maximum = new decimal(new int[] {
-            20,
+            this.InCh2Hz_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InCh2Hz_numericUpDown.DecimalPlaces = 4;
+            this.InCh2Hz_numericUpDown.Location = new System.Drawing.Point(135, 81);
+            this.InCh2Hz_numericUpDown.Maximum = new decimal(new int[] {
+            20000,
             0,
             0,
             0});
-            this.numericUpDown9.Name = "numericUpDown9";
-            this.numericUpDown9.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown9.TabIndex = 18;
-            this.numericUpDown9.Value = new decimal(new int[] {
-            20,
+            this.InCh2Hz_numericUpDown.Name = "InCh2Hz_numericUpDown";
+            this.InCh2Hz_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.InCh2Hz_numericUpDown.TabIndex = 18;
+            this.InCh2Hz_numericUpDown.Value = new decimal(new int[] {
+            20000,
             0,
             0,
             0});
@@ -482,9 +482,9 @@ namespace Interface_Prototype
             this.tableLayoutPanel6.Controls.Add(this.label8, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.label10, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.InCh1_comboBox, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.numericUpDown5, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.numericUpDown6, 1, 2);
-            this.tableLayoutPanel6.Controls.Add(this.numericUpDown12, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.InCh1Min_numericUpDown, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.InCh1Max_numericUpDown, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.InCh1Hz_numericUpDown, 1, 3);
             this.tableLayoutPanel6.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 16);
@@ -541,69 +541,69 @@ namespace Interface_Prototype
             this.InCh1_comboBox.Size = new System.Drawing.Size(76, 21);
             this.InCh1_comboBox.TabIndex = 14;
             // 
-            // numericUpDown5
+            // InCh1Min_numericUpDown
             // 
-            this.numericUpDown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown5.DecimalPlaces = 2;
-            this.numericUpDown5.Location = new System.Drawing.Point(135, 29);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
+            this.InCh1Min_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InCh1Min_numericUpDown.DecimalPlaces = 2;
+            this.InCh1Min_numericUpDown.Location = new System.Drawing.Point(135, 29);
+            this.InCh1Min_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown5.Minimum = new decimal(new int[] {
+            this.InCh1Min_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown5.TabIndex = 15;
-            this.numericUpDown5.Value = new decimal(new int[] {
+            this.InCh1Min_numericUpDown.Name = "InCh1Min_numericUpDown";
+            this.InCh1Min_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.InCh1Min_numericUpDown.TabIndex = 15;
+            this.InCh1Min_numericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
             // 
-            // numericUpDown6
+            // InCh1Max_numericUpDown
             // 
-            this.numericUpDown6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown6.DecimalPlaces = 2;
-            this.numericUpDown6.Location = new System.Drawing.Point(135, 55);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
+            this.InCh1Max_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InCh1Max_numericUpDown.DecimalPlaces = 2;
+            this.InCh1Max_numericUpDown.Location = new System.Drawing.Point(135, 55);
+            this.InCh1Max_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown6.Minimum = new decimal(new int[] {
+            this.InCh1Max_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown6.TabIndex = 16;
-            this.numericUpDown6.Value = new decimal(new int[] {
+            this.InCh1Max_numericUpDown.Name = "InCh1Max_numericUpDown";
+            this.InCh1Max_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.InCh1Max_numericUpDown.TabIndex = 16;
+            this.InCh1Max_numericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // numericUpDown12
+            // InCh1Hz_numericUpDown
             // 
-            this.numericUpDown12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown12.DecimalPlaces = 4;
-            this.numericUpDown12.Location = new System.Drawing.Point(135, 81);
-            this.numericUpDown12.Maximum = new decimal(new int[] {
-            20,
+            this.InCh1Hz_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.InCh1Hz_numericUpDown.DecimalPlaces = 4;
+            this.InCh1Hz_numericUpDown.Location = new System.Drawing.Point(135, 81);
+            this.InCh1Hz_numericUpDown.Maximum = new decimal(new int[] {
+            20000,
             0,
             0,
             0});
-            this.numericUpDown12.Name = "numericUpDown12";
-            this.numericUpDown12.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown12.TabIndex = 18;
-            this.numericUpDown12.Value = new decimal(new int[] {
-            20,
+            this.InCh1Hz_numericUpDown.Name = "InCh1Hz_numericUpDown";
+            this.InCh1Hz_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.InCh1Hz_numericUpDown.TabIndex = 18;
+            this.InCh1Hz_numericUpDown.Value = new decimal(new int[] {
+            20000,
             0,
             0,
             0});
@@ -640,9 +640,9 @@ namespace Interface_Prototype
             this.tableLayoutPanel5.Controls.Add(this.label15, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.label16, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.OutCh2_comboBox, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.numericUpDown4, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.numericUpDown10, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.numericUpDown11, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.OutCh2Min_numericUpDown, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.OutCh2Max_numericUpDown, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.OutCh2Hz_numericUpDown, 1, 3);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -708,69 +708,69 @@ namespace Interface_Prototype
             this.OutCh2_comboBox.Size = new System.Drawing.Size(76, 21);
             this.OutCh2_comboBox.TabIndex = 14;
             // 
-            // numericUpDown4
+            // OutCh2Min_numericUpDown
             // 
-            this.numericUpDown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Location = new System.Drawing.Point(135, 29);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.OutCh2Min_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh2Min_numericUpDown.DecimalPlaces = 2;
+            this.OutCh2Min_numericUpDown.Location = new System.Drawing.Point(135, 29);
+            this.OutCh2Min_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown4.Minimum = new decimal(new int[] {
+            this.OutCh2Min_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown4.TabIndex = 15;
-            this.numericUpDown4.Value = new decimal(new int[] {
+            this.OutCh2Min_numericUpDown.Name = "OutCh2Min_numericUpDown";
+            this.OutCh2Min_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.OutCh2Min_numericUpDown.TabIndex = 15;
+            this.OutCh2Min_numericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
             // 
-            // numericUpDown10
+            // OutCh2Max_numericUpDown
             // 
-            this.numericUpDown10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown10.DecimalPlaces = 2;
-            this.numericUpDown10.Location = new System.Drawing.Point(135, 55);
-            this.numericUpDown10.Maximum = new decimal(new int[] {
+            this.OutCh2Max_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh2Max_numericUpDown.DecimalPlaces = 2;
+            this.OutCh2Max_numericUpDown.Location = new System.Drawing.Point(135, 55);
+            this.OutCh2Max_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown10.Minimum = new decimal(new int[] {
+            this.OutCh2Max_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown10.Name = "numericUpDown10";
-            this.numericUpDown10.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown10.TabIndex = 16;
-            this.numericUpDown10.Value = new decimal(new int[] {
+            this.OutCh2Max_numericUpDown.Name = "OutCh2Max_numericUpDown";
+            this.OutCh2Max_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.OutCh2Max_numericUpDown.TabIndex = 16;
+            this.OutCh2Max_numericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // numericUpDown11
+            // OutCh2Hz_numericUpDown
             // 
-            this.numericUpDown11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown11.DecimalPlaces = 4;
-            this.numericUpDown11.Location = new System.Drawing.Point(135, 81);
-            this.numericUpDown11.Maximum = new decimal(new int[] {
-            5,
+            this.OutCh2Hz_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh2Hz_numericUpDown.DecimalPlaces = 4;
+            this.OutCh2Hz_numericUpDown.Location = new System.Drawing.Point(135, 81);
+            this.OutCh2Hz_numericUpDown.Maximum = new decimal(new int[] {
+            5000,
             0,
             0,
             0});
-            this.numericUpDown11.Name = "numericUpDown11";
-            this.numericUpDown11.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown11.TabIndex = 18;
-            this.numericUpDown11.Value = new decimal(new int[] {
-            5,
+            this.OutCh2Hz_numericUpDown.Name = "OutCh2Hz_numericUpDown";
+            this.OutCh2Hz_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.OutCh2Hz_numericUpDown.TabIndex = 18;
+            this.OutCh2Hz_numericUpDown.Value = new decimal(new int[] {
+            5000,
             0,
             0,
             0});
@@ -857,9 +857,9 @@ namespace Interface_Prototype
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.OutCh1_comboBox, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.numericUpDown1, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.numericUpDown2, 1, 2);
-            this.tableLayoutPanel4.Controls.Add(this.numericUpDown3, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.OutCh1Min_numericUpDown, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.OutCh1Max_numericUpDown, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.OutCh1Hz_numericUpDown, 1, 3);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -926,69 +926,69 @@ namespace Interface_Prototype
             this.OutCh1_comboBox.Size = new System.Drawing.Size(76, 21);
             this.OutCh1_comboBox.TabIndex = 14;
             // 
-            // numericUpDown1
+            // OutCh1Min_numericUpDown
             // 
-            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(135, 29);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.OutCh1Min_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh1Min_numericUpDown.DecimalPlaces = 2;
+            this.OutCh1Min_numericUpDown.Location = new System.Drawing.Point(135, 29);
+            this.OutCh1Min_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.OutCh1Min_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown1.TabIndex = 15;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.OutCh1Min_numericUpDown.Name = "OutCh1Min_numericUpDown";
+            this.OutCh1Min_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.OutCh1Min_numericUpDown.TabIndex = 15;
+            this.OutCh1Min_numericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
             // 
-            // numericUpDown2
+            // OutCh1Max_numericUpDown
             // 
-            this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Location = new System.Drawing.Point(135, 55);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.OutCh1Max_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh1Max_numericUpDown.DecimalPlaces = 2;
+            this.OutCh1Max_numericUpDown.Location = new System.Drawing.Point(135, 55);
+            this.OutCh1Max_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.OutCh1Max_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown2.TabIndex = 16;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.OutCh1Max_numericUpDown.Name = "OutCh1Max_numericUpDown";
+            this.OutCh1Max_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.OutCh1Max_numericUpDown.TabIndex = 16;
+            this.OutCh1Max_numericUpDown.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
-            // numericUpDown3
+            // OutCh1Hz_numericUpDown
             // 
-            this.numericUpDown3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown3.DecimalPlaces = 4;
-            this.numericUpDown3.Location = new System.Drawing.Point(135, 81);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            5,
+            this.OutCh1Hz_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh1Hz_numericUpDown.DecimalPlaces = 4;
+            this.OutCh1Hz_numericUpDown.Location = new System.Drawing.Point(135, 81);
+            this.OutCh1Hz_numericUpDown.Maximum = new decimal(new int[] {
+            5000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(76, 20);
-            this.numericUpDown3.TabIndex = 18;
-            this.numericUpDown3.Value = new decimal(new int[] {
-            5,
+            this.OutCh1Hz_numericUpDown.Name = "OutCh1Hz_numericUpDown";
+            this.OutCh1Hz_numericUpDown.Size = new System.Drawing.Size(76, 20);
+            this.OutCh1Hz_numericUpDown.TabIndex = 18;
+            this.OutCh1Hz_numericUpDown.Value = new decimal(new int[] {
+            5000,
             0,
             0,
             0});
@@ -2593,29 +2593,29 @@ namespace Interface_Prototype
             this.groupBox8.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh2Min_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh2Max_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh2Hz_numericUpDown)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh1Min_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh1Max_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InCh1Hz_numericUpDown)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh2Min_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh2Max_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh2Hz_numericUpDown)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh1Min_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh1Max_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh1Hz_numericUpDown)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
@@ -2685,9 +2685,9 @@ namespace Interface_Prototype
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox OutCh1_comboBox;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown OutCh1Min_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OutCh1Max_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OutCh1Hz_numericUpDown;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.GroupBox groupBox9;
@@ -2710,26 +2710,26 @@ namespace Interface_Prototype
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox InCh1_comboBox;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.NumericUpDown numericUpDown12;
+        private System.Windows.Forms.NumericUpDown InCh1Min_numericUpDown;
+        private System.Windows.Forms.NumericUpDown InCh1Max_numericUpDown;
+        private System.Windows.Forms.NumericUpDown InCh1Hz_numericUpDown;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox OutCh2_comboBox;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown10;
-        private System.Windows.Forms.NumericUpDown numericUpDown11;
+        private System.Windows.Forms.NumericUpDown OutCh2Min_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OutCh2Max_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OutCh2Hz_numericUpDown;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox InCh2_comboBox;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
-        private System.Windows.Forms.NumericUpDown numericUpDown9;
+        private System.Windows.Forms.NumericUpDown InCh2Min_numericUpDown;
+        private System.Windows.Forms.NumericUpDown InCh2Max_numericUpDown;
+        private System.Windows.Forms.NumericUpDown InCh2Hz_numericUpDown;
         private System.Windows.Forms.NumericUpDown numericUpDown13;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;

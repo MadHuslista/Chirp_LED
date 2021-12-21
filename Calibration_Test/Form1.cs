@@ -76,7 +76,8 @@ namespace Calibration_Test
             samples_per_step = 20; // 100;
 
             double [] Ref_Array = Generate.LinearRange(start_val, step, stop_val);
-            Ref_Enum = Ref_Array.GetEnumerator();
+            Ref_Enum = Ref_Array.GetEnumerator();   //Acá crea un iterador! Entonces por cada valor del iterador el task toma 'samples_per_step' valores
+                                                    // y el promedio de esos valores viene a ser el valor de calibración!
 
             try
             {
@@ -144,9 +145,10 @@ namespace Calibration_Test
 
                 double data_mean = data.Sum() / data.Length;
 
-                Calibration_Data[0].Add(Convert.ToDouble(Ref_Enum.Current));
-                Calibration_Data[1].Add(data_mean);
+                Calibration_Data[0].Add(Convert.ToDouble(Ref_Enum.Current)); //guardo el Valor de Referencia 
+                Calibration_Data[1].Add(data_mean);                          //Guardo el correspondiente medido.
 
+                
 
                 if (Ref_Enum.MoveNext())
                 {

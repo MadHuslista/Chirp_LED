@@ -12,7 +12,8 @@ plt.close('all')
 #path_ref = r"D:\Proyecto_CHIRP_LED\Calibration_Test\logs\calib_arr4.txt"
 #data = np.loadtxt(path_ref, delimiter=',')
 
-path = r"D:\Proyecto_CHIRP_LED\Calibration_Test\logs\calib_arr.txt"
+#path = r"D:\Proyecto_CHIRP_LED\Calibration_Test\logs\calib_arr.txt"
+path = r"D:\Proyecto_CHIRP_LED\Interface_Prototype\log\calib_arr.txt"
 data = np.loadtxt(path, delimiter=',')
 
 x = data[:,0]
