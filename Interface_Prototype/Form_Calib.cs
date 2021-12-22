@@ -19,23 +19,10 @@ namespace Interface_Prototype
     {
 
         //Channels Data
-        private string InCh1;
-        private string InCh2;
-        private string OutCh1;
-        private string OutCh2;
-
-        private double[] InCh1_vals;    //{Min, Max, Hz}
-        private double[] InCh2_vals;
-        private double[] OutCh1_vals;
-        private double[] OutCh2_vals;
-
-        private Dictionary<string, Dictionary<string, double>> Ch_Dict; 
+        private Dictionary<string, Dictionary<string, double>> Ch_Dict;         //Channels config info Dict
         
-
         //Calibration Range 
-        private double start_val;
-        private double stop_val;
-        private double step;
+        private double start_val, stop_val, step;
         private int samples_per_step;
 
         //Calibration Arrays
@@ -43,23 +30,16 @@ namespace Interface_Prototype
         private List<List<double>> Calib2_Data = new List<List<double>>();
         private double[][] Calib1_Array = new double[2][];
         private double[][] Calib2_Array = new double[2][];
-        private IEnumerator Calib1_RefEnum;
-        private IEnumerator Calib2_RefEnum;
+        private IEnumerator Calib1_RefEnum, Calib2_RefEnum;
 
         //DAQ Objects
-        private Task Calib1_inputTask;
-        private Task Calib1_outputTask;
-        private Task Calib2_inputTask;
-        private Task Calib2_outputTask;
+        private Task Calib1_inputTask, Calib1_outputTask;
+        private Task Calib2_inputTask, Calib2_outputTask;
 
-        private AnalogSingleChannelWriter Calib1_writer;
-        private AnalogSingleChannelWriter Calib2_writer;
+        private AnalogSingleChannelWriter Calib1_writer, Calib2_writer;
+        private AnalogSingleChannelReader Calib1_reader, Calib2_reader;
 
-        private AnalogSingleChannelReader Calib1_reader;
-        private AnalogSingleChannelReader Calib2_reader;
-
-        private AsyncCallback Calib1_InputCallback;
-        private AsyncCallback Calib2_InputCallback;
+        private AsyncCallback Calib1_InputCallback, Calib2_InputCallback;
 
         private bool Calib1_taskRunning = false;
         private bool Calib2_taskRunning = false;     
@@ -67,40 +47,19 @@ namespace Interface_Prototype
         public Form_Calib(string [] channels, double [][] values) 
         {
             InitializeComponent();
-
-            //Channels Values
-            InCh1 = channels[0];
-            InCh2 = channels[1];
-            OutCh1 = channels[2];
-            OutCh2 = channels[3];
-
-            InCh1_vals = values[0];    //{Min, Max, Hz}
-            InCh2_vals = values[1];
-            OutCh1_vals = values[2];
-            OutCh2_vals = values[3];
-
+            
+            //Dictionary Population
             Ch_Dict = new Dictionary<string, Dictionary<string, double>>();
-            Ch_Dict.Add(InCh1, new Dictionary<string, double>());
-            Ch_Dict.Add(InCh2, new Dictionary<string, double>());
-            Ch_Dict.Add(OutCh1, new Dictionary<string, double>());
-            Ch_Dict.Add(OutCh2, new Dictionary<string, double>());
-            
-            Ch_Dict[InCh1].Add("Min", InCh1_vals[0]);
-            Ch_Dict[InCh1].Add("Max", InCh1_vals[1]);
-            Ch_Dict[InCh1].Add("Hz", InCh1_vals[2]);
-
-            Ch_Dict[InCh2].Add("Min", InCh2_vals[0]);
-            Ch_Dict[InCh2].Add("Max", InCh2_vals[1]);
-            Ch_Dict[InCh2].Add("Hz", InCh2_vals[2]);
-
-            Ch_Dict[OutCh1].Add("Min", OutCh1_vals[0]);
-            Ch_Dict[OutCh1].Add("Max", OutCh1_vals[1]);
-            Ch_Dict[OutCh1].Add("Hz", OutCh1_vals[2]);
-
-            Ch_Dict[OutCh2].Add("Min", OutCh2_vals[0]);
-            Ch_Dict[OutCh2].Add("Max", OutCh2_vals[1]);
-            Ch_Dict[OutCh2].Add("Hz", OutCh2_vals[2]);
-            
+            string[] val_keys = { "Min", "Max", "Hz" };
+            for (int i = 0; i  < channels.Length; i++)
+            { 
+                Ch_Dict.Add(channels[i], new Dictionary<string, double>()); //Cojo el canal
+                for (int j = 0; j < values[i].Length; j++)
+                {
+                    Ch_Dict[channels[i]].Add(val_keys[j], values[i][j]);    //Agrego cada valor de los valores según su key correspondiente. 
+                    //Console.WriteLine("{0}, {1}, {2}", channels[i], val_keys[j], values[i][j]);   //Revisión de Correspondencia 
+                }
+            }
             
 
             //Calibration Ranges
@@ -111,10 +70,10 @@ namespace Interface_Prototype
             
 
             // Captura de Canales y preselección del primero. 
-            Calib1In_comboBox.Items.AddRange(new object[] { InCh1, InCh2 });
-            Calib2In_comboBox.Items.AddRange(new object[] { InCh1, InCh2 });
-            Calib1Out_comboBox.Items.AddRange(new object[] { OutCh1, OutCh2 });
-            Calib2Out_comboBox.Items.AddRange(new object[] { OutCh1, OutCh2 });
+            Calib1In_comboBox.Items.AddRange(new object[] { channels[0], channels[1] });
+            Calib2In_comboBox.Items.AddRange(new object[] { channels[0], channels[1] });
+            Calib1Out_comboBox.Items.AddRange(new object[] { channels[2], channels[3] });
+            Calib2Out_comboBox.Items.AddRange(new object[] { channels[2], channels[3] });
 
             if (Calib1In_comboBox.Items.Count > 0) Calib1In_comboBox.SelectedIndex = 0;
             if (Calib2In_comboBox.Items.Count > 0) Calib2In_comboBox.SelectedIndex = 1;
@@ -128,64 +87,8 @@ namespace Interface_Prototype
             Calib2_Data.Add(new List<double>());
         }
 
-        private void DoCalib1_button_Click(object sender, EventArgs e)
-        {
-            String In_Ch = Calib1In_comboBox.Text;
-            String Out_Ch = Calib1Out_comboBox.Text;
-            DoCalib2_button.Enabled = false;
-            Calib1_taskRunning = true;
 
-            DoCalib(
-                new[] { In_Ch, Out_Ch },
-                Ch_Dict[In_Ch],
-                Ch_Dict[Out_Ch],
-                ref Calib1_inputTask, 
-                ref Calib1_outputTask, 
-                ref Calib1_writer, 
-                ref Calib1_reader, 
-                ref Calib1_InputCallback,
-                Calib1_InputRead,
-                ref Calib1_RefEnum, 
-                ref Calib1_progressBar,
-                1,
-                ref DoCalib1_button,
-                ref DoCalib2_button,
-                ref SaveCalib1_button,
-                ref SaveCalib2_button
-                );
-            
-        }
-
-        private void DoCalib2_button_Click(object sender, EventArgs e)
-        {
-            String In_Ch = Calib2In_comboBox.Text;
-            String Out_Ch = Calib2Out_comboBox.Text;
-            DoCalib1_button.Enabled = false;
-            Calib2_taskRunning = true;
-
-            DoCalib(
-                new[] { In_Ch, Out_Ch },
-                Ch_Dict[In_Ch],
-                Ch_Dict[Out_Ch],
-                ref Calib2_inputTask,
-                ref Calib2_outputTask,
-                ref Calib2_writer,
-                ref Calib2_reader,
-                ref Calib2_InputCallback,
-                Calib2_InputRead,
-                ref Calib2_RefEnum,
-                ref Calib2_progressBar,
-                2,
-                ref DoCalib1_button,
-                ref DoCalib2_button, 
-                ref SaveCalib1_button, 
-                ref SaveCalib2_button
-                );
-
-            
-
-        }
-
+        //General Funcions
         private void DoCalib(
             string[] channels,
             Dictionary<string, double> input_values,
@@ -200,11 +103,11 @@ namespace Interface_Prototype
             ref ProgressBar Progress_Bar,
             int calib,
             ref Button Same_CalibButt,
-            ref Button Opos_CalibButt, 
-            ref Button Same_SaveCalib, 
+            ref Button Opos_CalibButt,
+            ref Button Same_SaveCalib,
             ref Button Opos_SaveCalib
             )
-        { 
+        {
             //Asignación de Canales y Task
             string input_channel = channels[0];
             string output_channel = channels[1];
@@ -254,29 +157,30 @@ namespace Interface_Prototype
                 inputTask.Control(TaskAction.Verify);
                 outputTask.Control(TaskAction.Verify);
 
-                
+
 
                 writer = new AnalogSingleChannelWriter(outputTask.Stream);
                 reader = new AnalogSingleChannelReader(inputTask.Stream);
 
-                
 
-                Ref_Enum.MoveNext();
-                //Console.WriteLine("A");
-                writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current));
-                //Console.WriteLine("B");
-                InputCallback = new AsyncCallback(Callback_Function); 
-                reader.SynchronizeCallbacks = true;
-                reader.BeginReadMultiSample(samples_per_step, InputCallback, inputTask);
-                //Console.WriteLine("C");
+
+                Ref_Enum.MoveNext(); //Inicio el numerador en el primer elemento
+
+                writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current)); //Escribe el primero dato. 
+
+                InputCallback = new AsyncCallback(Callback_Function);                   //Asocia la función CallBack definiendo el delegado (el AsyncCallback es el delegado) 
+                reader.SynchronizeCallbacks = true;                                     
+                reader.BeginReadMultiSample(samples_per_step, InputCallback, inputTask);    //Se la entrega al reader. 
+
+                //Se aísla la ejecución de la calibración. 
                 Same_CalibButt.Enabled = false;
-                Opos_CalibButt.Enabled = false; 
+                Opos_CalibButt.Enabled = false;
                 Same_SaveCalib.Enabled = false;
                 Opos_SaveCalib.Enabled = false;
 
                 //Console.WriteLine(object.ReferenceEquals(Ref_Enum, Calib1_RefEnum));
                 //Console.WriteLine(object.ReferenceEquals(InputCallback, Calib1_InputCallback));
-                 
+
             }
 
             catch (Exception ex)
@@ -288,6 +192,117 @@ namespace Interface_Prototype
 
         }
 
+        private void StopTask(int calib)
+        {
+            if (calib == 1)
+            {
+
+
+                Calib1_inputTask.Stop();
+                Calib1_outputTask.Stop();
+                Calib1_inputTask.Dispose();
+                Calib1_outputTask.Dispose();
+            }
+            else if (calib == 2)
+            {
+                Calib2_inputTask.Stop();
+                Calib2_outputTask.Stop();
+                Calib2_inputTask.Dispose();
+                Calib2_outputTask.Dispose();
+            }
+        }
+
+        private void SaveCalib(ref System.Windows.Forms.SaveFileDialog SaveDialog, ref double[][] Calib_Array, ref ProgressBar Progress_Bar)
+        {
+            SaveDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            SaveDialog.RestoreDirectory = true;
+            SaveDialog.Title = "Browse Text Files";
+            SaveDialog.DefaultExt = "txt";
+            SaveDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            SaveDialog.FilterIndex = 2;
+            SaveDialog.CheckFileExists = true;
+            SaveDialog.CheckPathExists = true;
+
+
+            if (SaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                String PATH = SaveDialog.FileName;
+                var calib_sb = new StringBuilder();
+
+                for (int i = 0; i < Calib_Array[0].Length; i++)
+                {
+                    calib_sb.Append(Calib_Array[0][i].ToString());
+                    calib_sb.Append(",");
+                    calib_sb.AppendLine(Calib_Array[1][i].ToString());
+                }
+
+                File.WriteAllText(PATH, calib_sb.ToString());
+                Progress_Bar.Value = 0;
+            }
+
+
+        }
+
+        //Particular Funcions
+        private void DoCalib1_button_Click(object sender, EventArgs e)
+        {
+            String In_Ch = Calib1In_comboBox.Text;
+            String Out_Ch = Calib1Out_comboBox.Text;
+            DoCalib2_button.Enabled = false;
+            Calib1_taskRunning = true;
+
+            DoCalib(
+                new[] { In_Ch, Out_Ch },
+                Ch_Dict[In_Ch],
+                Ch_Dict[Out_Ch],
+                ref Calib1_inputTask, 
+                ref Calib1_outputTask, 
+                ref Calib1_writer, 
+                ref Calib1_reader, 
+                ref Calib1_InputCallback,   //Delegado
+                Calib1_InputRead,           //Función Callback
+                ref Calib1_RefEnum, 
+                ref Calib1_progressBar,
+                1,
+                ref DoCalib1_button,
+                ref DoCalib2_button,
+                ref SaveCalib1_button,
+                ref SaveCalib2_button
+                );
+            
+        }
+
+        private void DoCalib2_button_Click(object sender, EventArgs e)
+        {
+            String In_Ch = Calib2In_comboBox.Text;
+            String Out_Ch = Calib2Out_comboBox.Text;
+            DoCalib1_button.Enabled = false;
+            Calib2_taskRunning = true;
+
+            DoCalib(
+                new[] { In_Ch, Out_Ch },
+                Ch_Dict[In_Ch],
+                Ch_Dict[Out_Ch],
+                ref Calib2_inputTask,
+                ref Calib2_outputTask,
+                ref Calib2_writer,
+                ref Calib2_reader,
+                ref Calib2_InputCallback,
+                Calib2_InputRead,
+                ref Calib2_RefEnum,
+                ref Calib2_progressBar,
+                2,
+                ref DoCalib1_button,
+                ref DoCalib2_button, 
+                ref SaveCalib1_button, 
+                ref SaveCalib2_button
+                );
+
+            
+
+        }
+
+        
         private void Calib1_InputRead(IAsyncResult ar)
         {
             int calib = 1;
@@ -301,8 +316,6 @@ namespace Interface_Prototype
             ref ProgressBar Progress_Bar = ref Calib1_progressBar;
             ref AsyncCallback InputCallback = ref Calib1_InputCallback;
             ref bool taskRunning = ref Calib1_taskRunning;
-
-
             ref System.Windows.Forms.DataVisualization.Charting.Chart  Chart = ref Calib1_chart;
 
             //Console.WriteLine(object.ReferenceEquals(Calib_Data, Calib1_Data));
@@ -384,9 +397,7 @@ namespace Interface_Prototype
             ref ProgressBar Progress_Bar = ref Calib2_progressBar;
             ref AsyncCallback InputCallback = ref Calib2_InputCallback;
             ref bool taskRunning = ref Calib2_taskRunning;
-
-
-            ref System.Windows.Forms.DataVisualization.Charting.Chart Chart = ref Calib1_chart;
+            ref System.Windows.Forms.DataVisualization.Charting.Chart Chart = ref Calib2_chart;
 
             //Console.WriteLine(object.ReferenceEquals(Calib_Data, Calib1_Data));
             //Console.WriteLine("PB: {0}", object.ReferenceEquals(Progress_Bar, Calib1_progressBar));
@@ -455,25 +466,7 @@ namespace Interface_Prototype
         }
 
 
-        private void StopTask(int calib)
-        {
-            if (calib == 1)
-            {
 
-
-                Calib1_inputTask.Stop();
-                Calib1_outputTask.Stop();
-                Calib1_inputTask.Dispose();
-                Calib1_outputTask.Dispose();
-            }
-            else if (calib == 2)
-            {
-                Calib2_inputTask.Stop();
-                Calib2_outputTask.Stop();
-                Calib2_inputTask.Dispose();
-                Calib2_outputTask.Dispose();
-            }
-        }
 
         private void SaveCalib1_button_Click(object sender, EventArgs e)
         {
@@ -494,37 +487,7 @@ namespace Interface_Prototype
                 );
         }
 
-        private void SaveCalib(ref System.Windows.Forms.SaveFileDialog SaveDialog, ref double[][] Calib_Array, ref ProgressBar Progress_Bar)
-        {
-            SaveDialog.InitialDirectory = Directory.GetCurrentDirectory();
-            SaveDialog.RestoreDirectory = true;
-            SaveDialog.Title = "Browse Text Files";
-            SaveDialog.DefaultExt = "txt";
-            SaveDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            SaveDialog.FilterIndex = 2;
-            SaveDialog.CheckFileExists = true;
-            SaveDialog.CheckPathExists = true;
-            
-
-            if (SaveDialog.ShowDialog() == DialogResult.OK)
-            {
-                String PATH = SaveDialog.FileName;
-                var calib_sb = new StringBuilder();
-
-                for (int i = 0; i < Calib_Array[0].Length; i++)
-                {
-                    calib_sb.Append(Calib_Array[0][i].ToString());
-                    calib_sb.Append(",");
-                    calib_sb.AppendLine(Calib_Array[1][i].ToString());
-                }
-
-                File.WriteAllText(PATH, calib_sb.ToString());
-                Progress_Bar.Value = 0;
-            }
-
-
-        }
-
+        
         private void StopCalib1_button_Click(object sender, EventArgs e)
         {
             Calib1_taskRunning = false;

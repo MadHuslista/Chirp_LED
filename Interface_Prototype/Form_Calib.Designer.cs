@@ -29,10 +29,10 @@ namespace Interface_Prototype
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -71,9 +71,9 @@ namespace Interface_Prototype
             this.SaveCalib2_button = new System.Windows.Forms.Button();
             this.DoCalib2_button = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Calib2_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Calib1_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.Calib2_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.Calib2_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -334,22 +334,22 @@ namespace Interface_Prototype
             // 
             // Calib1_chart
             // 
-            chartArea7.AxisX.MinorGrid.Enabled = true;
-            chartArea7.AxisX.Title = "Output Channel (V)";
-            chartArea7.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea7.AxisY.MinorGrid.Enabled = true;
-            chartArea7.AxisY.Title = "Input Channel (V)";
-            chartArea7.Name = "ChartArea1";
-            this.Calib1_chart.ChartAreas.Add(chartArea7);
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.Title = "Output Channel (V)";
+            chartArea1.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.Title = "Input Channel (V)";
+            chartArea1.Name = "ChartArea1";
+            this.Calib1_chart.ChartAreas.Add(chartArea1);
             this.Calib1_chart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Calib1_chart.Location = new System.Drawing.Point(3, 16);
             this.Calib1_chart.Name = "Calib1_chart";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series7.IsVisibleInLegend = false;
-            series7.Legend = "Legend1";
-            series7.Name = "Calib1_Series";
-            this.Calib1_chart.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.Name = "Calib1_Series";
+            this.Calib1_chart.Series.Add(series1);
             this.Calib1_chart.Size = new System.Drawing.Size(376, 260);
             this.Calib1_chart.TabIndex = 1;
             this.Calib1_chart.Text = "chart2";
@@ -577,21 +577,22 @@ namespace Interface_Prototype
             // 
             // Calib2_chart
             // 
-            chartArea8.AxisX.IsMarginVisible = false;
-            chartArea8.AxisX.Title = "Output Channel (V)";
-            chartArea8.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea8.AxisY.Title = "Input Channel (V)";
-            chartArea8.Name = "ChartArea1";
-            this.Calib2_chart.ChartAreas.Add(chartArea8);
+            chartArea2.AxisX.MinorGrid.Enabled = true;
+            chartArea2.AxisX.Title = "Output Channel (V)";
+            chartArea2.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisY.MinorGrid.Enabled = true;
+            chartArea2.AxisY.Title = "Input Channel (V)";
+            chartArea2.Name = "ChartArea1";
+            this.Calib2_chart.ChartAreas.Add(chartArea2);
             this.Calib2_chart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Calib2_chart.Location = new System.Drawing.Point(3, 16);
             this.Calib2_chart.Name = "Calib2_chart";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series8.IsVisibleInLegend = false;
-            series8.Legend = "Legend1";
-            series8.Name = "Calib2_Series";
-            this.Calib2_chart.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Calib1_Series";
+            this.Calib2_chart.Series.Add(series2);
             this.Calib2_chart.Size = new System.Drawing.Size(376, 260);
             this.Calib2_chart.TabIndex = 2;
             this.Calib2_chart.Text = "chart2";
@@ -669,10 +670,10 @@ namespace Interface_Prototype
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Calib2_chart;
         private System.Windows.Forms.Button StopCalib1_button;
         private System.Windows.Forms.Button StopCalib2_button;
         private System.Windows.Forms.SaveFileDialog Calib1_saveFileDialog;
         private System.Windows.Forms.SaveFileDialog Calib2_saveFileDialog;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Calib2_chart;
     }
 }
