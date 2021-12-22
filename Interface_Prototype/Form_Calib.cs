@@ -90,18 +90,26 @@ namespace Interface_Prototype
 
         //General Funcions
         private void DoCalib(
+            //Channels Values
             string[] channels,
             Dictionary<string, double> input_values,
             Dictionary<string, double> output_values,
+
+            //DAC Connection Ojects
             ref Task inputTask,
             ref Task outputTask,
             ref AnalogSingleChannelWriter writer,
             ref AnalogSingleChannelReader reader,
             ref AsyncCallback InputCallback,
             Action<IAsyncResult> Callback_Function,
-            ref IEnumerator Ref_Enum,
-            ref ProgressBar Progress_Bar,
             int calib,
+
+            //Array Management
+            ref IEnumerator Ref_Enum,
+            ref List<List<double>> Calib_Data, 
+
+            //Form Management
+            ref ProgressBar Progress_Bar,
             ref Button Same_CalibButt,
             ref Button Opos_CalibButt,
             ref Button Same_SaveCalib,
@@ -162,9 +170,9 @@ namespace Interface_Prototype
                 writer = new AnalogSingleChannelWriter(outputTask.Stream);
                 reader = new AnalogSingleChannelReader(inputTask.Stream);
 
-
-
                 Ref_Enum.MoveNext(); //Inicio el numerador en el primer elemento
+                Calib_Data[0].Clear();
+                Calib_Data[1].Clear();
 
                 writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current)); //Escribe el primero dato. 
 
@@ -252,23 +260,31 @@ namespace Interface_Prototype
             Calib1_taskRunning = true;
 
             DoCalib(
-                new[] { In_Ch, Out_Ch },
-                Ch_Dict[In_Ch],
-                Ch_Dict[Out_Ch],
-                ref Calib1_inputTask, 
-                ref Calib1_outputTask, 
-                ref Calib1_writer, 
-                ref Calib1_reader, 
-                ref Calib1_InputCallback,   //Delegado
-                Calib1_InputRead,           //Función Callback
-                ref Calib1_RefEnum, 
-                ref Calib1_progressBar,
-                1,
-                ref DoCalib1_button,
-                ref DoCalib2_button,
-                ref SaveCalib1_button,
-                ref SaveCalib2_button
-                );
+                //Channels Values
+                channels: new[] { In_Ch, Out_Ch },
+                input_values: Ch_Dict[In_Ch],
+                output_values: Ch_Dict[Out_Ch],
+
+                //DAC Connection Ojects
+                inputTask: ref Calib1_inputTask,
+                outputTask: ref Calib1_outputTask,
+                writer: ref Calib1_writer,
+                reader: ref Calib1_reader,
+                InputCallback: ref Calib1_InputCallback,
+                Callback_Function: Calib1_InputRead,
+                calib: 1,
+
+                //Array Management
+                Ref_Enum: ref Calib1_RefEnum,
+                Calib_Data: ref Calib1_Data,
+
+                //Form Management
+                Progress_Bar: ref Calib1_progressBar,
+                Same_CalibButt: ref DoCalib1_button,
+                Opos_CalibButt: ref DoCalib2_button,
+                Same_SaveCalib: ref SaveCalib1_button,
+                Opos_SaveCalib: ref SaveCalib2_button
+            );
             
         }
 
@@ -280,25 +296,33 @@ namespace Interface_Prototype
             Calib2_taskRunning = true;
 
             DoCalib(
-                new[] { In_Ch, Out_Ch },
-                Ch_Dict[In_Ch],
-                Ch_Dict[Out_Ch],
-                ref Calib2_inputTask,
-                ref Calib2_outputTask,
-                ref Calib2_writer,
-                ref Calib2_reader,
-                ref Calib2_InputCallback,
-                Calib2_InputRead,
-                ref Calib2_RefEnum,
-                ref Calib2_progressBar,
-                2,
-                ref DoCalib1_button,
-                ref DoCalib2_button, 
-                ref SaveCalib1_button, 
-                ref SaveCalib2_button
-                );
+                //Channels Values
+                channels: new[] { In_Ch, Out_Ch },
+                input_values: Ch_Dict[In_Ch],
+                output_values: Ch_Dict[Out_Ch],
 
-            
+                //DAC Connection Ojects
+                inputTask: ref Calib2_inputTask,
+                outputTask: ref Calib2_outputTask,
+                writer: ref Calib2_writer,
+                reader: ref Calib2_reader,
+                InputCallback: ref Calib2_InputCallback,
+                Callback_Function: Calib2_InputRead,
+                calib: 2,
+
+                //Array Management
+                Ref_Enum: ref Calib2_RefEnum,
+                Calib_Data: ref Calib2_Data,
+
+                //Form Management
+                Progress_Bar: ref Calib2_progressBar,
+                Same_CalibButt: ref DoCalib2_button,
+                Opos_CalibButt: ref DoCalib1_button,
+                Same_SaveCalib: ref SaveCalib2_button,
+                Opos_SaveCalib: ref SaveCalib1_button
+            );
+
+
 
         }
 
