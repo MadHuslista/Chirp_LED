@@ -88,7 +88,7 @@ namespace Interface_Prototype
         }
 
 
-        //General Funcions
+        // ####################################### General Use Funcions
         private void DoCalib(
             //Channels Values
             string[] channels,
@@ -104,7 +104,7 @@ namespace Interface_Prototype
             Action<IAsyncResult> Callback_Function,
             int calib,
 
-            //Array Management
+            //Data Management
             ref IEnumerator Ref_Enum,
             ref List<List<double>> Calib_Data, 
 
@@ -200,6 +200,115 @@ namespace Interface_Prototype
 
         }
 
+        private void CalibInputRead(
+
+            //DAC Connection Ojects
+            ref AnalogSingleChannelReader reader,
+            ref AnalogSingleChannelWriter writer,
+            ref Task inputTask,
+            ref AsyncCallback InputCallback,
+            ref bool taskRunning,
+            int calib,
+
+            //Data Management
+            ref IEnumerator Ref_Enum,
+            ref List<List<double>> Calib_Data,
+            ref double[][] Calib_Array,
+            IAsyncResult ar, 
+
+            //Form Management
+            ref ProgressBar Progress_Bar,
+            ref System.Windows.Forms.DataVisualization.Charting.Chart Chart,
+            ref Button calibA_button,
+            ref Button calibB_button,
+            ref Button saveA_button,
+            ref Button saveB_button
+            )
+        {
+            try
+            {
+                double[] data = reader.EndReadMultiSample(ar);
+                double data_mean = data.Sum() / data.Length;
+
+                Calib_Data[0].Add(Convert.ToDouble(Ref_Enum.Current));  //guardo el Valor de Referencia 
+                Calib_Data[1].Add(data_mean);                           //Guardo el correspondiente medido 
+
+                if ((Ref_Enum.MoveNext()) && (taskRunning == true))
+                {
+                    writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current));
+                    reader.BeginReadMultiSample(samples_per_step, InputCallback, inputTask);
+                    Progress_Bar.Value += 1; 
+                }
+                else if (taskRunning == false)
+                {
+                    StopTask(calib);
+                    Ref_Enum.Reset();
+                    Progress_Bar.Value = 0;
+                    calibA_button.Enabled = true;
+                    calibB_button.Enabled = true;
+                }
+                else
+                {
+                    StopTask(calib);
+
+                    Calib_Array[0] = Calib_Data[0].ToArray();
+                    Calib_Array[1] = Calib_Data[1].ToArray();
+
+                    Array.Sort(Calib_Array[1], Calib_Array[0]);
+                    Ref_Enum.Reset();
+                    Progress_Bar.Value += 5;
+
+                    Chart.Series[0].Points.Clear();
+                    Chart.Series[0].Points.DataBindXY(Calib_Array[0], Calib_Array[1]);
+
+                    Progress_Bar.Value += 5;
+                    calibA_button.Enabled = true;
+                    calibB_button.Enabled = true;
+                    saveA_button.Enabled = true;
+                    saveB_button.Enabled = true;
+                }                
+            }
+            catch (Exception ex)
+            {
+                StopTask(calib);
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SaveCalib(ref System.Windows.Forms.SaveFileDialog SaveDialog, ref double[][] Calib_Array, ref ProgressBar Progress_Bar)
+        {
+            SaveDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            SaveDialog.RestoreDirectory = true;
+            SaveDialog.Title = "Browse Text Files";
+            SaveDialog.DefaultExt = "txt";
+            SaveDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            SaveDialog.FilterIndex = 2;
+            SaveDialog.CheckFileExists = true;
+            SaveDialog.CheckPathExists = true;
+
+            if (!(Calib_Array[0] != null)) //Está en doble negativo, porque si el arreglo aún no está instanciado; eso no significa que sea == null. 
+            {
+                MessageBox.Show("El Perfil de Calibración no tiene datos");
+            }
+            else if (SaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                String PATH = SaveDialog.FileName;
+                var calib_sb = new StringBuilder();
+
+                for (int i = 0; i < Calib_Array[0].Length; i++)
+                {
+                    calib_sb.Append(Calib_Array[0][i].ToString());
+                    calib_sb.Append(",");
+                    calib_sb.AppendLine(Calib_Array[1][i].ToString());
+                }
+
+                File.WriteAllText(PATH, calib_sb.ToString());
+                Progress_Bar.Value = 0;
+            }
+
+
+        }
+
         private void StopTask(int calib)
         {
             if (calib == 1)
@@ -220,38 +329,9 @@ namespace Interface_Prototype
             }
         }
 
-        private void SaveCalib(ref System.Windows.Forms.SaveFileDialog SaveDialog, ref double[][] Calib_Array, ref ProgressBar Progress_Bar)
-        {
-            SaveDialog.InitialDirectory = Directory.GetCurrentDirectory();
-            SaveDialog.RestoreDirectory = true;
-            SaveDialog.Title = "Browse Text Files";
-            SaveDialog.DefaultExt = "txt";
-            SaveDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            SaveDialog.FilterIndex = 2;
-            SaveDialog.CheckFileExists = true;
-            SaveDialog.CheckPathExists = true;
+        // ####################################### Particular Use Funcions
 
 
-            if (SaveDialog.ShowDialog() == DialogResult.OK)
-            {
-                String PATH = SaveDialog.FileName;
-                var calib_sb = new StringBuilder();
-
-                for (int i = 0; i < Calib_Array[0].Length; i++)
-                {
-                    calib_sb.Append(Calib_Array[0][i].ToString());
-                    calib_sb.Append(",");
-                    calib_sb.AppendLine(Calib_Array[1][i].ToString());
-                }
-
-                File.WriteAllText(PATH, calib_sb.ToString());
-                Progress_Bar.Value = 0;
-            }
-
-
-        }
-
-        //Particular Funcions
         private void DoCalib1_button_Click(object sender, EventArgs e)
         {
             String In_Ch = Calib1In_comboBox.Text;
@@ -271,7 +351,7 @@ namespace Interface_Prototype
                 writer: ref Calib1_writer,
                 reader: ref Calib1_reader,
                 InputCallback: ref Calib1_InputCallback,
-                Callback_Function: Calib1_InputRead,
+                Callback_Function: Calib1_Temp_InputRead,
                 calib: 1,
 
                 //Array Management
@@ -285,7 +365,7 @@ namespace Interface_Prototype
                 Same_SaveCalib: ref SaveCalib1_button,
                 Opos_SaveCalib: ref SaveCalib2_button
             );
-            
+
         }
 
         private void DoCalib2_button_Click(object sender, EventArgs e)
@@ -307,7 +387,7 @@ namespace Interface_Prototype
                 writer: ref Calib2_writer,
                 reader: ref Calib2_reader,
                 InputCallback: ref Calib2_InputCallback,
-                Callback_Function: Calib2_InputRead,
+                Callback_Function: Calib2_Temp_InputRead,
                 calib: 2,
 
                 //Array Management
@@ -326,171 +406,63 @@ namespace Interface_Prototype
 
         }
 
-        
-        private void Calib1_InputRead(IAsyncResult ar)
+
+        private void Calib1_Temp_InputRead(IAsyncResult Calib1_AsyncResult)
         {
-            int calib = 1;
-            ref AnalogSingleChannelReader reader = ref Calib1_reader;
-            ref AnalogSingleChannelWriter writer = ref Calib1_writer;
-            ref Task inputTask = ref Calib1_inputTask;
+            CalibInputRead(
 
-            ref IEnumerator Ref_Enum = ref Calib1_RefEnum;
-            ref List<List<double>> Calib_Data = ref Calib1_Data;
-            ref double[][] Calib_Array = ref Calib1_Array;
-            ref ProgressBar Progress_Bar = ref Calib1_progressBar;
-            ref AsyncCallback InputCallback = ref Calib1_InputCallback;
-            ref bool taskRunning = ref Calib1_taskRunning;
-            ref System.Windows.Forms.DataVisualization.Charting.Chart  Chart = ref Calib1_chart;
+                //DAC Connection Ojects
+                reader          : ref Calib1_reader,
+                writer          : ref Calib1_writer, 
+                inputTask       : ref Calib1_inputTask,
+                InputCallback   : ref Calib1_InputCallback,
+                taskRunning     : ref Calib1_taskRunning,
+                calib           : 1,
 
-            //Console.WriteLine(object.ReferenceEquals(Calib_Data, Calib1_Data));
-            //Console.WriteLine("PB: {0}", object.ReferenceEquals(Progress_Bar, Calib1_progressBar));
+                //Data Management
+                Ref_Enum        : ref Calib1_RefEnum,
+                Calib_Data      : ref Calib1_Data,
+                Calib_Array     : ref Calib1_Array,
+                ar              : Calib1_AsyncResult,
 
-            try
-            {
-                double[] data = reader.EndReadMultiSample(ar);
-                double data_mean = data.Sum() / data.Length;
-
-                //Console.WriteLine(Calib_Data.Count);
-
-                Calib_Data[0].Add(Convert.ToDouble(Ref_Enum.Current));   //Guardo el Valor de Referencia
-                //Console.WriteLine("ad1.5");
-                Calib_Data[1].Add(data_mean);                                  //Guardo el correspondiente medido
-
-                //Console.WriteLine("ad2");
-
-                //Console.WriteLine(object.ReferenceEquals(Calib1_Data, Calib_Data));
-                if ((Ref_Enum.MoveNext()) && (taskRunning == true))
-                {
-                    //Console.WriteLine("ad3");
-                    writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current));
-                    reader.BeginReadMultiSample(samples_per_step, InputCallback, inputTask);
-                    Progress_Bar.Value += 1;
-                }
-                else if (taskRunning == false)
-                {
-                    StopTask(calib);
-                    Ref_Enum.Reset();
-                    Progress_Bar.Value = 0;
-                    DoCalib1_button.Enabled = true;
-                    DoCalib2_button.Enabled = true;
-                }
-                else 
-                {
-                    StopTask(calib);
-                    
-                    Calib_Array[0] = Calib_Data[0].ToArray();
-                    Calib_Array[1] = Calib_Data[1].ToArray();
-
-                    Array.Sort(Calib_Array[1], Calib_Array[0]);
-                    Ref_Enum.Reset();
-                    Progress_Bar.Value += 5;
-
-                    Chart.Series[0].Points.Clear();
-                    Chart.Series[0].Points.DataBindXY(Calib_Array[0], Calib_Array[1]);
-                    //Chart.SuppressExceptions = true;
-                    //Chart.ChartAreas[0].AxisX.IsLogarithmic = true;
-                    //Chart.ChartAreas[0].AxisY.IsLogarithmic = true;
-
-
-                    Progress_Bar.Value += 5;
-                    DoCalib1_button.Enabled = true;
-                    DoCalib2_button.Enabled = true;
-                    SaveCalib1_button.Enabled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                StopTask(calib);
-                MessageBox.Show(ex.Message);
-            }
-
-
-
+                //Form Management
+                Progress_Bar    : ref Calib1_progressBar,
+                Chart           : ref Calib1_chart,
+                calibA_button   : ref DoCalib1_button,
+                calibB_button   : ref DoCalib2_button,
+                saveA_button    : ref SaveCalib1_button,
+                saveB_button    : ref SaveCalib2_button
+                );
         }
 
-        private void Calib2_InputRead(IAsyncResult ar)
+        private void Calib2_Temp_InputRead(IAsyncResult Calib2_AsyncResult)
         {
-            int calib = 2;
-            ref AnalogSingleChannelReader reader = ref Calib2_reader;
-            ref AnalogSingleChannelWriter writer = ref Calib2_writer;
-            ref Task inputTask = ref Calib2_inputTask;
+            CalibInputRead(
 
-            ref IEnumerator Ref_Enum = ref Calib2_RefEnum;
-            ref List<List<double>> Calib_Data = ref Calib2_Data;
-            ref double[][] Calib_Array = ref Calib2_Array;
-            ref ProgressBar Progress_Bar = ref Calib2_progressBar;
-            ref AsyncCallback InputCallback = ref Calib2_InputCallback;
-            ref bool taskRunning = ref Calib2_taskRunning;
-            ref System.Windows.Forms.DataVisualization.Charting.Chart Chart = ref Calib2_chart;
+                //DAC Connection Ojects
+                reader: ref Calib2_reader,
+                writer: ref Calib2_writer,
+                inputTask: ref Calib2_inputTask,
+                InputCallback: ref Calib2_InputCallback,
+                taskRunning: ref Calib2_taskRunning,
+                calib: 2,
 
-            //Console.WriteLine(object.ReferenceEquals(Calib_Data, Calib1_Data));
-            //Console.WriteLine("PB: {0}", object.ReferenceEquals(Progress_Bar, Calib1_progressBar));
+                //Data Management
+                Ref_Enum: ref Calib2_RefEnum,
+                Calib_Data: ref Calib2_Data,
+                Calib_Array: ref Calib2_Array,
+                ar: Calib2_AsyncResult,
 
-            try
-            {
-                double[] data = reader.EndReadMultiSample(ar);
-                double data_mean = data.Sum() / data.Length;
-
-                //Console.WriteLine(Calib_Data.Count);
-
-                Calib_Data[0].Add(Convert.ToDouble(Ref_Enum.Current));   //Guardo el Valor de Referencia
-                //Console.WriteLine("ad1.5");
-                Calib_Data[1].Add(data_mean);                                  //Guardo el correspondiente medido
-
-                //Console.WriteLine("ad2");
-
-                //Console.WriteLine(object.ReferenceEquals(Calib1_Data, Calib_Data));
-                if ((Ref_Enum.MoveNext()) && (taskRunning == true))
-                {
-                    //Console.WriteLine("ad3");
-                    writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current));
-                    reader.BeginReadMultiSample(samples_per_step, InputCallback, inputTask);
-                    Progress_Bar.Value += 1;
-                }
-                else if (taskRunning == false)
-                {
-                    StopTask(calib);
-                    Ref_Enum.Reset();
-                    Progress_Bar.Value = 0;
-                    DoCalib1_button.Enabled = true;
-                    DoCalib2_button.Enabled = true;
-                }
-                else
-                {
-                    StopTask(calib);
-
-                    Calib_Array[0] = Calib_Data[0].ToArray();
-                    Calib_Array[1] = Calib_Data[1].ToArray();
-
-                    Array.Sort(Calib_Array[1], Calib_Array[0]);
-                    Ref_Enum.Reset();
-                    Progress_Bar.Value += 5;
-
-                    Chart.Series[0].Points.Clear();
-                    Chart.Series[0].Points.DataBindXY(Calib_Array[0], Calib_Array[1]);
-                    //Chart.SuppressExceptions = true;
-                    //Chart.ChartAreas[0].AxisX.IsLogarithmic = true;
-                    //Chart.ChartAreas[0].AxisY.IsLogarithmic = true;
-
-
-                    Progress_Bar.Value += 5;
-                    DoCalib1_button.Enabled = true;
-                    DoCalib2_button.Enabled = true;
-                    SaveCalib2_button.Enabled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                StopTask(calib);
-                MessageBox.Show(ex.Message);
-            }
-
-
-
+                //Form Management
+                Progress_Bar: ref Calib2_progressBar,
+                Chart: ref Calib2_chart,
+                calibA_button: ref DoCalib2_button,
+                calibB_button: ref DoCalib1_button,
+                saveA_button: ref SaveCalib2_button,
+                saveB_button: ref SaveCalib1_button
+                );
         }
-
-
-
+                
 
         private void SaveCalib1_button_Click(object sender, EventArgs e)
         {
