@@ -65,16 +65,15 @@ namespace Interface_Prototype
             };
 
 
-
-
             Form_Calib Calib_Form = new Form_Calib(channels , values);
 
-            //Form2 Calib_Form = new Form2();
+            object a = Calib_Form.ShowDialog();
+            Console.WriteLine(a);
+        }
 
-            //Calib_Form.Calib1In_comboBox.Items
+        private void LoadCalib_button_Click(object sender, EventArgs e)
+        {
 
-
-            Calib_Form.ShowDialog(); 
         }
     }
 }

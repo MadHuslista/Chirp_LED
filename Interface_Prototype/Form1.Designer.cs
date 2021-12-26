@@ -835,6 +835,7 @@ namespace Interface_Prototype
             this.LoadCalib_button.TabIndex = 1;
             this.LoadCalib_button.Text = "Load Calibration Profile File";
             this.LoadCalib_button.UseVisualStyleBackColor = true;
+            this.LoadCalib_button.Click += new System.EventHandler(this.LoadCalib_button_Click);
             // 
             // groupBox5
             // 
