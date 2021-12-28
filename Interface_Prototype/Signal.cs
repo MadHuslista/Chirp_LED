@@ -12,14 +12,16 @@ namespace Interface_Prototype
 {
     public partial class Form1 : Form
     {
-        List<double> OutCh1_Signal = new List<double>();
+        List<double> OutCh1_Signal = new List<double>(); 
         List<double> OutCh1_Time = new List<double>();
-        List<int> OutCh1_SegmentPos = new List<int>();
+        List<int> OutCh1_SegmentPos = new List<int>(); //Lista para el registro de las posiciones iniciales de cada segmento de la señal. 
 
         List<double> OutCh2_Signal = new List<double>();
         List<double> OutCh2_Time = new List<double>();
         List<int> OutCh2_SegmentPos = new List<int>();
 
+
+        // ######### FUNCIONES POR CANAL
         //Output Channel 1
         private void OutCh1_LoadSig_button_Click(object sender, EventArgs e)
         {
@@ -56,7 +58,7 @@ namespace Interface_Prototype
 
             SegmentPos.Add(Signal.Count);
             
-            //Console.WriteLine("AddCurr{0}",Signal.Count);
+            
 
 
 
@@ -186,7 +188,7 @@ namespace Interface_Prototype
             if (OutCh1_Write_button.Enabled == true) { OutChBoth_Write_button.Enabled = true; }
 
             SegmentPos.Add(Signal.Count);
-            //Console.WriteLine("AddCurr{0}",Signal.Count);
+            
 
 
 
@@ -305,12 +307,12 @@ namespace Interface_Prototype
 
             if (OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                string filename = OpenDialog.FileName; //Recortar
-                int pos = filename.Length - 15;
-                sig_lab.Text = filename.Substring(pos);
+                string filename = OpenDialog.FileName; 
+                int pos = filename.Length - 15; 
+                sig_lab.Text = filename.Substring(pos); //Recorta el string para que no altere el ancho de la columna de la interfaz
 
                 double last_time = 0;
-                if (Time.Count > 0) {last_time = Time[Time.Count - 1]; }
+                if (Time.Count > 0) {last_time = Time[Time.Count - 1]; } //Captura el último instante del arreglo ya existente, para adicionar la nueva señal posterior a ello
                 
 
                 try
@@ -350,7 +352,7 @@ namespace Interface_Prototype
             SaveDialog.CheckFileExists = false;
             SaveDialog.CheckPathExists = false;
 
-            if (Signal.Count == 0) //Está en doble negativo, porque si el arreglo aún no está instanciado; eso no significa que sea == null. 
+            if (Signal.Count == 0) 
             {
                 MessageBox.Show("La Señal no tiene datos");
             }

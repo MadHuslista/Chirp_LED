@@ -9,6 +9,12 @@ using System.Windows.Forms;
 using NationalInstruments.DAQmx;
 
 
+/*
+ * Estructura General del Código: 
+ * 
+ * Form1.cs se encarga del manejo general de la Interfaz (
+ */
+
 namespace Interface_Prototype
 {
     public partial class Form1 : Form
@@ -184,6 +190,7 @@ namespace Interface_Prototype
         private void NewCalib_button_Click(object sender, EventArgs e)
         {
 
+            //Empaquetamiento de Informmación para el Form_Calib
             string [] channels = 
             {
                 InCh1_comboBox.Text,
@@ -218,8 +225,10 @@ namespace Interface_Prototype
 
             Form_Calib Calib_Form = new Form_Calib(channels , values);
 
+            // Incorporación de la Respuesta del Form_Calib. 
             if( Calib_Form.ShowDialog() == DialogResult.OK)
             {
+                //Incorporación de las Calibraciones
                 if (Calib_Form.Calib1_state == "completed") 
                 { 
                     Calib1_Array = Calib_Form.Calib1_Array;
@@ -232,7 +241,7 @@ namespace Interface_Prototype
                     OutCh2_MaxLabel.Text = Convert.ToString(Math.Round(Calib2_Array[1].Max(), 4));
                 }
                 
-
+                //Actualización de la Etiqueta 'Missing Calibration'
                 if ( (Calib_Form.Calib1_Association != "") ^ (Calib_Form.Calib2_Association != "")  )
                 {
                     CalibLoaded_label.Text = "P: " + Calib_Form.Calib1_Association + Calib_Form.Calib2_Association;
@@ -248,8 +257,6 @@ namespace Interface_Prototype
             {
                 Calib_Form.Calib1_taskRunning = false;
                 Calib_Form.Calib2_taskRunning = false;
-                //if (Calib_Form.Calib1_taskRunning) { Calib_Form.StopTask(1); }
-                //if (Calib_Form.Calib2_taskRunning) { Calib_Form.StopTask(2); }
 
             }
             
@@ -257,31 +264,27 @@ namespace Interface_Prototype
 
         private void UpdateChart( List<double> time, List<double> data, ref System.Windows.Forms.DataVisualization.Charting.Chart Chart )
         {
-            //Console.WriteLine("{0} {1}", time.Count/Chart.Width, Chart.Width);
+            
 
+            //Cálculo del Intervalo de muestreo para visualización. 
             int down_size = Chart.Width;
             int step = time.Count / (Chart.Width*15);
-
             step = step + Convert.ToInt32((step < 1));
 
-            //Console.WriteLine("ds:{0} st:{1}", down_size, step);
 
-            //double[] downsampl_time = new double[down_size];
-            //double [] downsampl_data = new double[down_size];
+            //Downsampling            
             List<double> downsampl_time = new List<double>();
             List<double> downsampl_data = new List<double>();
 
-            Console.WriteLine("t.co{0} step{1}", time.Count, step);
 
             for (int i = 0; i < time.Count; i+= step)
             {             
-                //downsampl_data[k] = data[i];
-                //downsampl_time[k] = time[i];
                 downsampl_time.Add(time[i]);
                 downsampl_data.Add(data[i]); 
             }
 
-            //Console.WriteLine("{0} {1}", downsampl_data.Count, downsampl_time.Count);
+
+            //Visualización
 
 
             Chart.Series[0].Points.Clear();
@@ -297,7 +300,7 @@ namespace Interface_Prototype
             taskrunning = true;
 
 
-
+            //Conversión del valor de ideal, al valor real según calibración. 
 
             double[,] data_array;
 
@@ -322,10 +325,12 @@ namespace Interface_Prototype
                 }
             }
 
+            //Interacción con el DAC
             
             try
             {
 
+                //Adición de los Canales
                 DAC_Task = new Task();
 
                 for (int i = 0; i < ao_channel.Length; i++)
@@ -341,7 +346,7 @@ namespace Interface_Prototype
                     Console.WriteLine(b);
 
                 }
-
+                //Configuración de la frecuencia de Sampleo. 
                 DAC_Task.Timing.ConfigureSampleClock(
                     "",
                     Convert.ToDouble(hz[0]),
@@ -354,10 +359,8 @@ namespace Interface_Prototype
 
                 AnalogMultiChannelWriter writer = new AnalogMultiChannelWriter(DAC_Task.Stream);
 
-
-
                 DAC_Task.Done += new TaskDoneEventHandler(DAC_Task_Done);
-                writer.WriteMultiSample(false, data_array);
+                writer.WriteMultiSample(false, data_array); // Arreglo 2D. Primera dimension corresponde a cada canal; segunda dimensión a la data. 
                 DAC_Task.Start();
                     
 
@@ -400,31 +403,28 @@ namespace Interface_Prototype
 
         private double Transform_Func(double data, double [][] Calib)
         {
-            int Indx = Array.BinarySearch(Calib[1], data); //Busco la posición de la data que quiero conseguir, en las mediciones. 
+            int Indx = Array.BinarySearch(Calib[1], data); //Busqueda del índice de la data que quiero conseguir en las mediciones. 
 
-            Console.WriteLine(Indx);
-            if (Indx >= 0)
+            if (Indx >= 0)  //Si la encuentra retorna el valor correspondiente en el arreglo de referencia. 
             {
                 double ret_val = Calib[0][Indx];
-                //Console.WriteLine("{0},{1}",data, ret_val);
                 return ret_val;
 
             }
             else
             {
+                // Si no encuentra el valor preciso, el método "Array Binary Search" entrega un valor negativo, correspondiente al "bitwise complement" del valor inmediatamente mayor a la referencia. 
                 int I = ~Indx;
-                Console.WriteLine(I);
-
+                
+                //Con ello retorna el valor más cercano 
                 if ((Calib[1][I] - data) < (data - Calib[1][I-1]))
                 {
-                    double ret_val = Calib[0][I];
-                    //Console.WriteLine("{0},{1}", data, ret_val);
+                    double ret_val = Calib[0][I];                
                     return ret_val;
                 }
                 else
                 {
-                    double ret_val = Calib[0][I-1];
-                    //Console.WriteLine("{0},{1}", data, ret_val);
+                    double ret_val = Calib[0][I-1];                    
                     return ret_val;
                 }
                 

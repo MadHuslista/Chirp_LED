@@ -27,12 +27,16 @@ namespace Interface_Prototype
         private double start_val, stop_val, step;
         private int samples_per_step;
 
-        //Calibration Arrays
+        //Calibration Arrays: 
+            //Para la construcción inicial del vector de referencia. 
+        private IEnumerator Calib1_RefEnum, Calib2_RefEnum;
+            //Listas para construcción punto a punto
         private List<List<double>> Calib1_Data = new List<List<double>>();
         private List<List<double>> Calib2_Data = new List<List<double>>();
+            //Arreglos para su envío al Formulario General
         public double[][] Calib1_Array = new double[2][];
         public double[][] Calib2_Array = new double[2][];
-        private IEnumerator Calib1_RefEnum, Calib2_RefEnum;
+        
 
         //DAQ Objects
         private Task Calib1_inputTask, Calib1_outputTask;
@@ -43,7 +47,7 @@ namespace Interface_Prototype
 
         private AsyncCallback Calib1_InputCallback, Calib2_InputCallback;
 
-        //States
+        //Estados para la comunicación con el formulario general. 
         public bool Calib1_taskRunning = false;
         public bool Calib2_taskRunning = false;
         public string Calib1_state = "empty";
@@ -64,8 +68,7 @@ namespace Interface_Prototype
                 Ch_Dict.Add(channels[i], new Dictionary<string, double>()); //Cojo el canal
                 for (int j = 0; j < values[i].Length; j++)
                 {
-                    Ch_Dict[channels[i]].Add(val_keys[j], values[i][j]);    //Agrego cada valor de los valores según su key correspondiente. 
-                    //Console.WriteLine("{0}, {1}, {2}", channels[i], val_keys[j], values[i][j]);   //Revisión de Correspondencia 
+                    Ch_Dict[channels[i]].Add(val_keys[j], values[i][j]);    //Agrego cada valor de los valores según su key correspondiente.                     
                 }
             }
             
@@ -130,9 +133,6 @@ namespace Interface_Prototype
             string input_channel = channels[0];
             string output_channel = channels[1];
 
-            //double[] input_values = values[0];
-            //double[] output_values = values[1];
-
             //Creación del Arreglo de Calibración 
             double[] Ref_Array = Generate.LinearRange(start_val, step, stop_val);
             Ref_Enum = Ref_Array.GetEnumerator();
@@ -142,7 +142,7 @@ namespace Interface_Prototype
             //Bloqueo del botón de aceptación durante la calibración
             DoneCalib_button.Enabled = false; 
 
-            //Console.WriteLine("Ref_Enum: {0}", object.ReferenceEquals(Ref_Enum, Calib1_RefEnum));
+            
             try
             {
                 //Creacion de los Task
@@ -173,35 +173,32 @@ namespace Interface_Prototype
                     output_values["Max"],
                     AOVoltageUnits.Volts
                     );
-
+               
                 inputTask.Control(TaskAction.Verify);
                 outputTask.Control(TaskAction.Verify);
-
 
 
                 writer = new AnalogSingleChannelWriter(outputTask.Stream);
                 reader = new AnalogSingleChannelReader(inputTask.Stream);
 
                 Ref_Enum.MoveNext(); //Inicio el numerador en el primer elemento
-                Calib_Data[0].Clear();
+                Calib_Data[0].Clear(); 
                 Calib_Data[1].Clear();
                 Calib_state = "empty";
 
-                writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current)); //Escribe el primero dato. 
+                writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current)); //Escribe el primer dato. 
 
                 InputCallback = new AsyncCallback(Callback_Function);                   //Asocia la función CallBack definiendo el delegado (el AsyncCallback es el delegado) 
                 reader.SynchronizeCallbacks = true;                                     
-                reader.BeginReadMultiSample(samples_per_step, InputCallback, inputTask);    //Se la entrega al reader. 
+                reader.BeginReadMultiSample(samples_per_step, InputCallback, inputTask);    //Se la entrega al reader asincrónico. Está configurado para que por cada valor del vector de referencia, capture 20 muestras y retorne a la función asociada al delegado InputCallback
 
-                //Se aísla la ejecución de la calibración. 
+                //Se aísla la ejecución de la calibración bloqueando el resto de botones
                 Same_CalibButt.Enabled = false;
                 Opos_CalibButt.Enabled = false;
                 Same_SaveCalib.Enabled = false;
                 Opos_SaveCalib.Enabled = false;
                 Opos_StopCalib.Enabled = false;
 
-                //Console.WriteLine(object.ReferenceEquals(Ref_Enum, Calib1_RefEnum));
-                //Console.WriteLine(object.ReferenceEquals(InputCallback, Calib1_InputCallback));
 
             }
 
@@ -243,15 +240,21 @@ namespace Interface_Prototype
         {
             try
             {
+                // Recoje el resultado del lector asincrónico
                 double[] data = reader.EndReadMultiSample(ar);
+
+                // Obtiene el valor medido como el promedio de las muestras capturadas
                 double data_mean = data.Sum() / data.Length;
 
-                Calib_Data[0].Add(Convert.ToDouble(Ref_Enum.Current));  //guardo el Valor de Referencia 
+                Calib_Data[0].Add(Convert.ToDouble(Ref_Enum.Current));  //Guardo el Valor de Referencia 
                 Calib_Data[1].Add(data_mean);                           //Guardo el correspondiente medido 
 
+                //Se controla la repetición del loop con el enumerador. Si hay un siguiente valor, .MoveNext() retorna verdadero, y lo opuesto si es que terminó. 
                 if ((Ref_Enum.MoveNext()) && (taskRunning == true))
                 {
+                    //Escribe la siguiente muestra
                     writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current));
+                    //Re-llama al lector asincrónico. 
                     reader.BeginReadMultiSample(samples_per_step, InputCallback, inputTask);
                     Progress_Bar.Value += 1; 
                 }
@@ -268,6 +271,8 @@ namespace Interface_Prototype
                 }
                 else
                 {
+                    //Fin del Enumerador. 
+                   
                     StopTask(calib);
 
                     Calib_Array[0] = Calib_Data[0].ToArray();   //Array de Referencia
@@ -275,7 +280,7 @@ namespace Interface_Prototype
 
                     Calib_state = "completed";
 
-                    Array.Sort(Calib_Array[1], Calib_Array[0]); // Se utilizan las mediciones como las Keys (porque con la BinarySearch quiero buscar a qué ref corresponde la Keyque quiero output)
+                    Array.Sort(Calib_Array[1], Calib_Array[0]); // Se utilizan las mediciones como las Keys (porque con la BinarySearch quiero buscar a qué ref corresponde la Key que quiero de output)
                     Ref_Enum.Reset();
                     Progress_Bar.Value += 5;
 
@@ -486,7 +491,7 @@ namespace Interface_Prototype
             CreateCalib1_button.Enabled = false;
             Calib2_taskRunning = true;
             Calib2_Association = "Out" + (Convert.ToString(Calib2Out_comboBox.SelectedIndex + 1)) + char.ConvertFromUtf32(10142) + "In" + (Convert.ToString(Calib2In_comboBox.SelectedIndex + 1));
-            Console.WriteLine(Calib2_Association);
+            
 
             ConfigCalib(
                 //Channels Values
