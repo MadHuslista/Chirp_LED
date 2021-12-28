@@ -435,7 +435,7 @@ namespace Interface_Prototype
                 ref Calib2_openFileDialog,
                 ref Calib2_Array,
                 ref Calib2_chart,
-                ref Calib1_state
+                ref Calib2_state
                 );
         }
 

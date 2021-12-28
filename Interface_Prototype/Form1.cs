@@ -128,8 +128,31 @@ namespace Interface_Prototype
             };
 
             List<List<double>> data = new List<List<double>>();
+
+            List<double> extra = new List<double>();
+            if (OutCh1_Signal.Count > OutCh2_Signal.Count)
+            {
+                int diff = OutCh1_Signal.Count - OutCh2_Signal.Count;
+
+                extra.AddRange(OutCh2_Signal);
+                for (int i = 0; i < diff; i++) { extra.Add(0.0); }  
+            }
+            else if (OutCh2_Signal.Count > OutCh1_Signal.Count)
+            {
+                int diff = OutCh2_Signal.Count - OutCh1_Signal.Count;
+
+                extra.AddRange(OutCh1_Signal);
+                for (int i = 0; i < diff; i++) { extra.Add(0.0); }
+            }
+            else
+            {
+                extra.AddRange(OutCh2_Signal);
+            }
+
+
+
             data.Add(OutCh1_Signal);
-            data.Add(OutCh2_Signal);
+            data.Add(extra);
 
             List<double[][]> Calib_Arr = new List<double[][]>();
             Calib_Arr.Add(Calib1_Array);
