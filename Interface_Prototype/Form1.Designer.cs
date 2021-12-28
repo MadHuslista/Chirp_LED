@@ -178,9 +178,9 @@ namespace Interface_Prototype
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.OutCh1_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.OutChBoth_Write_button = new System.Windows.Forms.Button();
+            this.OutCh1_Write_button = new System.Windows.Forms.Button();
+            this.OutCh2_Write_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -2516,9 +2516,9 @@ namespace Interface_Prototype
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel10.Controls.Add(this.button4, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.button3, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.button5, 1, 0);
+            this.tableLayoutPanel10.Controls.Add(this.OutChBoth_Write_button, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.OutCh1_Write_button, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.OutCh2_Write_button, 1, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 581);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -2527,35 +2527,39 @@ namespace Interface_Prototype
             this.tableLayoutPanel10.Size = new System.Drawing.Size(618, 52);
             this.tableLayoutPanel10.TabIndex = 2;
             // 
-            // button4
+            // OutChBoth_Write_button
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(209, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 46);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Write Both Channels";
-            this.button4.UseVisualStyleBackColor = true;
+            this.OutChBoth_Write_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutChBoth_Write_button.Enabled = false;
+            this.OutChBoth_Write_button.Location = new System.Drawing.Point(209, 3);
+            this.OutChBoth_Write_button.Name = "OutChBoth_Write_button";
+            this.OutChBoth_Write_button.Size = new System.Drawing.Size(200, 46);
+            this.OutChBoth_Write_button.TabIndex = 3;
+            this.OutChBoth_Write_button.Text = "Write Both Channels";
+            this.OutChBoth_Write_button.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // OutCh1_Write_button
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 46);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Write Channel 1";
-            this.button3.UseVisualStyleBackColor = true;
+            this.OutCh1_Write_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutCh1_Write_button.Enabled = false;
+            this.OutCh1_Write_button.Location = new System.Drawing.Point(3, 3);
+            this.OutCh1_Write_button.Name = "OutCh1_Write_button";
+            this.OutCh1_Write_button.Size = new System.Drawing.Size(200, 46);
+            this.OutCh1_Write_button.TabIndex = 2;
+            this.OutCh1_Write_button.Text = "Write Channel 1";
+            this.OutCh1_Write_button.UseVisualStyleBackColor = true;
+            this.OutCh1_Write_button.Click += new System.EventHandler(this.OutCh1_Write_button_Click);
             // 
-            // button5
+            // OutCh2_Write_button
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.Location = new System.Drawing.Point(415, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(200, 46);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Write Channel 2";
-            this.button5.UseVisualStyleBackColor = true;
+            this.OutCh2_Write_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutCh2_Write_button.Enabled = false;
+            this.OutCh2_Write_button.Location = new System.Drawing.Point(415, 3);
+            this.OutCh2_Write_button.Name = "OutCh2_Write_button";
+            this.OutCh2_Write_button.Size = new System.Drawing.Size(200, 46);
+            this.OutCh2_Write_button.TabIndex = 1;
+            this.OutCh2_Write_button.Text = "Write Channel 2";
+            this.OutCh2_Write_button.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -2673,9 +2677,9 @@ namespace Interface_Prototype
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button OutChBoth_Write_button;
+        private System.Windows.Forms.Button OutCh1_Write_button;
+        private System.Windows.Forms.Button OutCh2_Write_button;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Button button8;

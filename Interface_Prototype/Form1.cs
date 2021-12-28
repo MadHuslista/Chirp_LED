@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NationalInstruments.DAQmx;
 
@@ -17,6 +16,11 @@ namespace Interface_Prototype
         //Calibration Arrays
         private double[][] Calib1_Array = new double[2][];
         private double[][] Calib2_Array = new double[2][];
+
+        private bool OutCh1_taskrunning = false;
+        private bool OutCh2_taskrunning = false;
+        private Task DAC_Task;
+
 
         public Form1()
         {
@@ -32,7 +36,36 @@ namespace Interface_Prototype
             if (OutCh2_comboBox.Items.Count > 0) { OutCh2_comboBox.SelectedIndex = 1; }
             if (InCh1_comboBox.Items.Count > 0) { InCh1_comboBox.SelectedIndex = 7; } 
             if (InCh2_comboBox.Items.Count > 0) { InCh2_comboBox.SelectedIndex = 1; }//change to 0 in production
+
+
         }
+
+        // ####################################### Particular Use Funcions
+
+        private void OutCh1_Write_button_Click(object sender, EventArgs e)
+        {
+            string[] channels = { OutCh1_comboBox.Text };
+            double[] max_val = { Convert.ToDouble(OutCh1Max_numericUpDown.Value) };
+            double[] min_val = { Convert.ToDouble(OutCh1Min_numericUpDown.Value) };
+            double[] hz = { Convert.ToDouble(OutCh1Hz_numericUpDown.Value) };
+
+            List<List<double>> data = new List<List<double>>();
+            data.Add(OutCh1_Signal);
+
+
+            Send_Signal(
+                data: data,
+                Calib_Profile: Calib1_Array,
+                taskrunning: ref OutCh1_taskrunning,
+                ao_channel: channels,
+                max_val: max_val,
+                min_val: min_val,
+                hz: hz
+                );
+        }
+
+        // ####################################### General Use Funcions
+
 
         private void NewCalib_button_Click(object sender, EventArgs e)
         {
@@ -139,5 +172,150 @@ namespace Interface_Prototype
             Chart.Series[0].Points.DataBindXY(downsampl_time, downsampl_data);
         }
 
+        private void Send_Signal(List<List<double>> data, double [][] Calib_Profile, ref bool taskrunning, string[] ao_channel, double[] max_val, double[] min_val, double[] hz)
+        {
+            OutCh1_Write_button.Enabled = false;
+            OutCh2_Write_button.Enabled = false;
+            OutChBoth_Write_button.Enabled = false;
+
+            taskrunning = true;
+
+
+
+
+            double[,] data_array;
+
+            if (data.Count == 2)
+            {
+                data_array = new double[2, data[0].Count];
+
+                for (int i = 0; i < data[0].Count; i++)
+                {
+
+                    data_array[0, i] = Transform_Func(data[0][i], Calib_Profile);
+                    data_array[1, i] = Transform_Func(data[1][i], Calib_Profile);
+                }
+            }
+            else
+            {
+                data_array = new double[1, data[0].Count];
+
+                for (int i = 0; i < data[0].Count; i++)
+                {
+                    data_array[0, i] = Transform_Func(data[0][i], Calib_Profile);
+                }
+            }
+
+            
+            try
+            {
+
+                DAC_Task = new Task();
+
+                for (int i = 0; i < ao_channel.Length; i++)
+                {
+                    DAC_Task.AOChannels.CreateVoltageChannel(
+                        ao_channel[i],
+                        "",
+                        min_val[i],
+                        max_val[i],
+                        AOVoltageUnits.Volts
+                        );
+                    AOChannel b = DAC_Task.AOChannels.All;
+                    Console.WriteLine(b);
+
+                }
+
+                DAC_Task.Timing.ConfigureSampleClock(
+                    "",
+                    Convert.ToDouble(hz[0]),
+                    SampleClockActiveEdge.Rising,
+                    SampleQuantityMode.FiniteSamples, 
+                    data[0].Count
+                    );
+
+                DAC_Task.Control(TaskAction.Verify);
+
+                AnalogMultiChannelWriter writer = new AnalogMultiChannelWriter(DAC_Task.Stream);
+
+
+
+                DAC_Task.Done += new TaskDoneEventHandler(DAC_Task_Done);
+                writer.WriteMultiSample(false, data_array);
+                DAC_Task.Start();
+                    
+
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);                
+                
+                if (DAC_Task != null)
+                {
+                    DAC_Task.Dispose();
+                }
+
+                if (OutCh1_taskrunning) { OutCh1_taskrunning = false; };
+                if (OutCh2_taskrunning) { OutCh2_taskrunning = false; };
+                
+                OutCh1_Write_button.Enabled = true;
+            }
+
+
+        }
+
+        private void DAC_Task_Done(object sender, TaskDoneEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show(e.Error.Message);
+            }
+
+            if (DAC_Task != null)
+            {
+                DAC_Task.Dispose();
+            }
+
+            if (OutCh1_taskrunning) { OutCh1_taskrunning = false; };
+            OutCh1_Write_button.Enabled = true;
+            OutCh2_Write_button.Enabled = true;
+            OutChBoth_Write_button.Enabled = true;
+        }
+
+        private double Transform_Func(double data, double [][] Calib)
+        {
+            int Indx = Array.BinarySearch(Calib[1], data); //Busco la posición de la data que quiero conseguir, en las mediciones. 
+
+            Console.WriteLine(Indx);
+            if (Indx >= 0)
+            {
+                double ret_val = Calib[0][Indx];
+                //Console.WriteLine("{0},{1}",data, ret_val);
+                return ret_val;
+
+            }
+            else
+            {
+                int I = ~Indx;
+                Console.WriteLine(I);
+
+                if ((Calib[1][I] - data) < (data - Calib[1][I-1]))
+                {
+                    double ret_val = Calib[0][I];
+                    //Console.WriteLine("{0},{1}", data, ret_val);
+                    return ret_val;
+                }
+                else
+                {
+                    double ret_val = Calib[0][I-1];
+                    //Console.WriteLine("{0},{1}", data, ret_val);
+                    return ret_val;
+                }
+                
+            }           
+
+        }
+
+        
     }
 }

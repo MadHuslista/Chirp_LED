@@ -72,7 +72,7 @@ namespace Interface_Prototype
             //Calibration Ranges
             start_val = 0;
             stop_val = 10;
-            step = 0.001;
+            step = 0.1;//0.001;
             samples_per_step = 25;
             
 
@@ -274,7 +274,7 @@ namespace Interface_Prototype
 
                     Calib_state = "completed";
 
-                    Array.Sort(Calib_Array[1], Calib_Array[0]);
+                    Array.Sort(Calib_Array[1], Calib_Array[0]); // Se utilizan las mediciones como las Keys (porque con la BinarySearch quiero buscar a qué ref corresponde la Keyque quiero output)
                     Ref_Enum.Reset();
                     Progress_Bar.Value += 5;
 

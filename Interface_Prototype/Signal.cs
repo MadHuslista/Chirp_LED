@@ -19,8 +19,9 @@ namespace Interface_Prototype
 
         private void OutCh1_AddCurrentSeg_button_Click(object sender, EventArgs e)
         {
+
             
-            
+
             ref List<double> Signal = ref OutCh1_Signal;
             ref List<double> Time = ref OutCh1_Time;
             ref List<int> SegmentPos = ref OutCh1_SegmentPos; 
@@ -28,7 +29,7 @@ namespace Interface_Prototype
 
             //Form Management
             ref System.Windows.Forms.DataVisualization.Charting.Chart Chart = ref OutCh1_chart;
-            
+            OutCh1_Write_button.Enabled = true;
 
             SegmentPos.Add(Signal.Count);
             //Console.WriteLine("AddCurr{0}",Signal.Count);
