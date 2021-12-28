@@ -52,16 +52,107 @@ namespace Interface_Prototype
             List<List<double>> data = new List<List<double>>();
             data.Add(OutCh1_Signal);
 
+            List<double[][]> Calib_Arr = new List<double[][]>();
+            Calib_Arr.Add(Calib1_Array);
 
-            Send_Signal(
+            if (!(Calib1_Array[0] != null))
+            {
+                MessageBox.Show("Missing Calibration Profile");
+            }
+            else
+            {
+                Send_Signal(
                 data: data,
-                Calib_Profile: Calib1_Array,
+                Calib_Profile: Calib_Arr,
                 taskrunning: ref OutCh1_taskrunning,
                 ao_channel: channels,
                 max_val: max_val,
                 min_val: min_val,
                 hz: hz
                 );
+            }
+
+        }
+
+        private void OutCh2_Write_button_Click(object sender, EventArgs e)
+        {
+
+            string[] channels = { OutCh2_comboBox.Text };
+            double[] max_val = { Convert.ToDouble(OutCh2Max_numericUpDown.Value) };
+            double[] min_val = { Convert.ToDouble(OutCh2Min_numericUpDown.Value) };
+            double[] hz = { Convert.ToDouble(OutCh2Hz_numericUpDown.Value) };
+
+            List<List<double>> data = new List<List<double>>();
+            data.Add(OutCh2_Signal);
+
+            List<double[][]> Calib_Arr = new List<double[][]>();
+            Calib_Arr.Add(Calib2_Array);
+
+            if (!(Calib2_Array[0] != null))
+            {
+                MessageBox.Show("Missing Calibration Profile");
+            }
+            else
+            {
+                Send_Signal(
+                data: data,
+                Calib_Profile: Calib_Arr,
+                taskrunning: ref OutCh2_taskrunning,
+                ao_channel: channels,
+                max_val: max_val,
+                min_val: min_val,
+                hz: hz
+                );
+            }            
+        }
+
+        private void OutChBoth_Write_button_Click(object sender, EventArgs e)
+        {
+
+
+            string[] channels = { 
+                OutCh1_comboBox.Text,
+                OutCh2_comboBox.Text
+            };
+            double[] max_val = { 
+                Convert.ToDouble(OutCh1Max_numericUpDown.Value),
+                Convert.ToDouble(OutCh2Max_numericUpDown.Value)
+            };
+            double[] min_val = { 
+                Convert.ToDouble(OutCh1Min_numericUpDown.Value),
+                Convert.ToDouble(OutCh2Min_numericUpDown.Value)
+            };
+            double[] hz = { 
+                Convert.ToDouble(OutCh1Hz_numericUpDown.Value),
+                Convert.ToDouble(OutCh2Hz_numericUpDown.Value)
+            };
+
+            List<List<double>> data = new List<List<double>>();
+            data.Add(OutCh1_Signal);
+            data.Add(OutCh2_Signal);
+
+            List<double[][]> Calib_Arr = new List<double[][]>();
+            Calib_Arr.Add(Calib1_Array);
+            Calib_Arr.Add(Calib2_Array);
+
+            //Console.WriteLine(Calib2_Array.Length);
+
+            if ((!(Calib1_Array[0] != null)) || (!(Calib2_Array[0] != null)))
+            {
+                MessageBox.Show("Missing Calibration Profile");
+            }
+            else
+            {
+                Send_Signal(
+                data: data,
+                Calib_Profile: Calib_Arr,
+                taskrunning: ref OutCh2_taskrunning,
+                ao_channel: channels,
+                max_val: max_val,
+                min_val: min_val,
+                hz: hz
+                );
+            }
         }
 
         // ####################################### General Use Funcions
@@ -108,12 +199,14 @@ namespace Interface_Prototype
             {
                 if (Calib_Form.Calib1_state == "completed") 
                 { 
-                    Calib1_Array = Calib_Form.Calib1_Array; 
+                    Calib1_Array = Calib_Form.Calib1_Array;
+                    OutCh1_MaxLabel.Text = Convert.ToString(Math.Round(Calib1_Array[1].Max(), 4));
                 }
 
                 if (Calib_Form.Calib2_state == "completed") 
                 { 
-                    Calib2_Array = Calib_Form.Calib2_Array; 
+                    Calib2_Array = Calib_Form.Calib2_Array;
+                    OutCh2_MaxLabel.Text = Convert.ToString(Math.Round(Calib2_Array[1].Max(), 4));
                 }
                 
 
@@ -172,7 +265,7 @@ namespace Interface_Prototype
             Chart.Series[0].Points.DataBindXY(downsampl_time, downsampl_data);
         }
 
-        private void Send_Signal(List<List<double>> data, double [][] Calib_Profile, ref bool taskrunning, string[] ao_channel, double[] max_val, double[] min_val, double[] hz)
+        private void Send_Signal(List<List<double>> data, List<double[][]> Calib_Profile, ref bool taskrunning, string[] ao_channel, double[] max_val, double[] min_val, double[] hz)
         {
             OutCh1_Write_button.Enabled = false;
             OutCh2_Write_button.Enabled = false;
@@ -192,8 +285,8 @@ namespace Interface_Prototype
                 for (int i = 0; i < data[0].Count; i++)
                 {
 
-                    data_array[0, i] = Transform_Func(data[0][i], Calib_Profile);
-                    data_array[1, i] = Transform_Func(data[1][i], Calib_Profile);
+                    data_array[0, i] = Transform_Func(data[0][i], Calib_Profile[0]);
+                    data_array[1, i] = Transform_Func(data[1][i], Calib_Profile[1]);
                 }
             }
             else
@@ -202,7 +295,7 @@ namespace Interface_Prototype
 
                 for (int i = 0; i < data[0].Count; i++)
                 {
-                    data_array[0, i] = Transform_Func(data[0][i], Calib_Profile);
+                    data_array[0, i] = Transform_Func(data[0][i], Calib_Profile[0]);
                 }
             }
 

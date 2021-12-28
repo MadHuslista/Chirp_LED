@@ -1,10 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MathNet.Numerics;
+using System.Globalization;
 
 namespace Interface_Prototype
 {
@@ -15,7 +17,27 @@ namespace Interface_Prototype
         List<int> OutCh1_SegmentPos = new List<int>();
 
         List<double> OutCh2_Signal = new List<double>();
-        List<double> OutCh2_Time = new List<double>();        
+        List<double> OutCh2_Time = new List<double>();
+        List<int> OutCh2_SegmentPos = new List<int>();
+
+        //Output Channel 1
+        private void OutCh1_LoadSig_button_Click(object sender, EventArgs e)
+        {
+            ref List<double> Signal = ref OutCh1_Signal;
+            ref List<double> Time = ref OutCh1_Time;
+            ref List<int> SegPos = ref OutCh1_SegmentPos;
+
+            SegPos.Add(Signal.Count);            
+
+            ReadSignal(
+                Signal: ref Signal,
+                Time: ref Time,
+                OpenDialog: ref OutCh1_openFileDialog,
+                sig_lab: ref OutCh1_SigFile_label
+                );
+
+            UpdateChart(OutCh1_Time, OutCh1_Signal, ref OutCh1_chart);
+        }
 
         private void OutCh1_AddCurrentSeg_button_Click(object sender, EventArgs e)
         {
@@ -30,11 +52,13 @@ namespace Interface_Prototype
             //Form Management
             ref System.Windows.Forms.DataVisualization.Charting.Chart Chart = ref OutCh1_chart;
             OutCh1_Write_button.Enabled = true;
+            if (OutCh2_Write_button.Enabled == true) { OutChBoth_Write_button.Enabled = true; }
 
             SegmentPos.Add(Signal.Count);
+            
             //Console.WriteLine("AddCurr{0}",Signal.Count);
 
-            
+
 
             if (OutCh1_Adapt_radioButton.Checked) {
                 
@@ -120,9 +144,233 @@ namespace Interface_Prototype
 
         }
 
+        private void OutCh1_SaveGenSig_button_Click(object sender, EventArgs e)
+        {
+            SaveSignal(
+                ref OutCh1_saveFileDialog,
+                OutCh1_Signal,
+                OutCh1_Time);
+        }
+
+        //Output Channel 2
+        private void OutCh2_LoadSig_button_Click(object sender, EventArgs e)
+        { 
+            ref List<double> Signal = ref OutCh2_Signal;
+            ref List<double> Time = ref OutCh2_Time;
+            ref System.Windows.Forms.DataVisualization.Charting.Chart Chart = ref OutCh2_chart;
+            ref List<int> SegPos = ref OutCh2_SegmentPos;
+
+            SegPos.Add(Signal.Count);
+
+            ReadSignal(
+                Signal: ref Signal,
+                Time: ref Time,
+                OpenDialog: ref OutCh2_openFileDialog,
+                sig_lab: ref OutCh2_SigFile_label
+                );
+
+            UpdateChart(Time, Signal, ref Chart);
+        }
+
+        private void OutCh2_AddCurrentSeg_button_Click(object sender, EventArgs e)
+        {
+
+            ref List<double> Signal = ref OutCh2_Signal;
+            ref List<double> Time = ref OutCh2_Time;
+            ref List<int> SegmentPos = ref OutCh2_SegmentPos;
+            double base_amp_value = Convert.ToDouble(OCh2Adap_baseAmp_numericUpDown.Value);
+
+            //Form Management
+            ref System.Windows.Forms.DataVisualization.Charting.Chart Chart = ref OutCh2_chart;
+            OutCh2_Write_button.Enabled = true;
+            if (OutCh1_Write_button.Enabled == true) { OutChBoth_Write_button.Enabled = true; }
+
+            SegmentPos.Add(Signal.Count);
+            //Console.WriteLine("AddCurr{0}",Signal.Count);
+
+
+
+            if (OutCh2_Adapt_radioButton.Checked)
+            {
+
+
+                AdaptSig(
+                    signal: ref Signal,
+                    time: ref Time,
+                    base_amp: base_amp_value,
+                    adapt_time: Convert.ToDouble(OCh2Adap_Time_numericUpDown.Value),
+                    hz: Convert.ToDouble(OutCh2Hz_numericUpDown.Value)
+                    );
+
+
+
+            }
+            else if (OutCh2_OnOff_radioButton.Checked)
+            {
+
+                OnOffSig(
+                    signal: ref Signal,
+                    time: ref Time,
+                    on_amp: Convert.ToDouble(OCh2OnOff_Amp_numericUpDown.Value),
+                    on_time: Convert.ToDouble(OCh2OnOff_OnDur_numericUpDown.Value),
+                    off_time: Convert.ToDouble(OCh2OnOff_OffDur_numericUpDown.Value),
+                    hz: Convert.ToDouble(OutCh2Hz_numericUpDown.Value)
+                    );
+
+
+
+            }
+            else if (OutCh2_Freq_radioButton.Checked)
+            {
+
+                FreqSig(
+                    signal: ref Signal,
+                    time: ref Time,
+                    freq_duration: Convert.ToDouble(OCh2Freq_FreqDur_numericUpDown.Value),
+                    freq_amp: Convert.ToDouble(OCh2Freq_FreqAmp_numericUpDown.Value),
+                    base_amp: base_amp_value,
+                    start_phase: Convert.ToDouble(OCh2Freq_Phase_numericUpDown.Value),
+                    final_freq: Convert.ToDouble(OCh2Freq_FinalFreq_numericUpDown.Value),
+                    hz: Convert.ToDouble(OutCh2Hz_numericUpDown.Value)
+                    );
+
+
+            }
+            else if (OutCh2_Amp_radioButton.Checked)
+            {
+
+                AmpSig(
+                    signal: ref Signal,
+                    time: ref Time,
+                    amp_duration: Convert.ToDouble(OCh2Amp_AmpDur_numericUpDown.Value),
+                    base_freq: Convert.ToDouble(OCh2Amp_BaseFreq_numericUpDown.Value),
+                    max_amp: Convert.ToDouble(OCh2Amp_MaxAmp_numericUpDown.Value),
+                    base_amp: base_amp_value,
+                    hz: Convert.ToDouble(OutCh2Hz_numericUpDown.Value)
+                    );
+
+            }
+
+            UpdateChart(Time, Signal, ref Chart);
+
+        }
+
+
+        private void OutCh2_RemoveSeg_button_Click(object sender, EventArgs e)
+        {
+
+            ref List<double> sig = ref OutCh2_Signal;
+            ref List<double> t = ref OutCh2_Time;
+            ref List<int> segpos = ref OutCh2_SegmentPos;
+            ref System.Windows.Forms.DataVisualization.Charting.Chart Chart = ref OutCh2_chart;
+
+
+            RemoveSegment(
+                Signal: ref sig,
+                Time: ref t,
+                SegmentPos: ref segpos
+                );
+
+
+            UpdateChart(
+                time: t,
+                data: sig,
+                Chart: ref Chart);
+
+        }
+
+        private void OutCh2_SaveGenSig_button_Click(object sender, EventArgs e)
+        {
+            SaveSignal(
+                ref OutCh2_saveFileDialog,
+                OutCh2_Signal,
+                OutCh2_Time);
+        }
+
+        
 
 
         //########### FUNCIONES DE USO GENERAL
+
+        private void ReadSignal(ref List<double> Signal, ref List<double> Time, ref OpenFileDialog OpenDialog, ref Label sig_lab)
+        {
+            OpenDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            OpenDialog.RestoreDirectory = false;
+            OpenDialog.Title = "Browse Signal Files";
+            OpenDialog.DefaultExt = "txt"; 
+            OpenDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            OpenDialog.FilterIndex = 2;
+            OpenDialog.CheckFileExists = true;
+            OpenDialog.CheckPathExists = true; 
+
+            if (OpenDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filename = OpenDialog.FileName; //Recortar
+                int pos = filename.Length - 15;
+                sig_lab.Text = filename.Substring(pos);
+
+                double last_time = 0;
+                if (Time.Count > 0) {last_time = Time[Time.Count - 1]; }
+                
+
+                try
+                {
+                    foreach (string point in File.ReadLines(filename, Encoding.UTF8))
+                    {
+                        string[] reading = point.Split(',');
+                        double time_point = double.Parse(reading[0], CultureInfo.InvariantCulture);
+                        double sig_point = double.Parse(reading[1], CultureInfo.InvariantCulture);
+
+                        time_point = time_point + last_time;
+                        Signal.Add(sig_point);
+                        Time.Add(time_point);
+                            
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+
+
+
+            }
+
+
+        }
+
+        private void SaveSignal(ref SaveFileDialog SaveDialog, List<double> Signal, List<double> Time)
+        {
+            SaveDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            SaveDialog.RestoreDirectory = true;
+            SaveDialog.Title = "Save Signal Data";
+            SaveDialog.DefaultExt = "txt";
+            SaveDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            SaveDialog.FilterIndex = 2;
+            SaveDialog.CheckFileExists = false;
+            SaveDialog.CheckPathExists = false;
+
+            if (Signal.Count == 0) //Está en doble negativo, porque si el arreglo aún no está instanciado; eso no significa que sea == null. 
+            {
+                MessageBox.Show("La Señal no tiene datos");
+            }
+            else if (SaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                String PATH = SaveDialog.FileName;
+                var signal_sb = new StringBuilder();
+
+                for (int i = 0; i < Signal.Count; i++)
+                {
+                    signal_sb.Append(Time[i].ToString());
+                    signal_sb.Append(",");
+                    signal_sb.AppendLine(Signal[i].ToString());
+                }
+
+                File.WriteAllText(PATH, signal_sb.ToString());
+            }
+
+
+        }
 
         private void RemoveSegment(ref List<double> Signal, ref List<double> Time, ref List<int> SegmentPos)
         {

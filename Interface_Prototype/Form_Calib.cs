@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows.Forms;
 using NationalInstruments.DAQmx;
 using MathNet.Numerics;
+using System.Globalization;
 
 
 
@@ -72,7 +73,7 @@ namespace Interface_Prototype
             //Calibration Ranges
             start_val = 0;
             stop_val = 10;
-            step = 0.1;//0.001;
+            step = 0.001;
             samples_per_step = 25;
             
 
@@ -307,8 +308,8 @@ namespace Interface_Prototype
             SaveDialog.DefaultExt = "txt";
             SaveDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             SaveDialog.FilterIndex = 2;
-            SaveDialog.CheckFileExists = true;
-            SaveDialog.CheckPathExists = true;
+            SaveDialog.CheckFileExists = false;
+            SaveDialog.CheckPathExists = false;
 
             if (!(Calib_Array[0] != null)) //Está en doble negativo, porque si el arreglo aún no está instanciado; eso no significa que sea == null. 
             {
@@ -361,9 +362,82 @@ namespace Interface_Prototype
             Calib2_state = "empty";
         }
 
+        private void LoadCalib(ref OpenFileDialog OpenDialog, ref double[][] Calib_Array, ref System.Windows.Forms.DataVisualization.Charting.Chart Chart, ref string Calib_state)
+        {
+            OpenDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            OpenDialog.RestoreDirectory = false;
+            OpenDialog.Title = "Browse Signal Files";
+            OpenDialog.DefaultExt = "txt";
+            OpenDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            OpenDialog.FilterIndex = 2;
+            OpenDialog.CheckFileExists = true;
+            OpenDialog.CheckPathExists = true;
+
+            if (OpenDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filename = OpenDialog.FileName; //Recortar              
+
+                try
+                {
+                    
+                    List<double> calibList_0 = new List<double>();
+                    List<double> calibList_1 = new List<double>();
+
+                    foreach (string point in File.ReadLines(filename, Encoding.UTF8))
+                    {
+                        string[] reading = point.Split(',');
+                        double calib_0 = double.Parse(reading[0], CultureInfo.InvariantCulture);
+                        double calib_1 = double.Parse(reading[1], CultureInfo.InvariantCulture);
+
+                        calibList_0.Add(calib_0);
+                        calibList_1.Add(calib_1);
+                    
+                    }
+                    Calib_Array[0] = calibList_0.ToArray();
+                    Calib_Array[1] = calibList_1.ToArray();
+
+                    Chart.Series[0].Points.Clear();
+                    Chart.Series[0].Points.DataBindXY(Calib_Array[0], Calib_Array[1]);
+
+                    Calib_state = "completed";
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+
+                DoneCalib_button.Enabled = true;
+            }
+
+
+        }
 
         // ####################################### Particular Use Funcions
 
+        private void LoadCalib1_button_Click(object sender, EventArgs e)
+        {
+            Calib1_Association = "Out" + (Convert.ToString(Calib1Out_comboBox.SelectedIndex + 1)) + char.ConvertFromUtf32(10142) + "In" + (Convert.ToString(Calib1In_comboBox.SelectedIndex + 1));
+            
+
+            LoadCalib(
+                ref Calib1_openFileDialog,
+                ref Calib1_Array,
+                ref Calib1_chart,
+                ref Calib1_state
+                );
+        }
+
+        private void LoadCalib2_button_Click(object sender, EventArgs e)
+        {
+            Calib2_Association = "Out" + (Convert.ToString(Calib2Out_comboBox.SelectedIndex + 1)) + char.ConvertFromUtf32(10142) + "In" + (Convert.ToString(Calib2In_comboBox.SelectedIndex + 1));
+            
+            LoadCalib(
+                ref Calib2_openFileDialog,
+                ref Calib2_Array,
+                ref Calib2_chart,
+                ref Calib1_state
+                );
+        }
 
         private void CreateCalib1_button_Click(object sender, EventArgs e)
         {

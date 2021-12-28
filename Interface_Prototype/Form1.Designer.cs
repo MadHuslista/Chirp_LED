@@ -70,7 +70,6 @@ namespace Interface_Prototype
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.CalibLoaded_label = new System.Windows.Forms.Label();
             this.NewCalib_button = new System.Windows.Forms.Button();
-            this.LoadCalib_button = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -87,36 +86,36 @@ namespace Interface_Prototype
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.OutCh2_AddCurrentSeg_button = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.OutCh2_SaveGenSig_button = new System.Windows.Forms.Button();
+            this.OutCh2_RemoveSeg_button = new System.Windows.Forms.Button();
+            this.OutCh2_LoadSig_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.OutCh2_Amp_radioButton = new System.Windows.Forms.RadioButton();
             this.OutCh2_Freq_radioButton = new System.Windows.Forms.RadioButton();
             this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
+            this.OutCh2_MaxLabel = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
-            this.numericUpDown25 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown26 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown27 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown28 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown29 = new System.Windows.Forms.NumericUpDown();
+            this.OCh2Freq_FreqDur_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OCh2Freq_FreqAmp_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OCh2Amp_AmpDur_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OCh2Amp_BaseFreq_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OCh2Amp_MaxAmp_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
-            this.numericUpDown30 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown31 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown32 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown33 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown34 = new System.Windows.Forms.NumericUpDown();
+            this.OCh2Freq_FinalFreq_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OCh2Freq_Phase_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OCh2OnOff_OffDur_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OCh2OnOff_OnDur_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OCh2OnOff_Amp_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.OutCh2_OnOff_radioButton = new System.Windows.Forms.RadioButton();
-            this.numericUpDown35 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown36 = new System.Windows.Forms.NumericUpDown();
+            this.OCh2Adap_Time_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.OCh2Adap_baseAmp_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
@@ -125,20 +124,20 @@ namespace Interface_Prototype
             this.label53 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
+            this.OutCh2_SigFile_label = new System.Windows.Forms.Label();
             this.OutCh2_Adapt_radioButton = new System.Windows.Forms.RadioButton();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.OutCh1_AddCurrentSeg_button = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.OutCh1_SaveGenSig_button = new System.Windows.Forms.Button();
             this.OutCh1_RemoveSeg_button = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.OutCh1_LoadSig_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.OutCh1_Amp_radioButton = new System.Windows.Forms.RadioButton();
             this.OutCh1_Freq_radioButton = new System.Windows.Forms.RadioButton();
             this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.OutCh1_MaxLabel = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -169,18 +168,22 @@ namespace Interface_Prototype
             this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
+            this.OutCh1_SigFile_label = new System.Windows.Forms.Label();
             this.OutCh1_Adapt_radioButton = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.OutCh2_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.OutCh1_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.OutChBoth_Write_button = new System.Windows.Forms.Button();
             this.OutCh1_Write_button = new System.Windows.Forms.Button();
             this.OutCh2_Write_button = new System.Windows.Forms.Button();
+            this.OutCh1_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.OutCh2_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.OutCh1_openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.OutCh2_openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -212,18 +215,18 @@ namespace Interface_Prototype
             this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown32)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown33)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown34)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown35)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown36)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Freq_FreqDur_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Freq_FreqAmp_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Amp_AmpDur_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Amp_BaseFreq_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Amp_MaxAmp_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Freq_FinalFreq_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Freq_Phase_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2OnOff_OffDur_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2OnOff_OnDur_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2OnOff_Amp_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Adap_Time_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Adap_baseAmp_numericUpDown)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -243,7 +246,7 @@ namespace Interface_Prototype
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh2_chart)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OutCh1_chart)).BeginInit();
             this.tableLayoutPanel10.SuspendLayout();
@@ -784,13 +787,12 @@ namespace Interface_Prototype
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.CalibLoaded_label, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.CalibLoaded_label, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.NewCalib_button, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.LoadCalib_button, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -802,9 +804,9 @@ namespace Interface_Prototype
             this.CalibLoaded_label.BackColor = System.Drawing.Color.Salmon;
             this.CalibLoaded_label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CalibLoaded_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CalibLoaded_label.Location = new System.Drawing.Point(3, 60);
+            this.CalibLoaded_label.Location = new System.Drawing.Point(3, 45);
             this.CalibLoaded_label.Name = "CalibLoaded_label";
-            this.CalibLoaded_label.Size = new System.Drawing.Size(208, 31);
+            this.CalibLoaded_label.Size = new System.Drawing.Size(208, 46);
             this.CalibLoaded_label.TabIndex = 4;
             this.CalibLoaded_label.Text = "Missing Calibration";
             this.CalibLoaded_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -814,21 +816,11 @@ namespace Interface_Prototype
             this.NewCalib_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NewCalib_button.Location = new System.Drawing.Point(3, 3);
             this.NewCalib_button.Name = "NewCalib_button";
-            this.NewCalib_button.Size = new System.Drawing.Size(208, 24);
+            this.NewCalib_button.Size = new System.Drawing.Size(208, 39);
             this.NewCalib_button.TabIndex = 0;
-            this.NewCalib_button.Text = "Create new Calibration Profile";
+            this.NewCalib_button.Text = "Set Calibration Profile";
             this.NewCalib_button.UseVisualStyleBackColor = true;
             this.NewCalib_button.Click += new System.EventHandler(this.NewCalib_button_Click);
-            // 
-            // LoadCalib_button
-            // 
-            this.LoadCalib_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LoadCalib_button.Location = new System.Drawing.Point(3, 33);
-            this.LoadCalib_button.Name = "LoadCalib_button";
-            this.LoadCalib_button.Size = new System.Drawing.Size(208, 24);
-            this.LoadCalib_button.TabIndex = 1;
-            this.LoadCalib_button.Text = "Load Calibration Profile File";
-            this.LoadCalib_button.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -1048,9 +1040,9 @@ namespace Interface_Prototype
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel15.Controls.Add(this.OutCh2_AddCurrentSeg_button, 1, 0);
-            this.tableLayoutPanel15.Controls.Add(this.button11, 3, 0);
-            this.tableLayoutPanel15.Controls.Add(this.button12, 2, 0);
-            this.tableLayoutPanel15.Controls.Add(this.button13, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.OutCh2_SaveGenSig_button, 3, 0);
+            this.tableLayoutPanel15.Controls.Add(this.OutCh2_RemoveSeg_button, 2, 0);
+            this.tableLayoutPanel15.Controls.Add(this.OutCh2_LoadSig_button, 0, 0);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 246);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
@@ -1068,36 +1060,40 @@ namespace Interface_Prototype
             this.OutCh2_AddCurrentSeg_button.TabIndex = 0;
             this.OutCh2_AddCurrentSeg_button.Text = "Add Current Segment";
             this.OutCh2_AddCurrentSeg_button.UseVisualStyleBackColor = true;
+            this.OutCh2_AddCurrentSeg_button.Click += new System.EventHandler(this.OutCh2_AddCurrentSeg_button_Click);
             // 
-            // button11
+            // OutCh2_SaveGenSig_button
             // 
-            this.button11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button11.Location = new System.Drawing.Point(336, 3);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(107, 38);
-            this.button11.TabIndex = 3;
-            this.button11.Text = "Save Generated Signal";
-            this.button11.UseVisualStyleBackColor = true;
+            this.OutCh2_SaveGenSig_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutCh2_SaveGenSig_button.Location = new System.Drawing.Point(336, 3);
+            this.OutCh2_SaveGenSig_button.Name = "OutCh2_SaveGenSig_button";
+            this.OutCh2_SaveGenSig_button.Size = new System.Drawing.Size(107, 38);
+            this.OutCh2_SaveGenSig_button.TabIndex = 3;
+            this.OutCh2_SaveGenSig_button.Text = "Save Generated Signal";
+            this.OutCh2_SaveGenSig_button.UseVisualStyleBackColor = true;
+            this.OutCh2_SaveGenSig_button.Click += new System.EventHandler(this.OutCh2_SaveGenSig_button_Click);
             // 
-            // button12
+            // OutCh2_RemoveSeg_button
             // 
-            this.button12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button12.Location = new System.Drawing.Point(225, 3);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(105, 38);
-            this.button12.TabIndex = 1;
-            this.button12.Text = "Remove Last Segment";
-            this.button12.UseVisualStyleBackColor = true;
+            this.OutCh2_RemoveSeg_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutCh2_RemoveSeg_button.Location = new System.Drawing.Point(225, 3);
+            this.OutCh2_RemoveSeg_button.Name = "OutCh2_RemoveSeg_button";
+            this.OutCh2_RemoveSeg_button.Size = new System.Drawing.Size(105, 38);
+            this.OutCh2_RemoveSeg_button.TabIndex = 1;
+            this.OutCh2_RemoveSeg_button.Text = "Remove Last Segment";
+            this.OutCh2_RemoveSeg_button.UseVisualStyleBackColor = true;
+            this.OutCh2_RemoveSeg_button.Click += new System.EventHandler(this.OutCh2_RemoveSeg_button_Click);
             // 
-            // button13
+            // OutCh2_LoadSig_button
             // 
-            this.button13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button13.Location = new System.Drawing.Point(3, 3);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(105, 38);
-            this.button13.TabIndex = 2;
-            this.button13.Text = "Load Signal File";
-            this.button13.UseVisualStyleBackColor = true;
+            this.OutCh2_LoadSig_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutCh2_LoadSig_button.Location = new System.Drawing.Point(3, 3);
+            this.OutCh2_LoadSig_button.Name = "OutCh2_LoadSig_button";
+            this.OutCh2_LoadSig_button.Size = new System.Drawing.Size(105, 38);
+            this.OutCh2_LoadSig_button.TabIndex = 2;
+            this.OutCh2_LoadSig_button.Text = "Load Signal File";
+            this.OutCh2_LoadSig_button.UseVisualStyleBackColor = true;
+            this.OutCh2_LoadSig_button.Click += new System.EventHandler(this.OutCh2_LoadSig_button_Click);
             // 
             // tableLayoutPanel16
             // 
@@ -1109,29 +1105,29 @@ namespace Interface_Prototype
             this.tableLayoutPanel16.Controls.Add(this.OutCh2_Amp_radioButton, 3, 5);
             this.tableLayoutPanel16.Controls.Add(this.OutCh2_Freq_radioButton, 3, 0);
             this.tableLayoutPanel16.Controls.Add(this.label37, 0, 0);
-            this.tableLayoutPanel16.Controls.Add(this.label38, 1, 0);
+            this.tableLayoutPanel16.Controls.Add(this.OutCh2_MaxLabel, 1, 0);
             this.tableLayoutPanel16.Controls.Add(this.label39, 2, 0);
             this.tableLayoutPanel16.Controls.Add(this.label40, 2, 5);
             this.tableLayoutPanel16.Controls.Add(this.label41, 2, 7);
             this.tableLayoutPanel16.Controls.Add(this.label42, 2, 8);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown25, 3, 1);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown26, 3, 2);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown27, 3, 6);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown28, 3, 7);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown29, 3, 8);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2Freq_FreqDur_numericUpDown, 3, 1);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2Freq_FreqAmp_numericUpDown, 3, 2);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2Amp_AmpDur_numericUpDown, 3, 6);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2Amp_BaseFreq_numericUpDown, 3, 7);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2Amp_MaxAmp_numericUpDown, 3, 8);
             this.tableLayoutPanel16.Controls.Add(this.label43, 2, 6);
             this.tableLayoutPanel16.Controls.Add(this.label44, 2, 1);
             this.tableLayoutPanel16.Controls.Add(this.label45, 2, 2);
             this.tableLayoutPanel16.Controls.Add(this.label46, 2, 3);
             this.tableLayoutPanel16.Controls.Add(this.label47, 2, 4);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown30, 3, 4);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown31, 3, 3);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown32, 1, 8);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown33, 1, 7);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown34, 1, 6);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2Freq_FinalFreq_numericUpDown, 3, 4);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2Freq_Phase_numericUpDown, 3, 3);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2OnOff_OffDur_numericUpDown, 1, 8);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2OnOff_OnDur_numericUpDown, 1, 7);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2OnOff_Amp_numericUpDown, 1, 6);
             this.tableLayoutPanel16.Controls.Add(this.OutCh2_OnOff_radioButton, 1, 5);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown35, 1, 4);
-            this.tableLayoutPanel16.Controls.Add(this.numericUpDown36, 1, 3);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2Adap_Time_numericUpDown, 1, 4);
+            this.tableLayoutPanel16.Controls.Add(this.OCh2Adap_baseAmp_numericUpDown, 1, 3);
             this.tableLayoutPanel16.Controls.Add(this.label48, 0, 8);
             this.tableLayoutPanel16.Controls.Add(this.label49, 0, 7);
             this.tableLayoutPanel16.Controls.Add(this.label50, 0, 6);
@@ -1140,7 +1136,7 @@ namespace Interface_Prototype
             this.tableLayoutPanel16.Controls.Add(this.label53, 0, 3);
             this.tableLayoutPanel16.Controls.Add(this.label54, 0, 2);
             this.tableLayoutPanel16.Controls.Add(this.label55, 0, 1);
-            this.tableLayoutPanel16.Controls.Add(this.label56, 1, 1);
+            this.tableLayoutPanel16.Controls.Add(this.OutCh2_SigFile_label, 1, 1);
             this.tableLayoutPanel16.Controls.Add(this.OutCh2_Adapt_radioButton, 1, 2);
             this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel16.Location = new System.Drawing.Point(3, 3);
@@ -1193,17 +1189,17 @@ namespace Interface_Prototype
             this.label37.Text = "Max Posible Value  (V):";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label38
+            // OutCh2_MaxLabel
             // 
-            this.label38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(131, 6);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(83, 13);
-            this.label38.TabIndex = 5;
-            this.label38.Text = "--";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OutCh2_MaxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh2_MaxLabel.AutoSize = true;
+            this.OutCh2_MaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OutCh2_MaxLabel.Location = new System.Drawing.Point(131, 6);
+            this.OutCh2_MaxLabel.Name = "OutCh2_MaxLabel";
+            this.OutCh2_MaxLabel.Size = new System.Drawing.Size(83, 13);
+            this.OutCh2_MaxLabel.TabIndex = 5;
+            this.OutCh2_MaxLabel.Text = "--";
+            this.OutCh2_MaxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label39
             // 
@@ -1251,125 +1247,120 @@ namespace Interface_Prototype
             this.label42.Text = "Final Max Amplitude (V):";
             this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // numericUpDown25
+            // OCh2Freq_FreqDur_numericUpDown
             // 
-            this.numericUpDown25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown25.DecimalPlaces = 2;
-            this.numericUpDown25.Location = new System.Drawing.Point(353, 29);
-            this.numericUpDown25.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown25.Minimum = new decimal(new int[] {
+            this.OCh2Freq_FreqDur_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2Freq_FreqDur_numericUpDown.DecimalPlaces = 2;
+            this.OCh2Freq_FreqDur_numericUpDown.Location = new System.Drawing.Point(353, 29);
+            this.OCh2Freq_FreqDur_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown25.Name = "numericUpDown25";
-            this.numericUpDown25.Size = new System.Drawing.Size(93, 20);
-            this.numericUpDown25.TabIndex = 42;
-            this.numericUpDown25.Value = new decimal(new int[] {
-            10,
+            this.OCh2Freq_FreqDur_numericUpDown.Name = "OCh2Freq_FreqDur_numericUpDown";
+            this.OCh2Freq_FreqDur_numericUpDown.Size = new System.Drawing.Size(93, 20);
+            this.OCh2Freq_FreqDur_numericUpDown.TabIndex = 42;
+            this.OCh2Freq_FreqDur_numericUpDown.Value = new decimal(new int[] {
+            15,
             0,
             0,
             0});
             // 
-            // numericUpDown26
+            // OCh2Freq_FreqAmp_numericUpDown
             // 
-            this.numericUpDown26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown26.DecimalPlaces = 2;
-            this.numericUpDown26.Location = new System.Drawing.Point(353, 55);
-            this.numericUpDown26.Maximum = new decimal(new int[] {
+            this.OCh2Freq_FreqAmp_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2Freq_FreqAmp_numericUpDown.DecimalPlaces = 2;
+            this.OCh2Freq_FreqAmp_numericUpDown.Location = new System.Drawing.Point(353, 55);
+            this.OCh2Freq_FreqAmp_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown26.Minimum = new decimal(new int[] {
+            this.OCh2Freq_FreqAmp_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown26.Name = "numericUpDown26";
-            this.numericUpDown26.Size = new System.Drawing.Size(93, 20);
-            this.numericUpDown26.TabIndex = 41;
-            this.numericUpDown26.Value = new decimal(new int[] {
-            10,
+            this.OCh2Freq_FreqAmp_numericUpDown.Name = "OCh2Freq_FreqAmp_numericUpDown";
+            this.OCh2Freq_FreqAmp_numericUpDown.Size = new System.Drawing.Size(93, 20);
+            this.OCh2Freq_FreqAmp_numericUpDown.TabIndex = 41;
+            this.OCh2Freq_FreqAmp_numericUpDown.Value = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             // 
-            // numericUpDown27
+            // OCh2Amp_AmpDur_numericUpDown
             // 
-            this.numericUpDown27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown27.DecimalPlaces = 2;
-            this.numericUpDown27.Location = new System.Drawing.Point(353, 159);
-            this.numericUpDown27.Maximum = new decimal(new int[] {
+            this.OCh2Amp_AmpDur_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2Amp_AmpDur_numericUpDown.DecimalPlaces = 2;
+            this.OCh2Amp_AmpDur_numericUpDown.Location = new System.Drawing.Point(353, 159);
+            this.OCh2Amp_AmpDur_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown27.Minimum = new decimal(new int[] {
+            this.OCh2Amp_AmpDur_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown27.Name = "numericUpDown27";
-            this.numericUpDown27.Size = new System.Drawing.Size(93, 20);
-            this.numericUpDown27.TabIndex = 44;
-            this.numericUpDown27.Value = new decimal(new int[] {
-            10,
+            this.OCh2Amp_AmpDur_numericUpDown.Name = "OCh2Amp_AmpDur_numericUpDown";
+            this.OCh2Amp_AmpDur_numericUpDown.Size = new System.Drawing.Size(93, 20);
+            this.OCh2Amp_AmpDur_numericUpDown.TabIndex = 44;
+            this.OCh2Amp_AmpDur_numericUpDown.Value = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             // 
-            // numericUpDown28
+            // OCh2Amp_BaseFreq_numericUpDown
             // 
-            this.numericUpDown28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown28.DecimalPlaces = 2;
-            this.numericUpDown28.Location = new System.Drawing.Point(353, 185);
-            this.numericUpDown28.Maximum = new decimal(new int[] {
+            this.OCh2Amp_BaseFreq_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2Amp_BaseFreq_numericUpDown.DecimalPlaces = 2;
+            this.OCh2Amp_BaseFreq_numericUpDown.Location = new System.Drawing.Point(353, 185);
+            this.OCh2Amp_BaseFreq_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown28.Minimum = new decimal(new int[] {
+            this.OCh2Amp_BaseFreq_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown28.Name = "numericUpDown28";
-            this.numericUpDown28.Size = new System.Drawing.Size(93, 20);
-            this.numericUpDown28.TabIndex = 46;
-            this.numericUpDown28.Value = new decimal(new int[] {
-            10,
+            this.OCh2Amp_BaseFreq_numericUpDown.Name = "OCh2Amp_BaseFreq_numericUpDown";
+            this.OCh2Amp_BaseFreq_numericUpDown.Size = new System.Drawing.Size(93, 20);
+            this.OCh2Amp_BaseFreq_numericUpDown.TabIndex = 46;
+            this.OCh2Amp_BaseFreq_numericUpDown.Value = new decimal(new int[] {
+            8,
             0,
             0,
             0});
             // 
-            // numericUpDown29
+            // OCh2Amp_MaxAmp_numericUpDown
             // 
-            this.numericUpDown29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown29.DecimalPlaces = 2;
-            this.numericUpDown29.Location = new System.Drawing.Point(353, 212);
-            this.numericUpDown29.Maximum = new decimal(new int[] {
+            this.OCh2Amp_MaxAmp_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2Amp_MaxAmp_numericUpDown.DecimalPlaces = 2;
+            this.OCh2Amp_MaxAmp_numericUpDown.Location = new System.Drawing.Point(353, 212);
+            this.OCh2Amp_MaxAmp_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown29.Minimum = new decimal(new int[] {
+            this.OCh2Amp_MaxAmp_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown29.Name = "numericUpDown29";
-            this.numericUpDown29.Size = new System.Drawing.Size(93, 20);
-            this.numericUpDown29.TabIndex = 47;
-            this.numericUpDown29.Value = new decimal(new int[] {
-            10,
+            this.OCh2Amp_MaxAmp_numericUpDown.Name = "OCh2Amp_MaxAmp_numericUpDown";
+            this.OCh2Amp_MaxAmp_numericUpDown.Size = new System.Drawing.Size(93, 20);
+            this.OCh2Amp_MaxAmp_numericUpDown.TabIndex = 47;
+            this.OCh2Amp_MaxAmp_numericUpDown.Value = new decimal(new int[] {
+            125,
             0,
             0,
-            0});
+            131072});
             // 
             // label43
             // 
@@ -1426,125 +1417,120 @@ namespace Interface_Prototype
             this.label47.Text = "Final Frequency (Hz):";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // numericUpDown30
+            // OCh2Freq_FinalFreq_numericUpDown
             // 
-            this.numericUpDown30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown30.DecimalPlaces = 2;
-            this.numericUpDown30.Location = new System.Drawing.Point(353, 107);
-            this.numericUpDown30.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown30.Minimum = new decimal(new int[] {
+            this.OCh2Freq_FinalFreq_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2Freq_FinalFreq_numericUpDown.DecimalPlaces = 2;
+            this.OCh2Freq_FinalFreq_numericUpDown.Location = new System.Drawing.Point(353, 107);
+            this.OCh2Freq_FinalFreq_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown30.Name = "numericUpDown30";
-            this.numericUpDown30.Size = new System.Drawing.Size(93, 20);
-            this.numericUpDown30.TabIndex = 40;
-            this.numericUpDown30.Value = new decimal(new int[] {
-            10,
+            this.OCh2Freq_FinalFreq_numericUpDown.Name = "OCh2Freq_FinalFreq_numericUpDown";
+            this.OCh2Freq_FinalFreq_numericUpDown.Size = new System.Drawing.Size(93, 20);
+            this.OCh2Freq_FinalFreq_numericUpDown.TabIndex = 40;
+            this.OCh2Freq_FinalFreq_numericUpDown.Value = new decimal(new int[] {
+            15,
             0,
             0,
             0});
             // 
-            // numericUpDown31
+            // OCh2Freq_Phase_numericUpDown
             // 
-            this.numericUpDown31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown31.DecimalPlaces = 4;
-            this.numericUpDown31.Location = new System.Drawing.Point(353, 81);
-            this.numericUpDown31.Maximum = new decimal(new int[] {
+            this.OCh2Freq_Phase_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2Freq_Phase_numericUpDown.DecimalPlaces = 4;
+            this.OCh2Freq_Phase_numericUpDown.Location = new System.Drawing.Point(353, 81);
+            this.OCh2Freq_Phase_numericUpDown.Maximum = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.numericUpDown31.Minimum = new decimal(new int[] {
+            this.OCh2Freq_Phase_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown31.Name = "numericUpDown31";
-            this.numericUpDown31.Size = new System.Drawing.Size(93, 20);
-            this.numericUpDown31.TabIndex = 45;
-            this.numericUpDown31.Value = new decimal(new int[] {
+            this.OCh2Freq_Phase_numericUpDown.Name = "OCh2Freq_Phase_numericUpDown";
+            this.OCh2Freq_Phase_numericUpDown.Size = new System.Drawing.Size(93, 20);
+            this.OCh2Freq_Phase_numericUpDown.TabIndex = 45;
+            this.OCh2Freq_Phase_numericUpDown.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
             // 
-            // numericUpDown32
+            // OCh2OnOff_OffDur_numericUpDown
             // 
-            this.numericUpDown32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown32.DecimalPlaces = 2;
-            this.numericUpDown32.Location = new System.Drawing.Point(131, 212);
-            this.numericUpDown32.Maximum = new decimal(new int[] {
+            this.OCh2OnOff_OffDur_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2OnOff_OffDur_numericUpDown.DecimalPlaces = 2;
+            this.OCh2OnOff_OffDur_numericUpDown.Location = new System.Drawing.Point(131, 212);
+            this.OCh2OnOff_OffDur_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown32.Minimum = new decimal(new int[] {
+            this.OCh2OnOff_OffDur_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown32.Name = "numericUpDown32";
-            this.numericUpDown32.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown32.TabIndex = 26;
-            this.numericUpDown32.Value = new decimal(new int[] {
-            10,
+            this.OCh2OnOff_OffDur_numericUpDown.Name = "OCh2OnOff_OffDur_numericUpDown";
+            this.OCh2OnOff_OffDur_numericUpDown.Size = new System.Drawing.Size(83, 20);
+            this.OCh2OnOff_OffDur_numericUpDown.TabIndex = 26;
+            this.OCh2OnOff_OffDur_numericUpDown.Value = new decimal(new int[] {
+            3,
             0,
             0,
             0});
             // 
-            // numericUpDown33
+            // OCh2OnOff_OnDur_numericUpDown
             // 
-            this.numericUpDown33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown33.DecimalPlaces = 2;
-            this.numericUpDown33.Location = new System.Drawing.Point(131, 185);
-            this.numericUpDown33.Maximum = new decimal(new int[] {
+            this.OCh2OnOff_OnDur_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2OnOff_OnDur_numericUpDown.DecimalPlaces = 2;
+            this.OCh2OnOff_OnDur_numericUpDown.Location = new System.Drawing.Point(131, 185);
+            this.OCh2OnOff_OnDur_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown33.Minimum = new decimal(new int[] {
+            this.OCh2OnOff_OnDur_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown33.Name = "numericUpDown33";
-            this.numericUpDown33.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown33.TabIndex = 25;
-            this.numericUpDown33.Value = new decimal(new int[] {
-            10,
+            this.OCh2OnOff_OnDur_numericUpDown.Name = "OCh2OnOff_OnDur_numericUpDown";
+            this.OCh2OnOff_OnDur_numericUpDown.Size = new System.Drawing.Size(83, 20);
+            this.OCh2OnOff_OnDur_numericUpDown.TabIndex = 25;
+            this.OCh2OnOff_OnDur_numericUpDown.Value = new decimal(new int[] {
+            3,
             0,
             0,
             0});
             // 
-            // numericUpDown34
+            // OCh2OnOff_Amp_numericUpDown
             // 
-            this.numericUpDown34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown34.DecimalPlaces = 2;
-            this.numericUpDown34.Location = new System.Drawing.Point(131, 159);
-            this.numericUpDown34.Maximum = new decimal(new int[] {
+            this.OCh2OnOff_Amp_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2OnOff_Amp_numericUpDown.DecimalPlaces = 2;
+            this.OCh2OnOff_Amp_numericUpDown.Location = new System.Drawing.Point(131, 159);
+            this.OCh2OnOff_Amp_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown34.Minimum = new decimal(new int[] {
+            this.OCh2OnOff_Amp_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown34.Name = "numericUpDown34";
-            this.numericUpDown34.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown34.TabIndex = 24;
-            this.numericUpDown34.Value = new decimal(new int[] {
-            10,
+            this.OCh2OnOff_Amp_numericUpDown.Name = "OCh2OnOff_Amp_numericUpDown";
+            this.OCh2OnOff_Amp_numericUpDown.Size = new System.Drawing.Size(83, 20);
+            this.OCh2OnOff_Amp_numericUpDown.TabIndex = 24;
+            this.OCh2OnOff_Amp_numericUpDown.Value = new decimal(new int[] {
+            25,
             0,
             0,
-            0});
+            65536});
             // 
             // OutCh2_OnOff_radioButton
             // 
@@ -1557,53 +1543,53 @@ namespace Interface_Prototype
             this.OutCh2_OnOff_radioButton.Text = "Current";
             this.OutCh2_OnOff_radioButton.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown35
+            // OCh2Adap_Time_numericUpDown
             // 
-            this.numericUpDown35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown35.DecimalPlaces = 2;
-            this.numericUpDown35.Location = new System.Drawing.Point(131, 107);
-            this.numericUpDown35.Maximum = new decimal(new int[] {
+            this.OCh2Adap_Time_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2Adap_Time_numericUpDown.DecimalPlaces = 2;
+            this.OCh2Adap_Time_numericUpDown.Location = new System.Drawing.Point(131, 107);
+            this.OCh2Adap_Time_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown35.Minimum = new decimal(new int[] {
+            this.OCh2Adap_Time_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown35.Name = "numericUpDown35";
-            this.numericUpDown35.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown35.TabIndex = 20;
-            this.numericUpDown35.Value = new decimal(new int[] {
-            10,
+            this.OCh2Adap_Time_numericUpDown.Name = "OCh2Adap_Time_numericUpDown";
+            this.OCh2Adap_Time_numericUpDown.Size = new System.Drawing.Size(83, 20);
+            this.OCh2Adap_Time_numericUpDown.TabIndex = 20;
+            this.OCh2Adap_Time_numericUpDown.Value = new decimal(new int[] {
+            2,
             0,
             0,
             0});
             // 
-            // numericUpDown36
+            // OCh2Adap_baseAmp_numericUpDown
             // 
-            this.numericUpDown36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown36.DecimalPlaces = 2;
-            this.numericUpDown36.Location = new System.Drawing.Point(131, 81);
-            this.numericUpDown36.Maximum = new decimal(new int[] {
+            this.OCh2Adap_baseAmp_numericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OCh2Adap_baseAmp_numericUpDown.DecimalPlaces = 2;
+            this.OCh2Adap_baseAmp_numericUpDown.Location = new System.Drawing.Point(131, 81);
+            this.OCh2Adap_baseAmp_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown36.Minimum = new decimal(new int[] {
+            this.OCh2Adap_baseAmp_numericUpDown.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown36.Name = "numericUpDown36";
-            this.numericUpDown36.Size = new System.Drawing.Size(83, 20);
-            this.numericUpDown36.TabIndex = 18;
-            this.numericUpDown36.Value = new decimal(new int[] {
-            10,
+            this.OCh2Adap_baseAmp_numericUpDown.Name = "OCh2Adap_baseAmp_numericUpDown";
+            this.OCh2Adap_baseAmp_numericUpDown.Size = new System.Drawing.Size(83, 20);
+            this.OCh2Adap_baseAmp_numericUpDown.TabIndex = 18;
+            this.OCh2Adap_baseAmp_numericUpDown.Value = new decimal(new int[] {
+            125,
             0,
             0,
-            0});
+            131072});
             // 
             // label48
             // 
@@ -1696,16 +1682,16 @@ namespace Interface_Prototype
             this.label55.Text = "Loaded Signal File:";
             this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label56
+            // OutCh2_SigFile_label
             // 
-            this.label56.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(131, 32);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(83, 13);
-            this.label56.TabIndex = 53;
-            this.label56.Text = "--";
-            this.label56.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OutCh2_SigFile_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh2_SigFile_label.AutoSize = true;
+            this.OutCh2_SigFile_label.Location = new System.Drawing.Point(131, 32);
+            this.OutCh2_SigFile_label.Name = "OutCh2_SigFile_label";
+            this.OutCh2_SigFile_label.Size = new System.Drawing.Size(83, 13);
+            this.OutCh2_SigFile_label.TabIndex = 53;
+            this.OutCh2_SigFile_label.Text = "--";
+            this.OutCh2_SigFile_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // OutCh2_Adapt_radioButton
             // 
@@ -1754,9 +1740,9 @@ namespace Interface_Prototype
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel12.Controls.Add(this.OutCh1_AddCurrentSeg_button, 1, 0);
-            this.tableLayoutPanel12.Controls.Add(this.button9, 3, 0);
+            this.tableLayoutPanel12.Controls.Add(this.OutCh1_SaveGenSig_button, 3, 0);
             this.tableLayoutPanel12.Controls.Add(this.OutCh1_RemoveSeg_button, 2, 0);
-            this.tableLayoutPanel12.Controls.Add(this.button8, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.OutCh1_LoadSig_button, 0, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 246);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
@@ -1776,15 +1762,16 @@ namespace Interface_Prototype
             this.OutCh1_AddCurrentSeg_button.UseVisualStyleBackColor = true;
             this.OutCh1_AddCurrentSeg_button.Click += new System.EventHandler(this.OutCh1_AddCurrentSeg_button_Click);
             // 
-            // button9
+            // OutCh1_SaveGenSig_button
             // 
-            this.button9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button9.Location = new System.Drawing.Point(336, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(107, 38);
-            this.button9.TabIndex = 3;
-            this.button9.Text = "Save Generated Signal";
-            this.button9.UseVisualStyleBackColor = true;
+            this.OutCh1_SaveGenSig_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutCh1_SaveGenSig_button.Location = new System.Drawing.Point(336, 3);
+            this.OutCh1_SaveGenSig_button.Name = "OutCh1_SaveGenSig_button";
+            this.OutCh1_SaveGenSig_button.Size = new System.Drawing.Size(107, 38);
+            this.OutCh1_SaveGenSig_button.TabIndex = 3;
+            this.OutCh1_SaveGenSig_button.Text = "Save Generated Signal";
+            this.OutCh1_SaveGenSig_button.UseVisualStyleBackColor = true;
+            this.OutCh1_SaveGenSig_button.Click += new System.EventHandler(this.OutCh1_SaveGenSig_button_Click);
             // 
             // OutCh1_RemoveSeg_button
             // 
@@ -1797,15 +1784,16 @@ namespace Interface_Prototype
             this.OutCh1_RemoveSeg_button.UseVisualStyleBackColor = true;
             this.OutCh1_RemoveSeg_button.Click += new System.EventHandler(this.OutCh1_RemoveSeg_button_Click);
             // 
-            // button8
+            // OutCh1_LoadSig_button
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button8.Location = new System.Drawing.Point(3, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(105, 38);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "Load Signal File";
-            this.button8.UseVisualStyleBackColor = true;
+            this.OutCh1_LoadSig_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutCh1_LoadSig_button.Location = new System.Drawing.Point(3, 3);
+            this.OutCh1_LoadSig_button.Name = "OutCh1_LoadSig_button";
+            this.OutCh1_LoadSig_button.Size = new System.Drawing.Size(105, 38);
+            this.OutCh1_LoadSig_button.TabIndex = 2;
+            this.OutCh1_LoadSig_button.Text = "Load Signal File";
+            this.OutCh1_LoadSig_button.UseVisualStyleBackColor = true;
+            this.OutCh1_LoadSig_button.Click += new System.EventHandler(this.OutCh1_LoadSig_button_Click);
             // 
             // tableLayoutPanel13
             // 
@@ -1817,7 +1805,7 @@ namespace Interface_Prototype
             this.tableLayoutPanel13.Controls.Add(this.OutCh1_Amp_radioButton, 3, 5);
             this.tableLayoutPanel13.Controls.Add(this.OutCh1_Freq_radioButton, 3, 0);
             this.tableLayoutPanel13.Controls.Add(this.label18, 0, 0);
-            this.tableLayoutPanel13.Controls.Add(this.label19, 1, 0);
+            this.tableLayoutPanel13.Controls.Add(this.OutCh1_MaxLabel, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.label26, 2, 0);
             this.tableLayoutPanel13.Controls.Add(this.label31, 2, 5);
             this.tableLayoutPanel13.Controls.Add(this.label32, 2, 7);
@@ -1848,7 +1836,7 @@ namespace Interface_Prototype
             this.tableLayoutPanel13.Controls.Add(this.label20, 0, 3);
             this.tableLayoutPanel13.Controls.Add(this.label17, 0, 2);
             this.tableLayoutPanel13.Controls.Add(this.label35, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.label36, 1, 1);
+            this.tableLayoutPanel13.Controls.Add(this.OutCh1_SigFile_label, 1, 1);
             this.tableLayoutPanel13.Controls.Add(this.OutCh1_Adapt_radioButton, 1, 2);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 3);
@@ -1901,17 +1889,17 @@ namespace Interface_Prototype
             this.label18.Text = "Max Posible Value  (V):";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label19
+            // OutCh1_MaxLabel
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(131, 6);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(83, 13);
-            this.label19.TabIndex = 5;
-            this.label19.Text = "--";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OutCh1_MaxLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh1_MaxLabel.AutoSize = true;
+            this.OutCh1_MaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OutCh1_MaxLabel.Location = new System.Drawing.Point(131, 6);
+            this.OutCh1_MaxLabel.Name = "OutCh1_MaxLabel";
+            this.OutCh1_MaxLabel.Size = new System.Drawing.Size(83, 13);
+            this.OutCh1_MaxLabel.TabIndex = 5;
+            this.OutCh1_MaxLabel.Text = "--";
+            this.OutCh1_MaxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label26
             // 
@@ -2394,16 +2382,16 @@ namespace Interface_Prototype
             this.label35.Text = "Loaded Signal File:";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label36
+            // OutCh1_SigFile_label
             // 
-            this.label36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(131, 32);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(83, 13);
-            this.label36.TabIndex = 53;
-            this.label36.Text = "--";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.OutCh1_SigFile_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutCh1_SigFile_label.AutoSize = true;
+            this.OutCh1_SigFile_label.Location = new System.Drawing.Point(131, 32);
+            this.OutCh1_SigFile_label.Name = "OutCh1_SigFile_label";
+            this.OutCh1_SigFile_label.Size = new System.Drawing.Size(83, 13);
+            this.OutCh1_SigFile_label.TabIndex = 53;
+            this.OutCh1_SigFile_label.Text = "--";
+            this.OutCh1_SigFile_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // OutCh1_Adapt_radioButton
             // 
@@ -2448,7 +2436,7 @@ namespace Interface_Prototype
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.chart2);
+            this.groupBox12.Controls.Add(this.OutCh2_chart);
             this.groupBox12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox12.Location = new System.Drawing.Point(3, 292);
             this.groupBox12.Name = "groupBox12";
@@ -2457,26 +2445,26 @@ namespace Interface_Prototype
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Signal Graph - Channel 2";
             // 
-            // chart2
+            // OutCh2_chart
             // 
             chartArea1.AxisX.IsMarginVisible = false;
             chartArea1.AxisX.Title = "Time (s)";
             chartArea1.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
             chartArea1.AxisY.Title = "Voltage (V)";
             chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart2.Location = new System.Drawing.Point(3, 16);
-            this.chart2.Name = "chart2";
+            this.OutCh2_chart.ChartAreas.Add(chartArea1);
+            this.OutCh2_chart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutCh2_chart.Location = new System.Drawing.Point(3, 16);
+            this.OutCh2_chart.Name = "OutCh2_chart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series1.IsVisibleInLegend = false;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(612, 264);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart2";
+            this.OutCh2_chart.Series.Add(series1);
+            this.OutCh2_chart.Size = new System.Drawing.Size(612, 264);
+            this.OutCh2_chart.TabIndex = 1;
+            this.OutCh2_chart.Text = "chart2";
             // 
             // groupBox11
             // 
@@ -2537,6 +2525,7 @@ namespace Interface_Prototype
             this.OutChBoth_Write_button.TabIndex = 3;
             this.OutChBoth_Write_button.Text = "Write Both Channels";
             this.OutChBoth_Write_button.UseVisualStyleBackColor = true;
+            this.OutChBoth_Write_button.Click += new System.EventHandler(this.OutChBoth_Write_button_Click);
             // 
             // OutCh1_Write_button
             // 
@@ -2560,6 +2549,15 @@ namespace Interface_Prototype
             this.OutCh2_Write_button.TabIndex = 1;
             this.OutCh2_Write_button.Text = "Write Channel 2";
             this.OutCh2_Write_button.UseVisualStyleBackColor = true;
+            this.OutCh2_Write_button.Click += new System.EventHandler(this.OutCh2_Write_button_Click);
+            // 
+            // OutCh1_openFileDialog
+            // 
+            this.OutCh1_openFileDialog.FileName = "openFileDialog1";
+            // 
+            // OutCh2_openFileDialog
+            // 
+            this.OutCh2_openFileDialog.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -2605,18 +2603,18 @@ namespace Interface_Prototype
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown25)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown32)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown33)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown34)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown35)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown36)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Freq_FreqDur_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Freq_FreqAmp_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Amp_AmpDur_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Amp_BaseFreq_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Amp_MaxAmp_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Freq_FinalFreq_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Freq_Phase_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2OnOff_OffDur_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2OnOff_OnDur_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2OnOff_Amp_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Adap_Time_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCh2Adap_baseAmp_numericUpDown)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
@@ -2637,7 +2635,7 @@ namespace Interface_Prototype
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutCh2_chart)).EndInit();
             this.groupBox11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OutCh1_chart)).EndInit();
             this.tableLayoutPanel10.ResumeLayout(false);
@@ -2659,7 +2657,6 @@ namespace Interface_Prototype
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label CalibLoaded_label;
         private System.Windows.Forms.Button NewCalib_button;
-        private System.Windows.Forms.Button LoadCalib_button;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label1;
@@ -2682,10 +2679,10 @@ namespace Interface_Prototype
         private System.Windows.Forms.Button OutCh2_Write_button;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button OutCh1_LoadSig_button;
         private System.Windows.Forms.Button OutCh1_RemoveSeg_button;
         private System.Windows.Forms.Button OutCh1_AddCurrentSeg_button;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button OutCh1_SaveGenSig_button;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label7;
@@ -2714,7 +2711,7 @@ namespace Interface_Prototype
         private System.Windows.Forms.NumericUpDown InCh2Hz_numericUpDown;
         private System.Windows.Forms.NumericUpDown OCh1Adap_baseAmp_numericUpDown;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label OutCh1_MaxLabel;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.NumericUpDown OCh1Adap_Time_numericUpDown;
@@ -2746,44 +2743,44 @@ namespace Interface_Prototype
         private System.Windows.Forms.RadioButton OutCh1_OnOff_radioButton;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataVisualization.Charting.Chart OutCh1_chart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart OutCh2_chart;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label OutCh1_SigFile_label;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private System.Windows.Forms.Button OutCh2_AddCurrentSeg_button;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button OutCh2_SaveGenSig_button;
+        private System.Windows.Forms.Button OutCh2_RemoveSeg_button;
+        private System.Windows.Forms.Button OutCh2_LoadSig_button;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
         private System.Windows.Forms.RadioButton OutCh2_Amp_radioButton;
         private System.Windows.Forms.RadioButton OutCh2_Freq_radioButton;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label OutCh2_MaxLabel;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.NumericUpDown numericUpDown25;
-        private System.Windows.Forms.NumericUpDown numericUpDown26;
-        private System.Windows.Forms.NumericUpDown numericUpDown27;
-        private System.Windows.Forms.NumericUpDown numericUpDown28;
-        private System.Windows.Forms.NumericUpDown numericUpDown29;
+        private System.Windows.Forms.NumericUpDown OCh2Freq_FreqDur_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OCh2Freq_FreqAmp_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OCh2Amp_AmpDur_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OCh2Amp_BaseFreq_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OCh2Amp_MaxAmp_numericUpDown;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.NumericUpDown numericUpDown30;
-        private System.Windows.Forms.NumericUpDown numericUpDown31;
-        private System.Windows.Forms.NumericUpDown numericUpDown32;
-        private System.Windows.Forms.NumericUpDown numericUpDown33;
-        private System.Windows.Forms.NumericUpDown numericUpDown34;
+        private System.Windows.Forms.NumericUpDown OCh2Freq_FinalFreq_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OCh2Freq_Phase_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OCh2OnOff_OffDur_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OCh2OnOff_OnDur_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OCh2OnOff_Amp_numericUpDown;
         private System.Windows.Forms.RadioButton OutCh2_OnOff_radioButton;
-        private System.Windows.Forms.NumericUpDown numericUpDown35;
-        private System.Windows.Forms.NumericUpDown numericUpDown36;
+        private System.Windows.Forms.NumericUpDown OCh2Adap_Time_numericUpDown;
+        private System.Windows.Forms.NumericUpDown OCh2Adap_baseAmp_numericUpDown;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
@@ -2792,9 +2789,13 @@ namespace Interface_Prototype
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label OutCh2_SigFile_label;
         private System.Windows.Forms.RadioButton OutCh1_Adapt_radioButton;
         private System.Windows.Forms.RadioButton OutCh2_Adapt_radioButton;
+        private System.Windows.Forms.SaveFileDialog OutCh1_saveFileDialog;
+        private System.Windows.Forms.SaveFileDialog OutCh2_saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog OutCh1_openFileDialog;
+        private System.Windows.Forms.OpenFileDialog OutCh2_openFileDialog;
     }
 }
 

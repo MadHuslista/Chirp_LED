@@ -29,10 +29,10 @@ namespace Interface_Prototype
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.CancelCalib_button = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -49,6 +49,7 @@ namespace Interface_Prototype
             this.label8 = new System.Windows.Forms.Label();
             this.Calib1_progressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.LoadCalib1_button = new System.Windows.Forms.Button();
             this.StopCalib1_button = new System.Windows.Forms.Button();
             this.SaveCalib1_button = new System.Windows.Forms.Button();
             this.CreateCalib1_button = new System.Windows.Forms.Button();
@@ -68,6 +69,7 @@ namespace Interface_Prototype
             this.label7 = new System.Windows.Forms.Label();
             this.Calib2_progressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.LoadCalib2_button = new System.Windows.Forms.Button();
             this.StopCalib2_button = new System.Windows.Forms.Button();
             this.SaveCalib2_button = new System.Windows.Forms.Button();
             this.CreateCalib2_button = new System.Windows.Forms.Button();
@@ -76,6 +78,8 @@ namespace Interface_Prototype
             this.DoneCalib_button = new System.Windows.Forms.Button();
             this.Calib1_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.Calib2_saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.Calib1_openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.Calib2_openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -289,13 +293,15 @@ namespace Interface_Prototype
             // 
             // tableLayoutPanel11
             // 
-            this.tableLayoutPanel11.ColumnCount = 3;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel11.Controls.Add(this.StopCalib1_button, 0, 0);
-            this.tableLayoutPanel11.Controls.Add(this.SaveCalib1_button, 2, 0);
-            this.tableLayoutPanel11.Controls.Add(this.CreateCalib1_button, 0, 0);
+            this.tableLayoutPanel11.ColumnCount = 4;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel11.Controls.Add(this.LoadCalib1_button, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.StopCalib1_button, 2, 0);
+            this.tableLayoutPanel11.Controls.Add(this.SaveCalib1_button, 3, 0);
+            this.tableLayoutPanel11.Controls.Add(this.CreateCalib1_button, 1, 0);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 83);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
@@ -304,34 +310,45 @@ namespace Interface_Prototype
             this.tableLayoutPanel11.Size = new System.Drawing.Size(370, 34);
             this.tableLayoutPanel11.TabIndex = 3;
             // 
+            // LoadCalib1_button
+            // 
+            this.LoadCalib1_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LoadCalib1_button.Location = new System.Drawing.Point(3, 3);
+            this.LoadCalib1_button.Name = "LoadCalib1_button";
+            this.LoadCalib1_button.Size = new System.Drawing.Size(86, 28);
+            this.LoadCalib1_button.TabIndex = 3;
+            this.LoadCalib1_button.Text = "Load";
+            this.LoadCalib1_button.UseVisualStyleBackColor = true;
+            this.LoadCalib1_button.Click += new System.EventHandler(this.LoadCalib1_button_Click);
+            // 
             // StopCalib1_button
             // 
             this.StopCalib1_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StopCalib1_button.Location = new System.Drawing.Point(126, 3);
+            this.StopCalib1_button.Location = new System.Drawing.Point(187, 3);
             this.StopCalib1_button.Name = "StopCalib1_button";
-            this.StopCalib1_button.Size = new System.Drawing.Size(117, 28);
+            this.StopCalib1_button.Size = new System.Drawing.Size(86, 28);
             this.StopCalib1_button.TabIndex = 2;
-            this.StopCalib1_button.Text = "Stop Calibration";
+            this.StopCalib1_button.Text = "Stop";
             this.StopCalib1_button.UseVisualStyleBackColor = true;
             this.StopCalib1_button.Click += new System.EventHandler(this.StopCalib1_button_Click);
             // 
             // SaveCalib1_button
             // 
             this.SaveCalib1_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SaveCalib1_button.Location = new System.Drawing.Point(249, 3);
+            this.SaveCalib1_button.Location = new System.Drawing.Point(279, 3);
             this.SaveCalib1_button.Name = "SaveCalib1_button";
-            this.SaveCalib1_button.Size = new System.Drawing.Size(118, 28);
+            this.SaveCalib1_button.Size = new System.Drawing.Size(88, 28);
             this.SaveCalib1_button.TabIndex = 1;
-            this.SaveCalib1_button.Text = "Save Calibration";
+            this.SaveCalib1_button.Text = "Save";
             this.SaveCalib1_button.UseVisualStyleBackColor = true;
             this.SaveCalib1_button.Click += new System.EventHandler(this.SaveCalib1_button_Click);
             // 
             // CreateCalib1_button
             // 
             this.CreateCalib1_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CreateCalib1_button.Location = new System.Drawing.Point(3, 3);
+            this.CreateCalib1_button.Location = new System.Drawing.Point(95, 3);
             this.CreateCalib1_button.Name = "CreateCalib1_button";
-            this.CreateCalib1_button.Size = new System.Drawing.Size(117, 28);
+            this.CreateCalib1_button.Size = new System.Drawing.Size(86, 28);
             this.CreateCalib1_button.TabIndex = 0;
             this.CreateCalib1_button.Text = "Calibrate";
             this.CreateCalib1_button.UseVisualStyleBackColor = true;
@@ -350,22 +367,22 @@ namespace Interface_Prototype
             // 
             // Calib1_chart
             // 
-            chartArea5.AxisX.MinorGrid.Enabled = true;
-            chartArea5.AxisX.Title = "Output Channel (V)";
-            chartArea5.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea5.AxisY.MinorGrid.Enabled = true;
-            chartArea5.AxisY.Title = "Input Channel (V)";
-            chartArea5.Name = "ChartArea1";
-            this.Calib1_chart.ChartAreas.Add(chartArea5);
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.Title = "Output Channel (V)";
+            chartArea1.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.Title = "Input Channel (V)";
+            chartArea1.Name = "ChartArea1";
+            this.Calib1_chart.ChartAreas.Add(chartArea1);
             this.Calib1_chart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Calib1_chart.Location = new System.Drawing.Point(3, 16);
             this.Calib1_chart.Name = "Calib1_chart";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series5.IsVisibleInLegend = false;
-            series5.Legend = "Legend1";
-            series5.Name = "Calib1_Series";
-            this.Calib1_chart.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.Name = "Calib1_Series";
+            this.Calib1_chart.Series.Add(series1);
             this.Calib1_chart.Size = new System.Drawing.Size(376, 260);
             this.Calib1_chart.TabIndex = 1;
             this.Calib1_chart.Text = "chart2";
@@ -532,13 +549,15 @@ namespace Interface_Prototype
             // 
             // tableLayoutPanel10
             // 
-            this.tableLayoutPanel10.ColumnCount = 3;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel10.Controls.Add(this.StopCalib2_button, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.SaveCalib2_button, 2, 0);
-            this.tableLayoutPanel10.Controls.Add(this.CreateCalib2_button, 0, 0);
+            this.tableLayoutPanel10.ColumnCount = 4;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel10.Controls.Add(this.LoadCalib2_button, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.StopCalib2_button, 2, 0);
+            this.tableLayoutPanel10.Controls.Add(this.SaveCalib2_button, 3, 0);
+            this.tableLayoutPanel10.Controls.Add(this.CreateCalib2_button, 1, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 83);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -547,34 +566,45 @@ namespace Interface_Prototype
             this.tableLayoutPanel10.Size = new System.Drawing.Size(370, 34);
             this.tableLayoutPanel10.TabIndex = 3;
             // 
+            // LoadCalib2_button
+            // 
+            this.LoadCalib2_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LoadCalib2_button.Location = new System.Drawing.Point(3, 3);
+            this.LoadCalib2_button.Name = "LoadCalib2_button";
+            this.LoadCalib2_button.Size = new System.Drawing.Size(86, 28);
+            this.LoadCalib2_button.TabIndex = 4;
+            this.LoadCalib2_button.Text = "Load";
+            this.LoadCalib2_button.UseVisualStyleBackColor = true;
+            this.LoadCalib2_button.Click += new System.EventHandler(this.LoadCalib2_button_Click);
+            // 
             // StopCalib2_button
             // 
             this.StopCalib2_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StopCalib2_button.Location = new System.Drawing.Point(126, 3);
+            this.StopCalib2_button.Location = new System.Drawing.Point(187, 3);
             this.StopCalib2_button.Name = "StopCalib2_button";
-            this.StopCalib2_button.Size = new System.Drawing.Size(117, 28);
+            this.StopCalib2_button.Size = new System.Drawing.Size(86, 28);
             this.StopCalib2_button.TabIndex = 3;
-            this.StopCalib2_button.Text = "Stop Calibration";
+            this.StopCalib2_button.Text = "Stop";
             this.StopCalib2_button.UseVisualStyleBackColor = true;
             this.StopCalib2_button.Click += new System.EventHandler(this.StopCalib2_button_Click);
             // 
             // SaveCalib2_button
             // 
             this.SaveCalib2_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SaveCalib2_button.Location = new System.Drawing.Point(249, 3);
+            this.SaveCalib2_button.Location = new System.Drawing.Point(279, 3);
             this.SaveCalib2_button.Name = "SaveCalib2_button";
-            this.SaveCalib2_button.Size = new System.Drawing.Size(118, 28);
+            this.SaveCalib2_button.Size = new System.Drawing.Size(88, 28);
             this.SaveCalib2_button.TabIndex = 1;
-            this.SaveCalib2_button.Text = "Save Calibration";
+            this.SaveCalib2_button.Text = "Save";
             this.SaveCalib2_button.UseVisualStyleBackColor = true;
             this.SaveCalib2_button.Click += new System.EventHandler(this.SaveCalib2_button_Click);
             // 
             // CreateCalib2_button
             // 
             this.CreateCalib2_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CreateCalib2_button.Location = new System.Drawing.Point(3, 3);
+            this.CreateCalib2_button.Location = new System.Drawing.Point(95, 3);
             this.CreateCalib2_button.Name = "CreateCalib2_button";
-            this.CreateCalib2_button.Size = new System.Drawing.Size(117, 28);
+            this.CreateCalib2_button.Size = new System.Drawing.Size(86, 28);
             this.CreateCalib2_button.TabIndex = 0;
             this.CreateCalib2_button.Text = "Calibrate";
             this.CreateCalib2_button.UseVisualStyleBackColor = true;
@@ -593,22 +623,22 @@ namespace Interface_Prototype
             // 
             // Calib2_chart
             // 
-            chartArea6.AxisX.MinorGrid.Enabled = true;
-            chartArea6.AxisX.Title = "Output Channel (V)";
-            chartArea6.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea6.AxisY.MinorGrid.Enabled = true;
-            chartArea6.AxisY.Title = "Input Channel (V)";
-            chartArea6.Name = "ChartArea1";
-            this.Calib2_chart.ChartAreas.Add(chartArea6);
+            chartArea2.AxisX.MinorGrid.Enabled = true;
+            chartArea2.AxisX.Title = "Output Channel (V)";
+            chartArea2.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisY.MinorGrid.Enabled = true;
+            chartArea2.AxisY.Title = "Input Channel (V)";
+            chartArea2.Name = "ChartArea1";
+            this.Calib2_chart.ChartAreas.Add(chartArea2);
             this.Calib2_chart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Calib2_chart.Location = new System.Drawing.Point(3, 16);
             this.Calib2_chart.Name = "Calib2_chart";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series6.IsVisibleInLegend = false;
-            series6.Legend = "Legend1";
-            series6.Name = "Calib1_Series";
-            this.Calib2_chart.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Calib1_Series";
+            this.Calib2_chart.Series.Add(series2);
             this.Calib2_chart.Size = new System.Drawing.Size(376, 260);
             this.Calib2_chart.TabIndex = 2;
             this.Calib2_chart.Text = "chart2";
@@ -705,5 +735,9 @@ namespace Interface_Prototype
         private System.Windows.Forms.DataVisualization.Charting.Chart Calib2_chart;
         private System.Windows.Forms.Button CancelCalib_button;
         private System.Windows.Forms.Button DoneCalib_button;
+        private System.Windows.Forms.Button LoadCalib1_button;
+        private System.Windows.Forms.Button LoadCalib2_button;
+        private System.Windows.Forms.OpenFileDialog Calib1_openFileDialog;
+        private System.Windows.Forms.OpenFileDialog Calib2_openFileDialog;
     }
 }
