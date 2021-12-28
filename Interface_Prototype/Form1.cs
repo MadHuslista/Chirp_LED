@@ -14,6 +14,10 @@ namespace Interface_Prototype
 {
     public partial class Form1 : Form
     {
+        //Calibration Arrays
+        private double[][] Calib1_Array = new double[2][];
+        private double[][] Calib2_Array = new double[2][];
+
         public Form1()
         {
             InitializeComponent();
@@ -67,13 +71,73 @@ namespace Interface_Prototype
 
             Form_Calib Calib_Form = new Form_Calib(channels , values);
 
-            object a = Calib_Form.ShowDialog();
-            Console.WriteLine(a);
+            if( Calib_Form.ShowDialog() == DialogResult.OK)
+            {
+                if (Calib_Form.Calib1_state == "completed") 
+                { 
+                    Calib1_Array = Calib_Form.Calib1_Array; 
+                }
+
+                if (Calib_Form.Calib2_state == "completed") 
+                { 
+                    Calib2_Array = Calib_Form.Calib2_Array; 
+                }
+                
+
+                if ( (Calib_Form.Calib1_Association != "") ^ (Calib_Form.Calib2_Association != "")  )
+                {
+                    CalibLoaded_label.Text = "P: " + Calib_Form.Calib1_Association + Calib_Form.Calib2_Association;
+                    CalibLoaded_label.BackColor = Color.PaleGreen; 
+                }
+                else
+                {
+                    CalibLoaded_label.Text = "P: " + Calib_Form.Calib1_Association + "  " + Calib_Form.Calib2_Association;
+                    CalibLoaded_label.BackColor = Color.PaleGreen;
+                }
+            }
+            else
+            {
+                Calib_Form.Calib1_taskRunning = false;
+                Calib_Form.Calib2_taskRunning = false;
+                //if (Calib_Form.Calib1_taskRunning) { Calib_Form.StopTask(1); }
+                //if (Calib_Form.Calib2_taskRunning) { Calib_Form.StopTask(2); }
+
+            }
+            
         }
 
-        private void LoadCalib_button_Click(object sender, EventArgs e)
+        private void UpdateChart( List<double> time, List<double> data, ref System.Windows.Forms.DataVisualization.Charting.Chart Chart )
         {
+            //Console.WriteLine("{0} {1}", time.Count/Chart.Width, Chart.Width);
 
+            int down_size = Chart.Width;
+            int step = time.Count / (Chart.Width*15);
+
+            step = step + Convert.ToInt32((step < 1));
+
+            //Console.WriteLine("ds:{0} st:{1}", down_size, step);
+
+            //double[] downsampl_time = new double[down_size];
+            //double [] downsampl_data = new double[down_size];
+            List<double> downsampl_time = new List<double>();
+            List<double> downsampl_data = new List<double>();
+
+            Console.WriteLine("t.co{0} step{1}", time.Count, step);
+
+            for (int i = 0; i < time.Count; i+= step)
+            {             
+                //downsampl_data[k] = data[i];
+                //downsampl_time[k] = time[i];
+                downsampl_time.Add(time[i]);
+                downsampl_data.Add(data[i]); 
+            }
+
+            //Console.WriteLine("{0} {1}", downsampl_data.Count, downsampl_time.Count);
+
+
+            Chart.Series[0].Points.Clear();
+            Chart.Series[0].Points.DataBindXY(downsampl_time, downsampl_data);
         }
+
     }
 }

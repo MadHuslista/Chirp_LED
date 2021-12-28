@@ -13,6 +13,7 @@ using NationalInstruments.DAQmx;
 using MathNet.Numerics;
 
 
+
 namespace Interface_Prototype
 {
     public partial class Form_Calib : Form
@@ -28,8 +29,8 @@ namespace Interface_Prototype
         //Calibration Arrays
         private List<List<double>> Calib1_Data = new List<List<double>>();
         private List<List<double>> Calib2_Data = new List<List<double>>();
-        private double[][] Calib1_Array = new double[2][];
-        private double[][] Calib2_Array = new double[2][];
+        public double[][] Calib1_Array = new double[2][];
+        public double[][] Calib2_Array = new double[2][];
         private IEnumerator Calib1_RefEnum, Calib2_RefEnum;
 
         //DAQ Objects
@@ -41,8 +42,14 @@ namespace Interface_Prototype
 
         private AsyncCallback Calib1_InputCallback, Calib2_InputCallback;
 
-        private bool Calib1_taskRunning = false;
-        private bool Calib2_taskRunning = false;     
+        //States
+        public bool Calib1_taskRunning = false;
+        public bool Calib2_taskRunning = false;
+        public string Calib1_state = "empty";
+        public string Calib2_state = "empty";
+        public string Calib1_Association = "";
+        public string Calib2_Association = "";       
+
 
         public Form_Calib(string [] channels, double [][] values) 
         {
@@ -89,7 +96,7 @@ namespace Interface_Prototype
 
 
         // ####################################### General Use Funcions
-        private void DoCalib(
+        private void ConfigCalib(
             //Channels Values
             string[] channels,
             Dictionary<string, double> input_values,
@@ -107,13 +114,15 @@ namespace Interface_Prototype
             //Data Management
             ref IEnumerator Ref_Enum,
             ref List<List<double>> Calib_Data, 
+            ref string Calib_state,
 
             //Form Management
             ref ProgressBar Progress_Bar,
             ref Button Same_CalibButt,
             ref Button Opos_CalibButt,
             ref Button Same_SaveCalib,
-            ref Button Opos_SaveCalib
+            ref Button Opos_SaveCalib,
+            ref Button Opos_StopCalib
             )
         {
             //Asignación de Canales y Task
@@ -129,6 +138,8 @@ namespace Interface_Prototype
             Progress_Bar.Maximum = Ref_Array.Length + 10;
             Progress_Bar.Value = 0;
 
+            //Bloqueo del botón de aceptación durante la calibración
+            DoneCalib_button.Enabled = false; 
 
             //Console.WriteLine("Ref_Enum: {0}", object.ReferenceEquals(Ref_Enum, Calib1_RefEnum));
             try
@@ -173,6 +184,7 @@ namespace Interface_Prototype
                 Ref_Enum.MoveNext(); //Inicio el numerador en el primer elemento
                 Calib_Data[0].Clear();
                 Calib_Data[1].Clear();
+                Calib_state = "empty";
 
                 writer.WriteSingleSample(true, Convert.ToDouble(Ref_Enum.Current)); //Escribe el primero dato. 
 
@@ -185,6 +197,7 @@ namespace Interface_Prototype
                 Opos_CalibButt.Enabled = false;
                 Same_SaveCalib.Enabled = false;
                 Opos_SaveCalib.Enabled = false;
+                Opos_StopCalib.Enabled = false;
 
                 //Console.WriteLine(object.ReferenceEquals(Ref_Enum, Calib1_RefEnum));
                 //Console.WriteLine(object.ReferenceEquals(InputCallback, Calib1_InputCallback));
@@ -200,7 +213,7 @@ namespace Interface_Prototype
 
         }
 
-        private void CalibInputRead(
+        private void Execute_Calib(
 
             //DAC Connection Ojects
             ref AnalogSingleChannelReader reader,
@@ -214,7 +227,8 @@ namespace Interface_Prototype
             ref IEnumerator Ref_Enum,
             ref List<List<double>> Calib_Data,
             ref double[][] Calib_Array,
-            IAsyncResult ar, 
+            IAsyncResult ar,
+            ref string Calib_state, 
 
             //Form Management
             ref ProgressBar Progress_Bar,
@@ -222,7 +236,8 @@ namespace Interface_Prototype
             ref Button calibA_button,
             ref Button calibB_button,
             ref Button saveA_button,
-            ref Button saveB_button
+            ref Button saveB_button, 
+            ref Button OposStop_button
             )
         {
             try
@@ -239,20 +254,25 @@ namespace Interface_Prototype
                     reader.BeginReadMultiSample(samples_per_step, InputCallback, inputTask);
                     Progress_Bar.Value += 1; 
                 }
-                else if (taskRunning == false)
+                else if (taskRunning == false)  //Respuesta al botón 'Stop' 
                 {
                     StopTask(calib);
                     Ref_Enum.Reset();
                     Progress_Bar.Value = 0;
                     calibA_button.Enabled = true;
                     calibB_button.Enabled = true;
+                    OposStop_button.Enabled = true;
+                    DoneCalib_button.Enabled = false;
+                    Calib_state = "stopped";
                 }
                 else
                 {
                     StopTask(calib);
 
-                    Calib_Array[0] = Calib_Data[0].ToArray();
-                    Calib_Array[1] = Calib_Data[1].ToArray();
+                    Calib_Array[0] = Calib_Data[0].ToArray();   //Array de Referencia
+                    Calib_Array[1] = Calib_Data[1].ToArray();   //Array con Mediciones
+
+                    Calib_state = "completed";
 
                     Array.Sort(Calib_Array[1], Calib_Array[0]);
                     Ref_Enum.Reset();
@@ -266,7 +286,11 @@ namespace Interface_Prototype
                     calibB_button.Enabled = true;
                     saveA_button.Enabled = true;
                     saveB_button.Enabled = true;
-                }                
+                    OposStop_button.Enabled = true;
+                    //Desbloqueo del botón de aceptación durante la calibración
+                    DoneCalib_button.Enabled = true;
+
+                }
             }
             catch (Exception ex)
             {
@@ -309,12 +333,10 @@ namespace Interface_Prototype
 
         }
 
-        private void StopTask(int calib)
-        {
+        public void StopTask(int calib)
+        {           
             if (calib == 1)
             {
-
-
                 Calib1_inputTask.Stop();
                 Calib1_outputTask.Stop();
                 Calib1_inputTask.Dispose();
@@ -329,17 +351,30 @@ namespace Interface_Prototype
             }
         }
 
+        private void CancelCalib_button_Click(object sender, EventArgs e)
+        {            
+            Calib1_taskRunning = false;
+            Calib2_taskRunning = false;
+            Calib1_Array = new double[2][];
+            Calib2_Array = new double[2][];
+            Calib1_state = "empty";
+            Calib2_state = "empty";
+        }
+
+
         // ####################################### Particular Use Funcions
 
 
-        private void DoCalib1_button_Click(object sender, EventArgs e)
+        private void CreateCalib1_button_Click(object sender, EventArgs e)
         {
             String In_Ch = Calib1In_comboBox.Text;
             String Out_Ch = Calib1Out_comboBox.Text;
-            DoCalib2_button.Enabled = false;
+            CreateCalib2_button.Enabled = false;
             Calib1_taskRunning = true;
+            Calib1_Association = "Out" + (Convert.ToString(Calib1Out_comboBox.SelectedIndex + 1)) + char.ConvertFromUtf32(10142) + "In" + (Convert.ToString(Calib1In_comboBox.SelectedIndex + 1));
+            
 
-            DoCalib(
+            ConfigCalib(
                 //Channels Values
                 channels: new[] { In_Ch, Out_Ch },
                 input_values: Ch_Dict[In_Ch],
@@ -351,31 +386,35 @@ namespace Interface_Prototype
                 writer: ref Calib1_writer,
                 reader: ref Calib1_reader,
                 InputCallback: ref Calib1_InputCallback,
-                Callback_Function: Calib1_Temp_InputRead,
+                Callback_Function: Execute_Calib1,
                 calib: 1,
 
                 //Array Management
                 Ref_Enum: ref Calib1_RefEnum,
                 Calib_Data: ref Calib1_Data,
+                Calib_state: ref Calib1_state,
 
                 //Form Management
                 Progress_Bar: ref Calib1_progressBar,
-                Same_CalibButt: ref DoCalib1_button,
-                Opos_CalibButt: ref DoCalib2_button,
+                Same_CalibButt: ref CreateCalib1_button,
+                Opos_CalibButt: ref CreateCalib2_button,
                 Same_SaveCalib: ref SaveCalib1_button,
-                Opos_SaveCalib: ref SaveCalib2_button
+                Opos_SaveCalib: ref SaveCalib2_button,
+                Opos_StopCalib: ref StopCalib2_button
             );
 
         }
 
-        private void DoCalib2_button_Click(object sender, EventArgs e)
+        private void CreateCalib2_button_Click(object sender, EventArgs e)
         {
             String In_Ch = Calib2In_comboBox.Text;
             String Out_Ch = Calib2Out_comboBox.Text;
-            DoCalib1_button.Enabled = false;
+            CreateCalib1_button.Enabled = false;
             Calib2_taskRunning = true;
+            Calib2_Association = "Out" + (Convert.ToString(Calib2Out_comboBox.SelectedIndex + 1)) + char.ConvertFromUtf32(10142) + "In" + (Convert.ToString(Calib2In_comboBox.SelectedIndex + 1));
+            Console.WriteLine(Calib2_Association);
 
-            DoCalib(
+            ConfigCalib(
                 //Channels Values
                 channels: new[] { In_Ch, Out_Ch },
                 input_values: Ch_Dict[In_Ch],
@@ -387,19 +426,21 @@ namespace Interface_Prototype
                 writer: ref Calib2_writer,
                 reader: ref Calib2_reader,
                 InputCallback: ref Calib2_InputCallback,
-                Callback_Function: Calib2_Temp_InputRead,
+                Callback_Function: Execute_Calib2,
                 calib: 2,
 
                 //Array Management
                 Ref_Enum: ref Calib2_RefEnum,
                 Calib_Data: ref Calib2_Data,
+                Calib_state: ref Calib2_state,
 
                 //Form Management
                 Progress_Bar: ref Calib2_progressBar,
-                Same_CalibButt: ref DoCalib2_button,
-                Opos_CalibButt: ref DoCalib1_button,
+                Same_CalibButt: ref CreateCalib2_button,
+                Opos_CalibButt: ref CreateCalib1_button,
                 Same_SaveCalib: ref SaveCalib2_button,
-                Opos_SaveCalib: ref SaveCalib1_button
+                Opos_SaveCalib: ref SaveCalib1_button,
+                Opos_StopCalib: ref StopCalib1_button
             );
 
 
@@ -407,9 +448,9 @@ namespace Interface_Prototype
         }
 
 
-        private void Calib1_Temp_InputRead(IAsyncResult Calib1_AsyncResult)
+        private void Execute_Calib1(IAsyncResult Calib1_AsyncResult)
         {
-            CalibInputRead(
+            Execute_Calib(
 
                 //DAC Connection Ojects
                 reader          : ref Calib1_reader,
@@ -424,20 +465,22 @@ namespace Interface_Prototype
                 Calib_Data      : ref Calib1_Data,
                 Calib_Array     : ref Calib1_Array,
                 ar              : Calib1_AsyncResult,
+                Calib_state     : ref Calib1_state,
 
                 //Form Management
                 Progress_Bar    : ref Calib1_progressBar,
                 Chart           : ref Calib1_chart,
-                calibA_button   : ref DoCalib1_button,
-                calibB_button   : ref DoCalib2_button,
+                calibA_button   : ref CreateCalib1_button,
+                calibB_button   : ref CreateCalib2_button,
                 saveA_button    : ref SaveCalib1_button,
-                saveB_button    : ref SaveCalib2_button
+                saveB_button    : ref SaveCalib2_button, 
+                OposStop_button : ref StopCalib2_button
                 );
         }
 
-        private void Calib2_Temp_InputRead(IAsyncResult Calib2_AsyncResult)
+        private void Execute_Calib2(IAsyncResult Calib2_AsyncResult)
         {
-            CalibInputRead(
+            Execute_Calib(
 
                 //DAC Connection Ojects
                 reader: ref Calib2_reader,
@@ -452,14 +495,16 @@ namespace Interface_Prototype
                 Calib_Data: ref Calib2_Data,
                 Calib_Array: ref Calib2_Array,
                 ar: Calib2_AsyncResult,
+                Calib_state: ref Calib2_state,
 
                 //Form Management
                 Progress_Bar: ref Calib2_progressBar,
                 Chart: ref Calib2_chart,
-                calibA_button: ref DoCalib2_button,
-                calibB_button: ref DoCalib1_button,
+                calibA_button: ref CreateCalib2_button,
+                calibB_button: ref CreateCalib1_button,
                 saveA_button: ref SaveCalib2_button,
-                saveB_button: ref SaveCalib1_button
+                saveB_button: ref SaveCalib1_button,
+                OposStop_button: ref StopCalib1_button
                 );
         }
                 
